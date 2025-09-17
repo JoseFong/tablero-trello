@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  username     String         @unique
+  password     String
+  UserHasBoard UserHasBoard[]
+  Card         Card[]
+}
+
+model Board {
+  id           Int            @id @default(autoincrement())
+  name         String
+  UserHasBoard UserHasBoard[]
+  Tag          Tag[]
+  Column       Column[]
+}
+
+model UserHasBoard {
+  id      Int    @id @default(autoincrement())
+  board   Board  @relation(fields: [boardId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+  role    String
+  boardId Int
+  userId  Int
+}
+
+model Tag {
+  id      Int    @id @default(autoincrement())
+  name    String
+  board   Board  @relation(fields: [boardId], references: [id])
+  boardId Int
+}
+
+model Card {
+  id        Int     @id @default(autoincrement())
+  status    String
+  title     String
+  content   String
+  startDate String?
+  endDate   String?
+  List      List[]
+  creator   Int
+  users     User[]
+}
+
+model List {
+  id       Int        @id @default(autoincrement())
+  card     Card       @relation(fields: [cardId], references: [id])
+  title    String
+  cardId   Int
+  ListItem ListItem[]
+}
+
+model ListItem {
+  id      Int     @id @default(autoincrement())
+  content String
+  list    List    @relation(fields: [listId], references: [id])
+  listId  Int
+  status  Boolean
+}
+
+model Column {
+  id      Int    @id @default(autoincrement())
+  name    String
+  board   Board  @relation(fields: [boardId], references: [id])
+  boardId Int
+}
