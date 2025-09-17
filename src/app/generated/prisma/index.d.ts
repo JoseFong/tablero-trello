@@ -1653,6 +1653,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ColumnCountOutputType
+   */
+
+  export type ColumnCountOutputType = {
+    Card: number
+  }
+
+  export type ColumnCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Card?: boolean | ColumnCountOutputTypeCountCardArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ColumnCountOutputType without action
+   */
+  export type ColumnCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColumnCountOutputType
+     */
+    select?: ColumnCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ColumnCountOutputType without action
+   */
+  export type ColumnCountOutputTypeCountCardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -2798,16 +2829,22 @@ export namespace Prisma {
   export type BoardMinAggregateOutputType = {
     id: number | null
     name: string | null
+    LastEdited: string | null
+    Color: string | null
   }
 
   export type BoardMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    LastEdited: string | null
+    Color: string | null
   }
 
   export type BoardCountAggregateOutputType = {
     id: number
     name: number
+    LastEdited: number
+    Color: number
     _all: number
   }
 
@@ -2823,16 +2860,22 @@ export namespace Prisma {
   export type BoardMinAggregateInputType = {
     id?: true
     name?: true
+    LastEdited?: true
+    Color?: true
   }
 
   export type BoardMaxAggregateInputType = {
     id?: true
     name?: true
+    LastEdited?: true
+    Color?: true
   }
 
   export type BoardCountAggregateInputType = {
     id?: true
     name?: true
+    LastEdited?: true
+    Color?: true
     _all?: true
   }
 
@@ -2925,6 +2968,8 @@ export namespace Prisma {
   export type BoardGroupByOutputType = {
     id: number
     name: string
+    LastEdited: string
+    Color: string
     _count: BoardCountAggregateOutputType | null
     _avg: BoardAvgAggregateOutputType | null
     _sum: BoardSumAggregateOutputType | null
@@ -2949,6 +2994,8 @@ export namespace Prisma {
   export type BoardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    LastEdited?: boolean
+    Color?: boolean
     UserHasBoard?: boolean | Board$UserHasBoardArgs<ExtArgs>
     Tag?: boolean | Board$TagArgs<ExtArgs>
     Column?: boolean | Board$ColumnArgs<ExtArgs>
@@ -2958,19 +3005,25 @@ export namespace Prisma {
   export type BoardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    LastEdited?: boolean
+    Color?: boolean
   }, ExtArgs["result"]["board"]>
 
   export type BoardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    LastEdited?: boolean
+    Color?: boolean
   }, ExtArgs["result"]["board"]>
 
   export type BoardSelectScalar = {
     id?: boolean
     name?: boolean
+    LastEdited?: boolean
+    Color?: boolean
   }
 
-  export type BoardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["board"]>
+  export type BoardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "LastEdited" | "Color", ExtArgs["result"]["board"]>
   export type BoardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     UserHasBoard?: boolean | Board$UserHasBoardArgs<ExtArgs>
     Tag?: boolean | Board$TagArgs<ExtArgs>
@@ -2990,6 +3043,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      LastEdited: string
+      Color: string
     }, ExtArgs["result"]["board"]>
     composites: {}
   }
@@ -3418,6 +3473,8 @@ export namespace Prisma {
   interface BoardFieldRefs {
     readonly id: FieldRef<"Board", 'Int'>
     readonly name: FieldRef<"Board", 'String'>
+    readonly LastEdited: FieldRef<"Board", 'String'>
+    readonly Color: FieldRef<"Board", 'String'>
   }
     
 
@@ -5017,18 +5074,21 @@ export namespace Prisma {
     id: number | null
     name: string | null
     boardId: number | null
+    color: string | null
   }
 
   export type TagMaxAggregateOutputType = {
     id: number | null
     name: string | null
     boardId: number | null
+    color: string | null
   }
 
   export type TagCountAggregateOutputType = {
     id: number
     name: number
     boardId: number
+    color: number
     _all: number
   }
 
@@ -5047,18 +5107,21 @@ export namespace Prisma {
     id?: true
     name?: true
     boardId?: true
+    color?: true
   }
 
   export type TagMaxAggregateInputType = {
     id?: true
     name?: true
     boardId?: true
+    color?: true
   }
 
   export type TagCountAggregateInputType = {
     id?: true
     name?: true
     boardId?: true
+    color?: true
     _all?: true
   }
 
@@ -5152,6 +5215,7 @@ export namespace Prisma {
     id: number
     name: string
     boardId: number
+    color: string
     _count: TagCountAggregateOutputType | null
     _avg: TagAvgAggregateOutputType | null
     _sum: TagSumAggregateOutputType | null
@@ -5177,6 +5241,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    color?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tag"]>
 
@@ -5184,6 +5249,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    color?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tag"]>
 
@@ -5191,6 +5257,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    color?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tag"]>
 
@@ -5198,9 +5265,10 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    color?: boolean
   }
 
-  export type TagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "boardId", ExtArgs["result"]["tag"]>
+  export type TagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "boardId" | "color", ExtArgs["result"]["tag"]>
   export type TagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }
@@ -5220,6 +5288,7 @@ export namespace Prisma {
       id: number
       name: string
       boardId: number
+      color: string
     }, ExtArgs["result"]["tag"]>
     composites: {}
   }
@@ -5647,6 +5716,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Tag", 'Int'>
     readonly name: FieldRef<"Tag", 'String'>
     readonly boardId: FieldRef<"Tag", 'Int'>
+    readonly color: FieldRef<"Tag", 'String'>
   }
     
 
@@ -6076,11 +6146,13 @@ export namespace Prisma {
   export type CardAvgAggregateOutputType = {
     id: number | null
     creator: number | null
+    columnId: number | null
   }
 
   export type CardSumAggregateOutputType = {
     id: number | null
     creator: number | null
+    columnId: number | null
   }
 
   export type CardMinAggregateOutputType = {
@@ -6091,6 +6163,8 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     creator: number | null
+    columnId: number | null
+    tags: string | null
   }
 
   export type CardMaxAggregateOutputType = {
@@ -6101,6 +6175,8 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     creator: number | null
+    columnId: number | null
+    tags: string | null
   }
 
   export type CardCountAggregateOutputType = {
@@ -6111,6 +6187,8 @@ export namespace Prisma {
     startDate: number
     endDate: number
     creator: number
+    columnId: number
+    tags: number
     _all: number
   }
 
@@ -6118,11 +6196,13 @@ export namespace Prisma {
   export type CardAvgAggregateInputType = {
     id?: true
     creator?: true
+    columnId?: true
   }
 
   export type CardSumAggregateInputType = {
     id?: true
     creator?: true
+    columnId?: true
   }
 
   export type CardMinAggregateInputType = {
@@ -6133,6 +6213,8 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     creator?: true
+    columnId?: true
+    tags?: true
   }
 
   export type CardMaxAggregateInputType = {
@@ -6143,6 +6225,8 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     creator?: true
+    columnId?: true
+    tags?: true
   }
 
   export type CardCountAggregateInputType = {
@@ -6153,6 +6237,8 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     creator?: true
+    columnId?: true
+    tags?: true
     _all?: true
   }
 
@@ -6250,6 +6336,8 @@ export namespace Prisma {
     startDate: string | null
     endDate: string | null
     creator: number
+    columnId: number
+    tags: string
     _count: CardCountAggregateOutputType | null
     _avg: CardAvgAggregateOutputType | null
     _sum: CardSumAggregateOutputType | null
@@ -6279,8 +6367,11 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     creator?: boolean
+    columnId?: boolean
+    tags?: boolean
     List?: boolean | Card$ListArgs<ExtArgs>
     users?: boolean | Card$usersArgs<ExtArgs>
+    column?: boolean | ColumnDefaultArgs<ExtArgs>
     _count?: boolean | CardCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card"]>
 
@@ -6292,6 +6383,9 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     creator?: boolean
+    columnId?: boolean
+    tags?: boolean
+    column?: boolean | ColumnDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card"]>
 
   export type CardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6302,6 +6396,9 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     creator?: boolean
+    columnId?: boolean
+    tags?: boolean
+    column?: boolean | ColumnDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card"]>
 
   export type CardSelectScalar = {
@@ -6312,22 +6409,30 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     creator?: boolean
+    columnId?: boolean
+    tags?: boolean
   }
 
-  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "title" | "content" | "startDate" | "endDate" | "creator", ExtArgs["result"]["card"]>
+  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "title" | "content" | "startDate" | "endDate" | "creator" | "columnId" | "tags", ExtArgs["result"]["card"]>
   export type CardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     List?: boolean | Card$ListArgs<ExtArgs>
     users?: boolean | Card$usersArgs<ExtArgs>
+    column?: boolean | ColumnDefaultArgs<ExtArgs>
     _count?: boolean | CardCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type CardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CardIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    column?: boolean | ColumnDefaultArgs<ExtArgs>
+  }
+  export type CardIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    column?: boolean | ColumnDefaultArgs<ExtArgs>
+  }
 
   export type $CardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Card"
     objects: {
       List: Prisma.$ListPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
+      column: Prisma.$ColumnPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6337,6 +6442,8 @@ export namespace Prisma {
       startDate: string | null
       endDate: string | null
       creator: number
+      columnId: number
+      tags: string
     }, ExtArgs["result"]["card"]>
     composites: {}
   }
@@ -6733,6 +6840,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     List<T extends Card$ListArgs<ExtArgs> = {}>(args?: Subset<T, Card$ListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Card$usersArgs<ExtArgs> = {}>(args?: Subset<T, Card$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    column<T extends ColumnDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColumnDefaultArgs<ExtArgs>>): Prisma__ColumnClient<$Result.GetResult<Prisma.$ColumnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6769,6 +6877,8 @@ export namespace Prisma {
     readonly startDate: FieldRef<"Card", 'String'>
     readonly endDate: FieldRef<"Card", 'String'>
     readonly creator: FieldRef<"Card", 'Int'>
+    readonly columnId: FieldRef<"Card", 'Int'>
+    readonly tags: FieldRef<"Card", 'String'>
   }
     
 
@@ -7018,6 +7128,10 @@ export namespace Prisma {
      */
     data: CardCreateManyInput | CardCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7088,6 +7202,10 @@ export namespace Prisma {
      * Limit how many Cards to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -9421,29 +9539,34 @@ export namespace Prisma {
   export type ColumnAvgAggregateOutputType = {
     id: number | null
     boardId: number | null
+    order: number | null
   }
 
   export type ColumnSumAggregateOutputType = {
     id: number | null
     boardId: number | null
+    order: number | null
   }
 
   export type ColumnMinAggregateOutputType = {
     id: number | null
     name: string | null
     boardId: number | null
+    order: number | null
   }
 
   export type ColumnMaxAggregateOutputType = {
     id: number | null
     name: string | null
     boardId: number | null
+    order: number | null
   }
 
   export type ColumnCountAggregateOutputType = {
     id: number
     name: number
     boardId: number
+    order: number
     _all: number
   }
 
@@ -9451,29 +9574,34 @@ export namespace Prisma {
   export type ColumnAvgAggregateInputType = {
     id?: true
     boardId?: true
+    order?: true
   }
 
   export type ColumnSumAggregateInputType = {
     id?: true
     boardId?: true
+    order?: true
   }
 
   export type ColumnMinAggregateInputType = {
     id?: true
     name?: true
     boardId?: true
+    order?: true
   }
 
   export type ColumnMaxAggregateInputType = {
     id?: true
     name?: true
     boardId?: true
+    order?: true
   }
 
   export type ColumnCountAggregateInputType = {
     id?: true
     name?: true
     boardId?: true
+    order?: true
     _all?: true
   }
 
@@ -9567,6 +9695,7 @@ export namespace Prisma {
     id: number
     name: string
     boardId: number
+    order: number
     _count: ColumnCountAggregateOutputType | null
     _avg: ColumnAvgAggregateOutputType | null
     _sum: ColumnSumAggregateOutputType | null
@@ -9592,13 +9721,17 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    order?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
+    Card?: boolean | Column$CardArgs<ExtArgs>
+    _count?: boolean | ColumnCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["column"]>
 
   export type ColumnSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     boardId?: boolean
+    order?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["column"]>
 
@@ -9606,6 +9739,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    order?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["column"]>
 
@@ -9613,11 +9747,14 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     boardId?: boolean
+    order?: boolean
   }
 
-  export type ColumnOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "boardId", ExtArgs["result"]["column"]>
+  export type ColumnOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "boardId" | "order", ExtArgs["result"]["column"]>
   export type ColumnInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     board?: boolean | BoardDefaultArgs<ExtArgs>
+    Card?: boolean | Column$CardArgs<ExtArgs>
+    _count?: boolean | ColumnCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ColumnIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     board?: boolean | BoardDefaultArgs<ExtArgs>
@@ -9630,11 +9767,13 @@ export namespace Prisma {
     name: "Column"
     objects: {
       board: Prisma.$BoardPayload<ExtArgs>
+      Card: Prisma.$CardPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       boardId: number
+      order: number
     }, ExtArgs["result"]["column"]>
     composites: {}
   }
@@ -10030,6 +10169,7 @@ export namespace Prisma {
   export interface Prisma__ColumnClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     board<T extends BoardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BoardDefaultArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Card<T extends Column$CardArgs<ExtArgs> = {}>(args?: Subset<T, Column$CardArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10062,6 +10202,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Column", 'Int'>
     readonly name: FieldRef<"Column", 'String'>
     readonly boardId: FieldRef<"Column", 'Int'>
+    readonly order: FieldRef<"Column", 'Int'>
   }
     
 
@@ -10458,6 +10599,30 @@ export namespace Prisma {
   }
 
   /**
+   * Column.Card
+   */
+  export type Column$CardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Card
+     */
+    omit?: CardOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardInclude<ExtArgs> | null
+    where?: CardWhereInput
+    orderBy?: CardOrderByWithRelationInput | CardOrderByWithRelationInput[]
+    cursor?: CardWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CardScalarFieldEnum | CardScalarFieldEnum[]
+  }
+
+  /**
    * Column without action
    */
   export type ColumnDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10502,7 +10667,9 @@ export namespace Prisma {
 
   export const BoardScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    LastEdited: 'LastEdited',
+    Color: 'Color'
   };
 
   export type BoardScalarFieldEnum = (typeof BoardScalarFieldEnum)[keyof typeof BoardScalarFieldEnum]
@@ -10521,7 +10688,8 @@ export namespace Prisma {
   export const TagScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    boardId: 'boardId'
+    boardId: 'boardId',
+    color: 'color'
   };
 
   export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
@@ -10534,7 +10702,9 @@ export namespace Prisma {
     content: 'content',
     startDate: 'startDate',
     endDate: 'endDate',
-    creator: 'creator'
+    creator: 'creator',
+    columnId: 'columnId',
+    tags: 'tags'
   };
 
   export type CardScalarFieldEnum = (typeof CardScalarFieldEnum)[keyof typeof CardScalarFieldEnum]
@@ -10562,7 +10732,8 @@ export namespace Prisma {
   export const ColumnScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    boardId: 'boardId'
+    boardId: 'boardId',
+    order: 'order'
   };
 
   export type ColumnScalarFieldEnum = (typeof ColumnScalarFieldEnum)[keyof typeof ColumnScalarFieldEnum]
@@ -10710,6 +10881,8 @@ export namespace Prisma {
     NOT?: BoardWhereInput | BoardWhereInput[]
     id?: IntFilter<"Board"> | number
     name?: StringFilter<"Board"> | string
+    LastEdited?: StringFilter<"Board"> | string
+    Color?: StringFilter<"Board"> | string
     UserHasBoard?: UserHasBoardListRelationFilter
     Tag?: TagListRelationFilter
     Column?: ColumnListRelationFilter
@@ -10718,6 +10891,8 @@ export namespace Prisma {
   export type BoardOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    LastEdited?: SortOrder
+    Color?: SortOrder
     UserHasBoard?: UserHasBoardOrderByRelationAggregateInput
     Tag?: TagOrderByRelationAggregateInput
     Column?: ColumnOrderByRelationAggregateInput
@@ -10729,6 +10904,8 @@ export namespace Prisma {
     OR?: BoardWhereInput[]
     NOT?: BoardWhereInput | BoardWhereInput[]
     name?: StringFilter<"Board"> | string
+    LastEdited?: StringFilter<"Board"> | string
+    Color?: StringFilter<"Board"> | string
     UserHasBoard?: UserHasBoardListRelationFilter
     Tag?: TagListRelationFilter
     Column?: ColumnListRelationFilter
@@ -10737,6 +10914,8 @@ export namespace Prisma {
   export type BoardOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    LastEdited?: SortOrder
+    Color?: SortOrder
     _count?: BoardCountOrderByAggregateInput
     _avg?: BoardAvgOrderByAggregateInput
     _max?: BoardMaxOrderByAggregateInput
@@ -10750,6 +10929,8 @@ export namespace Prisma {
     NOT?: BoardScalarWhereWithAggregatesInput | BoardScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Board"> | number
     name?: StringWithAggregatesFilter<"Board"> | string
+    LastEdited?: StringWithAggregatesFilter<"Board"> | string
+    Color?: StringWithAggregatesFilter<"Board"> | string
   }
 
   export type UserHasBoardWhereInput = {
@@ -10814,6 +10995,7 @@ export namespace Prisma {
     id?: IntFilter<"Tag"> | number
     name?: StringFilter<"Tag"> | string
     boardId?: IntFilter<"Tag"> | number
+    color?: StringFilter<"Tag"> | string
     board?: XOR<BoardScalarRelationFilter, BoardWhereInput>
   }
 
@@ -10821,6 +11003,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    color?: SortOrder
     board?: BoardOrderByWithRelationInput
   }
 
@@ -10831,6 +11014,7 @@ export namespace Prisma {
     NOT?: TagWhereInput | TagWhereInput[]
     name?: StringFilter<"Tag"> | string
     boardId?: IntFilter<"Tag"> | number
+    color?: StringFilter<"Tag"> | string
     board?: XOR<BoardScalarRelationFilter, BoardWhereInput>
   }, "id">
 
@@ -10838,6 +11022,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    color?: SortOrder
     _count?: TagCountOrderByAggregateInput
     _avg?: TagAvgOrderByAggregateInput
     _max?: TagMaxOrderByAggregateInput
@@ -10852,6 +11037,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Tag"> | number
     name?: StringWithAggregatesFilter<"Tag"> | string
     boardId?: IntWithAggregatesFilter<"Tag"> | number
+    color?: StringWithAggregatesFilter<"Tag"> | string
   }
 
   export type CardWhereInput = {
@@ -10865,8 +11051,11 @@ export namespace Prisma {
     startDate?: StringNullableFilter<"Card"> | string | null
     endDate?: StringNullableFilter<"Card"> | string | null
     creator?: IntFilter<"Card"> | number
+    columnId?: IntFilter<"Card"> | number
+    tags?: StringFilter<"Card"> | string
     List?: ListListRelationFilter
     users?: UserListRelationFilter
+    column?: XOR<ColumnScalarRelationFilter, ColumnWhereInput>
   }
 
   export type CardOrderByWithRelationInput = {
@@ -10877,8 +11066,11 @@ export namespace Prisma {
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
+    tags?: SortOrder
     List?: ListOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
+    column?: ColumnOrderByWithRelationInput
   }
 
   export type CardWhereUniqueInput = Prisma.AtLeast<{
@@ -10892,8 +11084,11 @@ export namespace Prisma {
     startDate?: StringNullableFilter<"Card"> | string | null
     endDate?: StringNullableFilter<"Card"> | string | null
     creator?: IntFilter<"Card"> | number
+    columnId?: IntFilter<"Card"> | number
+    tags?: StringFilter<"Card"> | string
     List?: ListListRelationFilter
     users?: UserListRelationFilter
+    column?: XOR<ColumnScalarRelationFilter, ColumnWhereInput>
   }, "id">
 
   export type CardOrderByWithAggregationInput = {
@@ -10904,6 +11099,8 @@ export namespace Prisma {
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
+    tags?: SortOrder
     _count?: CardCountOrderByAggregateInput
     _avg?: CardAvgOrderByAggregateInput
     _max?: CardMaxOrderByAggregateInput
@@ -10922,6 +11119,8 @@ export namespace Prisma {
     startDate?: StringNullableWithAggregatesFilter<"Card"> | string | null
     endDate?: StringNullableWithAggregatesFilter<"Card"> | string | null
     creator?: IntWithAggregatesFilter<"Card"> | number
+    columnId?: IntWithAggregatesFilter<"Card"> | number
+    tags?: StringWithAggregatesFilter<"Card"> | string
   }
 
   export type ListWhereInput = {
@@ -11033,14 +11232,18 @@ export namespace Prisma {
     id?: IntFilter<"Column"> | number
     name?: StringFilter<"Column"> | string
     boardId?: IntFilter<"Column"> | number
+    order?: IntFilter<"Column"> | number
     board?: XOR<BoardScalarRelationFilter, BoardWhereInput>
+    Card?: CardListRelationFilter
   }
 
   export type ColumnOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
     board?: BoardOrderByWithRelationInput
+    Card?: CardOrderByRelationAggregateInput
   }
 
   export type ColumnWhereUniqueInput = Prisma.AtLeast<{
@@ -11050,13 +11253,16 @@ export namespace Prisma {
     NOT?: ColumnWhereInput | ColumnWhereInput[]
     name?: StringFilter<"Column"> | string
     boardId?: IntFilter<"Column"> | number
+    order?: IntFilter<"Column"> | number
     board?: XOR<BoardScalarRelationFilter, BoardWhereInput>
+    Card?: CardListRelationFilter
   }, "id">
 
   export type ColumnOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
     _count?: ColumnCountOrderByAggregateInput
     _avg?: ColumnAvgOrderByAggregateInput
     _max?: ColumnMaxOrderByAggregateInput
@@ -11071,6 +11277,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Column"> | number
     name?: StringWithAggregatesFilter<"Column"> | string
     boardId?: IntWithAggregatesFilter<"Column"> | number
+    order?: IntWithAggregatesFilter<"Column"> | number
   }
 
   export type UserCreateInput = {
@@ -11129,6 +11336,8 @@ export namespace Prisma {
 
   export type BoardCreateInput = {
     name: string
+    LastEdited: string
+    Color: string
     UserHasBoard?: UserHasBoardCreateNestedManyWithoutBoardInput
     Tag?: TagCreateNestedManyWithoutBoardInput
     Column?: ColumnCreateNestedManyWithoutBoardInput
@@ -11137,6 +11346,8 @@ export namespace Prisma {
   export type BoardUncheckedCreateInput = {
     id?: number
     name: string
+    LastEdited: string
+    Color: string
     UserHasBoard?: UserHasBoardUncheckedCreateNestedManyWithoutBoardInput
     Tag?: TagUncheckedCreateNestedManyWithoutBoardInput
     Column?: ColumnUncheckedCreateNestedManyWithoutBoardInput
@@ -11144,6 +11355,8 @@ export namespace Prisma {
 
   export type BoardUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUpdateManyWithoutBoardNestedInput
     Tag?: TagUpdateManyWithoutBoardNestedInput
     Column?: ColumnUpdateManyWithoutBoardNestedInput
@@ -11152,6 +11365,8 @@ export namespace Prisma {
   export type BoardUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutBoardNestedInput
     Tag?: TagUncheckedUpdateManyWithoutBoardNestedInput
     Column?: ColumnUncheckedUpdateManyWithoutBoardNestedInput
@@ -11160,15 +11375,21 @@ export namespace Prisma {
   export type BoardCreateManyInput = {
     id?: number
     name: string
+    LastEdited: string
+    Color: string
   }
 
   export type BoardUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
   }
 
   export type BoardUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserHasBoardCreateInput = {
@@ -11217,6 +11438,7 @@ export namespace Prisma {
 
   export type TagCreateInput = {
     name: string
+    color: string
     board: BoardCreateNestedOneWithoutTagInput
   }
 
@@ -11224,10 +11446,12 @@ export namespace Prisma {
     id?: number
     name: string
     boardId: number
+    color: string
   }
 
   export type TagUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     board?: BoardUpdateOneRequiredWithoutTagNestedInput
   }
 
@@ -11235,22 +11459,26 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     boardId?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TagCreateManyInput = {
     id?: number
     name: string
     boardId: number
+    color: string
   }
 
   export type TagUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TagUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     boardId?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type CardCreateInput = {
@@ -11260,8 +11488,10 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    tags: string
     List?: ListCreateNestedManyWithoutCardInput
     users?: UserCreateNestedManyWithoutCardInput
+    column: ColumnCreateNestedOneWithoutCardInput
   }
 
   export type CardUncheckedCreateInput = {
@@ -11272,6 +11502,8 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    columnId: number
+    tags: string
     List?: ListUncheckedCreateNestedManyWithoutCardInput
     users?: UserUncheckedCreateNestedManyWithoutCardInput
   }
@@ -11283,8 +11515,10 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
     List?: ListUpdateManyWithoutCardNestedInput
     users?: UserUpdateManyWithoutCardNestedInput
+    column?: ColumnUpdateOneRequiredWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateInput = {
@@ -11295,6 +11529,8 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    columnId?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
     List?: ListUncheckedUpdateManyWithoutCardNestedInput
     users?: UserUncheckedUpdateManyWithoutCardNestedInput
   }
@@ -11307,6 +11543,8 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    columnId: number
+    tags: string
   }
 
   export type CardUpdateManyMutationInput = {
@@ -11316,6 +11554,7 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
   }
 
   export type CardUncheckedUpdateManyInput = {
@@ -11326,6 +11565,8 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    columnId?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
   }
 
   export type ListCreateInput = {
@@ -11417,40 +11658,51 @@ export namespace Prisma {
 
   export type ColumnCreateInput = {
     name: string
+    order: number
     board: BoardCreateNestedOneWithoutColumnInput
+    Card?: CardCreateNestedManyWithoutColumnInput
   }
 
   export type ColumnUncheckedCreateInput = {
     id?: number
     name: string
     boardId: number
+    order: number
+    Card?: CardUncheckedCreateNestedManyWithoutColumnInput
   }
 
   export type ColumnUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     board?: BoardUpdateOneRequiredWithoutColumnNestedInput
+    Card?: CardUpdateManyWithoutColumnNestedInput
   }
 
   export type ColumnUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     boardId?: IntFieldUpdateOperationsInput | number
+    order?: IntFieldUpdateOperationsInput | number
+    Card?: CardUncheckedUpdateManyWithoutColumnNestedInput
   }
 
   export type ColumnCreateManyInput = {
     id?: number
     name: string
     boardId: number
+    order: number
   }
 
   export type ColumnUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ColumnUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     boardId?: IntFieldUpdateOperationsInput | number
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11585,6 +11837,8 @@ export namespace Prisma {
   export type BoardCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    LastEdited?: SortOrder
+    Color?: SortOrder
   }
 
   export type BoardAvgOrderByAggregateInput = {
@@ -11594,11 +11848,15 @@ export namespace Prisma {
   export type BoardMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    LastEdited?: SortOrder
+    Color?: SortOrder
   }
 
   export type BoardMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    LastEdited?: SortOrder
+    Color?: SortOrder
   }
 
   export type BoardSumOrderByAggregateInput = {
@@ -11652,6 +11910,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    color?: SortOrder
   }
 
   export type TagAvgOrderByAggregateInput = {
@@ -11663,12 +11922,14 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    color?: SortOrder
   }
 
   export type TagMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    color?: SortOrder
   }
 
   export type TagSumOrderByAggregateInput = {
@@ -11703,6 +11964,11 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
+  export type ColumnScalarRelationFilter = {
+    is?: ColumnWhereInput
+    isNot?: ColumnWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -11724,11 +11990,14 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
+    tags?: SortOrder
   }
 
   export type CardAvgOrderByAggregateInput = {
     id?: SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
   }
 
   export type CardMaxOrderByAggregateInput = {
@@ -11739,6 +12008,8 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
+    tags?: SortOrder
   }
 
   export type CardMinOrderByAggregateInput = {
@@ -11749,11 +12020,14 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
+    tags?: SortOrder
   }
 
   export type CardSumOrderByAggregateInput = {
     id?: SortOrder
     creator?: SortOrder
+    columnId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -11870,28 +12144,33 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
   }
 
   export type ColumnAvgOrderByAggregateInput = {
     id?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
   }
 
   export type ColumnMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
   }
 
   export type ColumnMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
   }
 
   export type ColumnSumOrderByAggregateInput = {
     id?: SortOrder
     boardId?: SortOrder
+    order?: SortOrder
   }
 
   export type UserHasBoardCreateNestedManyWithoutUserInput = {
@@ -12167,6 +12446,12 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type ColumnCreateNestedOneWithoutCardInput = {
+    create?: XOR<ColumnCreateWithoutCardInput, ColumnUncheckedCreateWithoutCardInput>
+    connectOrCreate?: ColumnCreateOrConnectWithoutCardInput
+    connect?: ColumnWhereUniqueInput
+  }
+
   export type ListUncheckedCreateNestedManyWithoutCardInput = {
     create?: XOR<ListCreateWithoutCardInput, ListUncheckedCreateWithoutCardInput> | ListCreateWithoutCardInput[] | ListUncheckedCreateWithoutCardInput[]
     connectOrCreate?: ListCreateOrConnectWithoutCardInput | ListCreateOrConnectWithoutCardInput[]
@@ -12209,6 +12494,14 @@ export namespace Prisma {
     update?: UserUpdateWithWhereUniqueWithoutCardInput | UserUpdateWithWhereUniqueWithoutCardInput[]
     updateMany?: UserUpdateManyWithWhereWithoutCardInput | UserUpdateManyWithWhereWithoutCardInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type ColumnUpdateOneRequiredWithoutCardNestedInput = {
+    create?: XOR<ColumnCreateWithoutCardInput, ColumnUncheckedCreateWithoutCardInput>
+    connectOrCreate?: ColumnCreateOrConnectWithoutCardInput
+    upsert?: ColumnUpsertWithoutCardInput
+    connect?: ColumnWhereUniqueInput
+    update?: XOR<XOR<ColumnUpdateToOneWithWhereWithoutCardInput, ColumnUpdateWithoutCardInput>, ColumnUncheckedUpdateWithoutCardInput>
   }
 
   export type ListUncheckedUpdateManyWithoutCardNestedInput = {
@@ -12318,12 +12611,54 @@ export namespace Prisma {
     connect?: BoardWhereUniqueInput
   }
 
+  export type CardCreateNestedManyWithoutColumnInput = {
+    create?: XOR<CardCreateWithoutColumnInput, CardUncheckedCreateWithoutColumnInput> | CardCreateWithoutColumnInput[] | CardUncheckedCreateWithoutColumnInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutColumnInput | CardCreateOrConnectWithoutColumnInput[]
+    createMany?: CardCreateManyColumnInputEnvelope
+    connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+  }
+
+  export type CardUncheckedCreateNestedManyWithoutColumnInput = {
+    create?: XOR<CardCreateWithoutColumnInput, CardUncheckedCreateWithoutColumnInput> | CardCreateWithoutColumnInput[] | CardUncheckedCreateWithoutColumnInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutColumnInput | CardCreateOrConnectWithoutColumnInput[]
+    createMany?: CardCreateManyColumnInputEnvelope
+    connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+  }
+
   export type BoardUpdateOneRequiredWithoutColumnNestedInput = {
     create?: XOR<BoardCreateWithoutColumnInput, BoardUncheckedCreateWithoutColumnInput>
     connectOrCreate?: BoardCreateOrConnectWithoutColumnInput
     upsert?: BoardUpsertWithoutColumnInput
     connect?: BoardWhereUniqueInput
     update?: XOR<XOR<BoardUpdateToOneWithWhereWithoutColumnInput, BoardUpdateWithoutColumnInput>, BoardUncheckedUpdateWithoutColumnInput>
+  }
+
+  export type CardUpdateManyWithoutColumnNestedInput = {
+    create?: XOR<CardCreateWithoutColumnInput, CardUncheckedCreateWithoutColumnInput> | CardCreateWithoutColumnInput[] | CardUncheckedCreateWithoutColumnInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutColumnInput | CardCreateOrConnectWithoutColumnInput[]
+    upsert?: CardUpsertWithWhereUniqueWithoutColumnInput | CardUpsertWithWhereUniqueWithoutColumnInput[]
+    createMany?: CardCreateManyColumnInputEnvelope
+    set?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    disconnect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    delete?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    update?: CardUpdateWithWhereUniqueWithoutColumnInput | CardUpdateWithWhereUniqueWithoutColumnInput[]
+    updateMany?: CardUpdateManyWithWhereWithoutColumnInput | CardUpdateManyWithWhereWithoutColumnInput[]
+    deleteMany?: CardScalarWhereInput | CardScalarWhereInput[]
+  }
+
+  export type CardUncheckedUpdateManyWithoutColumnNestedInput = {
+    create?: XOR<CardCreateWithoutColumnInput, CardUncheckedCreateWithoutColumnInput> | CardCreateWithoutColumnInput[] | CardUncheckedCreateWithoutColumnInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutColumnInput | CardCreateOrConnectWithoutColumnInput[]
+    upsert?: CardUpsertWithWhereUniqueWithoutColumnInput | CardUpsertWithWhereUniqueWithoutColumnInput[]
+    createMany?: CardCreateManyColumnInputEnvelope
+    set?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    disconnect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    delete?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+    update?: CardUpdateWithWhereUniqueWithoutColumnInput | CardUpdateWithWhereUniqueWithoutColumnInput[]
+    updateMany?: CardUpdateManyWithWhereWithoutColumnInput | CardUpdateManyWithWhereWithoutColumnInput[]
+    deleteMany?: CardScalarWhereInput | CardScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -12478,7 +12813,9 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    tags: string
     List?: ListCreateNestedManyWithoutCardInput
+    column: ColumnCreateNestedOneWithoutCardInput
   }
 
   export type CardUncheckedCreateWithoutUsersInput = {
@@ -12489,6 +12826,8 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    columnId: number
+    tags: string
     List?: ListUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -12550,6 +12889,8 @@ export namespace Prisma {
     startDate?: StringNullableFilter<"Card"> | string | null
     endDate?: StringNullableFilter<"Card"> | string | null
     creator?: IntFilter<"Card"> | number
+    columnId?: IntFilter<"Card"> | number
+    tags?: StringFilter<"Card"> | string
   }
 
   export type UserHasBoardCreateWithoutBoardInput = {
@@ -12575,11 +12916,13 @@ export namespace Prisma {
 
   export type TagCreateWithoutBoardInput = {
     name: string
+    color: string
   }
 
   export type TagUncheckedCreateWithoutBoardInput = {
     id?: number
     name: string
+    color: string
   }
 
   export type TagCreateOrConnectWithoutBoardInput = {
@@ -12594,11 +12937,15 @@ export namespace Prisma {
 
   export type ColumnCreateWithoutBoardInput = {
     name: string
+    order: number
+    Card?: CardCreateNestedManyWithoutColumnInput
   }
 
   export type ColumnUncheckedCreateWithoutBoardInput = {
     id?: number
     name: string
+    order: number
+    Card?: CardUncheckedCreateNestedManyWithoutColumnInput
   }
 
   export type ColumnCreateOrConnectWithoutBoardInput = {
@@ -12650,6 +12997,7 @@ export namespace Prisma {
     id?: IntFilter<"Tag"> | number
     name?: StringFilter<"Tag"> | string
     boardId?: IntFilter<"Tag"> | number
+    color?: StringFilter<"Tag"> | string
   }
 
   export type ColumnUpsertWithWhereUniqueWithoutBoardInput = {
@@ -12675,10 +13023,13 @@ export namespace Prisma {
     id?: IntFilter<"Column"> | number
     name?: StringFilter<"Column"> | string
     boardId?: IntFilter<"Column"> | number
+    order?: IntFilter<"Column"> | number
   }
 
   export type BoardCreateWithoutUserHasBoardInput = {
     name: string
+    LastEdited: string
+    Color: string
     Tag?: TagCreateNestedManyWithoutBoardInput
     Column?: ColumnCreateNestedManyWithoutBoardInput
   }
@@ -12686,6 +13037,8 @@ export namespace Prisma {
   export type BoardUncheckedCreateWithoutUserHasBoardInput = {
     id?: number
     name: string
+    LastEdited: string
+    Color: string
     Tag?: TagUncheckedCreateNestedManyWithoutBoardInput
     Column?: ColumnUncheckedCreateNestedManyWithoutBoardInput
   }
@@ -12728,6 +13081,8 @@ export namespace Prisma {
 
   export type BoardUpdateWithoutUserHasBoardInput = {
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     Tag?: TagUpdateManyWithoutBoardNestedInput
     Column?: ColumnUpdateManyWithoutBoardNestedInput
   }
@@ -12735,6 +13090,8 @@ export namespace Prisma {
   export type BoardUncheckedUpdateWithoutUserHasBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     Tag?: TagUncheckedUpdateManyWithoutBoardNestedInput
     Column?: ColumnUncheckedUpdateManyWithoutBoardNestedInput
   }
@@ -12767,6 +13124,8 @@ export namespace Prisma {
 
   export type BoardCreateWithoutTagInput = {
     name: string
+    LastEdited: string
+    Color: string
     UserHasBoard?: UserHasBoardCreateNestedManyWithoutBoardInput
     Column?: ColumnCreateNestedManyWithoutBoardInput
   }
@@ -12774,6 +13133,8 @@ export namespace Prisma {
   export type BoardUncheckedCreateWithoutTagInput = {
     id?: number
     name: string
+    LastEdited: string
+    Color: string
     UserHasBoard?: UserHasBoardUncheckedCreateNestedManyWithoutBoardInput
     Column?: ColumnUncheckedCreateNestedManyWithoutBoardInput
   }
@@ -12796,6 +13157,8 @@ export namespace Prisma {
 
   export type BoardUpdateWithoutTagInput = {
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUpdateManyWithoutBoardNestedInput
     Column?: ColumnUpdateManyWithoutBoardNestedInput
   }
@@ -12803,6 +13166,8 @@ export namespace Prisma {
   export type BoardUncheckedUpdateWithoutTagInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutBoardNestedInput
     Column?: ColumnUncheckedUpdateManyWithoutBoardNestedInput
   }
@@ -12846,6 +13211,24 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutCardInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput>
+  }
+
+  export type ColumnCreateWithoutCardInput = {
+    name: string
+    order: number
+    board: BoardCreateNestedOneWithoutColumnInput
+  }
+
+  export type ColumnUncheckedCreateWithoutCardInput = {
+    id?: number
+    name: string
+    boardId: number
+    order: number
+  }
+
+  export type ColumnCreateOrConnectWithoutCardInput = {
+    where: ColumnWhereUniqueInput
+    create: XOR<ColumnCreateWithoutCardInput, ColumnUncheckedCreateWithoutCardInput>
   }
 
   export type ListUpsertWithWhereUniqueWithoutCardInput = {
@@ -12899,6 +13282,30 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
   }
 
+  export type ColumnUpsertWithoutCardInput = {
+    update: XOR<ColumnUpdateWithoutCardInput, ColumnUncheckedUpdateWithoutCardInput>
+    create: XOR<ColumnCreateWithoutCardInput, ColumnUncheckedCreateWithoutCardInput>
+    where?: ColumnWhereInput
+  }
+
+  export type ColumnUpdateToOneWithWhereWithoutCardInput = {
+    where?: ColumnWhereInput
+    data: XOR<ColumnUpdateWithoutCardInput, ColumnUncheckedUpdateWithoutCardInput>
+  }
+
+  export type ColumnUpdateWithoutCardInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    board?: BoardUpdateOneRequiredWithoutColumnNestedInput
+  }
+
+  export type ColumnUncheckedUpdateWithoutCardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    boardId?: IntFieldUpdateOperationsInput | number
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
   export type CardCreateWithoutListInput = {
     status: string
     title: string
@@ -12906,7 +13313,9 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    tags: string
     users?: UserCreateNestedManyWithoutCardInput
+    column: ColumnCreateNestedOneWithoutCardInput
   }
 
   export type CardUncheckedCreateWithoutListInput = {
@@ -12917,6 +13326,8 @@ export namespace Prisma {
     startDate?: string | null
     endDate?: string | null
     creator: number
+    columnId: number
+    tags: string
     users?: UserUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -12964,7 +13375,9 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
     users?: UserUpdateManyWithoutCardNestedInput
+    column?: ColumnUpdateOneRequiredWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateWithoutListInput = {
@@ -12975,6 +13388,8 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    columnId?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
     users?: UserUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -13044,6 +13459,8 @@ export namespace Prisma {
 
   export type BoardCreateWithoutColumnInput = {
     name: string
+    LastEdited: string
+    Color: string
     UserHasBoard?: UserHasBoardCreateNestedManyWithoutBoardInput
     Tag?: TagCreateNestedManyWithoutBoardInput
   }
@@ -13051,6 +13468,8 @@ export namespace Prisma {
   export type BoardUncheckedCreateWithoutColumnInput = {
     id?: number
     name: string
+    LastEdited: string
+    Color: string
     UserHasBoard?: UserHasBoardUncheckedCreateNestedManyWithoutBoardInput
     Tag?: TagUncheckedCreateNestedManyWithoutBoardInput
   }
@@ -13058,6 +13477,41 @@ export namespace Prisma {
   export type BoardCreateOrConnectWithoutColumnInput = {
     where: BoardWhereUniqueInput
     create: XOR<BoardCreateWithoutColumnInput, BoardUncheckedCreateWithoutColumnInput>
+  }
+
+  export type CardCreateWithoutColumnInput = {
+    status: string
+    title: string
+    content: string
+    startDate?: string | null
+    endDate?: string | null
+    creator: number
+    tags: string
+    List?: ListCreateNestedManyWithoutCardInput
+    users?: UserCreateNestedManyWithoutCardInput
+  }
+
+  export type CardUncheckedCreateWithoutColumnInput = {
+    id?: number
+    status: string
+    title: string
+    content: string
+    startDate?: string | null
+    endDate?: string | null
+    creator: number
+    tags: string
+    List?: ListUncheckedCreateNestedManyWithoutCardInput
+    users?: UserUncheckedCreateNestedManyWithoutCardInput
+  }
+
+  export type CardCreateOrConnectWithoutColumnInput = {
+    where: CardWhereUniqueInput
+    create: XOR<CardCreateWithoutColumnInput, CardUncheckedCreateWithoutColumnInput>
+  }
+
+  export type CardCreateManyColumnInputEnvelope = {
+    data: CardCreateManyColumnInput | CardCreateManyColumnInput[]
+    skipDuplicates?: boolean
   }
 
   export type BoardUpsertWithoutColumnInput = {
@@ -13073,6 +13527,8 @@ export namespace Prisma {
 
   export type BoardUpdateWithoutColumnInput = {
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUpdateManyWithoutBoardNestedInput
     Tag?: TagUpdateManyWithoutBoardNestedInput
   }
@@ -13080,8 +13536,26 @@ export namespace Prisma {
   export type BoardUncheckedUpdateWithoutColumnInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    LastEdited?: StringFieldUpdateOperationsInput | string
+    Color?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutBoardNestedInput
     Tag?: TagUncheckedUpdateManyWithoutBoardNestedInput
+  }
+
+  export type CardUpsertWithWhereUniqueWithoutColumnInput = {
+    where: CardWhereUniqueInput
+    update: XOR<CardUpdateWithoutColumnInput, CardUncheckedUpdateWithoutColumnInput>
+    create: XOR<CardCreateWithoutColumnInput, CardUncheckedCreateWithoutColumnInput>
+  }
+
+  export type CardUpdateWithWhereUniqueWithoutColumnInput = {
+    where: CardWhereUniqueInput
+    data: XOR<CardUpdateWithoutColumnInput, CardUncheckedUpdateWithoutColumnInput>
+  }
+
+  export type CardUpdateManyWithWhereWithoutColumnInput = {
+    where: CardScalarWhereInput
+    data: XOR<CardUpdateManyMutationInput, CardUncheckedUpdateManyWithoutColumnInput>
   }
 
   export type UserHasBoardCreateManyUserInput = {
@@ -13114,7 +13588,9 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
     List?: ListUpdateManyWithoutCardNestedInput
+    column?: ColumnUpdateOneRequiredWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateWithoutUsersInput = {
@@ -13125,6 +13601,8 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    columnId?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
     List?: ListUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -13136,6 +13614,8 @@ export namespace Prisma {
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: IntFieldUpdateOperationsInput | number
+    columnId?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserHasBoardCreateManyBoardInput = {
@@ -13147,11 +13627,13 @@ export namespace Prisma {
   export type TagCreateManyBoardInput = {
     id?: number
     name: string
+    color: string
   }
 
   export type ColumnCreateManyBoardInput = {
     id?: number
     name: string
+    order: number
   }
 
   export type UserHasBoardUpdateWithoutBoardInput = {
@@ -13173,30 +13655,38 @@ export namespace Prisma {
 
   export type TagUpdateWithoutBoardInput = {
     name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TagUncheckedUpdateWithoutBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type TagUncheckedUpdateManyWithoutBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type ColumnUpdateWithoutBoardInput = {
     name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    Card?: CardUpdateManyWithoutColumnNestedInput
   }
 
   export type ColumnUncheckedUpdateWithoutBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
+    Card?: CardUncheckedUpdateManyWithoutColumnNestedInput
   }
 
   export type ColumnUncheckedUpdateManyWithoutBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ListCreateManyCardInput = {
@@ -13263,6 +13753,53 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CardCreateManyColumnInput = {
+    id?: number
+    status: string
+    title: string
+    content: string
+    startDate?: string | null
+    endDate?: string | null
+    creator: number
+    tags: string
+  }
+
+  export type CardUpdateWithoutColumnInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
+    List?: ListUpdateManyWithoutCardNestedInput
+    users?: UserUpdateManyWithoutCardNestedInput
+  }
+
+  export type CardUncheckedUpdateWithoutColumnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
+    List?: ListUncheckedUpdateManyWithoutCardNestedInput
+    users?: UserUncheckedUpdateManyWithoutCardNestedInput
+  }
+
+  export type CardUncheckedUpdateManyWithoutColumnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    creator?: IntFieldUpdateOperationsInput | number
+    tags?: StringFieldUpdateOperationsInput | string
   }
 
 

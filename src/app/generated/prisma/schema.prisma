@@ -29,6 +29,8 @@ model Board {
   UserHasBoard UserHasBoard[]
   Tag          Tag[]
   Column       Column[]
+  LastEdited   String
+  Color        String
 }
 
 model UserHasBoard {
@@ -45,6 +47,7 @@ model Tag {
   name    String
   board   Board  @relation(fields: [boardId], references: [id])
   boardId Int
+  color   String
 }
 
 model Card {
@@ -57,6 +60,9 @@ model Card {
   List      List[]
   creator   Int
   users     User[]
+  column    Column  @relation(fields: [columnId], references: [id])
+  columnId  Int
+  tags      String
 }
 
 model List {
@@ -80,4 +86,6 @@ model Column {
   name    String
   board   Board  @relation(fields: [boardId], references: [id])
   boardId Int
+  Card    Card[]
+  order   Int
 }

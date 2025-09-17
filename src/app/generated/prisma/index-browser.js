@@ -129,7 +129,9 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.BoardScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  LastEdited: 'LastEdited',
+  Color: 'Color'
 };
 
 exports.Prisma.UserHasBoardScalarFieldEnum = {
@@ -142,7 +144,8 @@ exports.Prisma.UserHasBoardScalarFieldEnum = {
 exports.Prisma.TagScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  boardId: 'boardId'
+  boardId: 'boardId',
+  color: 'color'
 };
 
 exports.Prisma.CardScalarFieldEnum = {
@@ -152,7 +155,9 @@ exports.Prisma.CardScalarFieldEnum = {
   content: 'content',
   startDate: 'startDate',
   endDate: 'endDate',
-  creator: 'creator'
+  creator: 'creator',
+  columnId: 'columnId',
+  tags: 'tags'
 };
 
 exports.Prisma.ListScalarFieldEnum = {
@@ -171,7 +176,8 @@ exports.Prisma.ListItemScalarFieldEnum = {
 exports.Prisma.ColumnScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  boardId: 'boardId'
+  boardId: 'boardId',
+  order: 'order'
 };
 
 exports.Prisma.SortOrder = {
