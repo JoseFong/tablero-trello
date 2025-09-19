@@ -124,7 +124,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   username: 'username',
-  password: 'password'
+  password: 'password',
+  pictureUrl: 'pictureUrl'
 };
 
 exports.Prisma.BoardScalarFieldEnum = {
@@ -145,7 +146,8 @@ exports.Prisma.TagScalarFieldEnum = {
   id: 'id',
   name: 'name',
   boardId: 'boardId',
-  color: 'color'
+  color: 'color',
+  cardId: 'cardId'
 };
 
 exports.Prisma.CardScalarFieldEnum = {
@@ -155,9 +157,9 @@ exports.Prisma.CardScalarFieldEnum = {
   content: 'content',
   startDate: 'startDate',
   endDate: 'endDate',
-  creator: 'creator',
+  creatorId: 'creatorId',
   columnId: 'columnId',
-  tags: 'tags'
+  color: 'color'
 };
 
 exports.Prisma.ListScalarFieldEnum = {
@@ -178,6 +180,18 @@ exports.Prisma.ColumnScalarFieldEnum = {
   name: 'name',
   boardId: 'boardId',
   order: 'order'
+};
+
+exports.Prisma.CardAssignmentScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  userId: 'userId'
+};
+
+exports.Prisma.CardHasTagScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  tagId: 'tagId'
 };
 
 exports.Prisma.SortOrder = {
@@ -204,7 +218,9 @@ exports.Prisma.ModelName = {
   Card: 'Card',
   List: 'List',
   ListItem: 'ListItem',
-  Column: 'Column'
+  Column: 'Column',
+  CardAssignment: 'CardAssignment',
+  CardHasTag: 'CardHasTag'
 };
 
 /**

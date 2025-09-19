@@ -96,7 +96,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   username: 'username',
-  password: 'password'
+  password: 'password',
+  pictureUrl: 'pictureUrl'
 };
 
 exports.Prisma.BoardScalarFieldEnum = {
@@ -117,7 +118,8 @@ exports.Prisma.TagScalarFieldEnum = {
   id: 'id',
   name: 'name',
   boardId: 'boardId',
-  color: 'color'
+  color: 'color',
+  cardId: 'cardId'
 };
 
 exports.Prisma.CardScalarFieldEnum = {
@@ -127,9 +129,9 @@ exports.Prisma.CardScalarFieldEnum = {
   content: 'content',
   startDate: 'startDate',
   endDate: 'endDate',
-  creator: 'creator',
+  creatorId: 'creatorId',
   columnId: 'columnId',
-  tags: 'tags'
+  color: 'color'
 };
 
 exports.Prisma.ListScalarFieldEnum = {
@@ -150,6 +152,18 @@ exports.Prisma.ColumnScalarFieldEnum = {
   name: 'name',
   boardId: 'boardId',
   order: 'order'
+};
+
+exports.Prisma.CardAssignmentScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  userId: 'userId'
+};
+
+exports.Prisma.CardHasTagScalarFieldEnum = {
+  id: 'id',
+  cardId: 'cardId',
+  tagId: 'tagId'
 };
 
 exports.Prisma.SortOrder = {
@@ -176,7 +190,9 @@ exports.Prisma.ModelName = {
   Card: 'Card',
   List: 'List',
   ListItem: 'ListItem',
-  Column: 'Column'
+  Column: 'Column',
+  CardAssignment: 'CardAssignment',
+  CardHasTag: 'CardHasTag'
 };
 /**
  * Create the Client
@@ -217,7 +233,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -226,22 +241,15 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id           Int            @id @default(autoincrement())\n  email        String         @unique\n  username     String         @unique\n  password     String\n  UserHasBoard UserHasBoard[]\n  Card         Card[]\n}\n\nmodel Board {\n  id           Int            @id @default(autoincrement())\n  name         String\n  UserHasBoard UserHasBoard[]\n  Tag          Tag[]\n  Column       Column[]\n  LastEdited   String\n  Color        String\n}\n\nmodel UserHasBoard {\n  id      Int    @id @default(autoincrement())\n  board   Board  @relation(fields: [boardId], references: [id])\n  user    User   @relation(fields: [userId], references: [id])\n  role    String\n  boardId Int\n  userId  Int\n}\n\nmodel Tag {\n  id      Int    @id @default(autoincrement())\n  name    String\n  board   Board  @relation(fields: [boardId], references: [id])\n  boardId Int\n  color   String\n}\n\nmodel Card {\n  id        Int     @id @default(autoincrement())\n  status    String\n  title     String\n  content   String\n  startDate String?\n  endDate   String?\n  List      List[]\n  creator   Int\n  users     User[]\n  column    Column  @relation(fields: [columnId], references: [id])\n  columnId  Int\n  tags      String\n}\n\nmodel List {\n  id       Int        @id @default(autoincrement())\n  card     Card       @relation(fields: [cardId], references: [id])\n  title    String\n  cardId   Int\n  ListItem ListItem[]\n}\n\nmodel ListItem {\n  id      Int     @id @default(autoincrement())\n  content String\n  list    List    @relation(fields: [listId], references: [id])\n  listId  Int\n  status  Boolean\n}\n\nmodel Column {\n  id      Int    @id @default(autoincrement())\n  name    String\n  board   Board  @relation(fields: [boardId], references: [id])\n  boardId Int\n  Card    Card[]\n  order   Int\n}\n",
-  "inlineSchemaHash": "a0100b619aec958c32536c32803f536749c50924056401905cf0d7848e83ac08",
-  "copyEngine": true
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id             Int              @id @default(autoincrement())\n  email          String           @unique\n  username       String           @unique\n  password       String\n  UserHasBoard   UserHasBoard[]\n  Card           Card[]\n  CardAssignment CardAssignment[]\n  pictureUrl     String\n}\n\nmodel Board {\n  id           Int            @id @default(autoincrement())\n  name         String\n  UserHasBoard UserHasBoard[]\n  Tag          Tag[]\n  Column       Column[]\n  LastEdited   String\n  Color        String\n}\n\nmodel UserHasBoard {\n  id      Int    @id @default(autoincrement())\n  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n  role    String\n  boardId Int\n  userId  Int\n}\n\nmodel Tag {\n  id         Int          @id @default(autoincrement())\n  name       String\n  board      Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  boardId    Int\n  color      String\n  cardId     Int?\n  CardHasTag CardHasTag[]\n}\n\nmodel Card {\n  id             Int              @id @default(autoincrement())\n  status         String?\n  title          String\n  content        String?\n  startDate      String?\n  endDate        String?\n  List           List[]\n  creator        User?            @relation(fields: [creatorId], references: [id])\n  creatorId      Int?\n  column         Column           @relation(fields: [columnId], references: [id], onDelete: Cascade)\n  columnId       Int\n  color          String\n  CardAssignment CardAssignment[]\n  CardHasTag     CardHasTag[]\n}\n\nmodel List {\n  id       Int        @id @default(autoincrement())\n  card     Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  title    String\n  cardId   Int\n  ListItem ListItem[]\n}\n\nmodel ListItem {\n  id      Int     @id @default(autoincrement())\n  content String\n  list    List    @relation(fields: [listId], references: [id], onDelete: Cascade)\n  listId  Int\n  status  Boolean\n}\n\nmodel Column {\n  id      Int    @id @default(autoincrement())\n  name    String\n  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  boardId Int\n  Card    Card[]\n  order   Int\n}\n\nmodel CardAssignment {\n  id     Int  @id @default(autoincrement())\n  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)\n  cardId Int\n  userId Int\n}\n\nmodel CardHasTag {\n  id     Int  @id @default(autoincrement())\n  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)\n  cardId Int\n  tagId  Int\n}\n",
+  "inlineSchemaHash": "709595aee8ab2827b081f96d3f06a3e081331ef07aabee569c26795e75c5fc4d",
+  "copyEngine": false
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"UserHasBoard\",\"kind\":\"object\",\"type\":\"UserHasBoard\",\"relationName\":\"UserToUserHasBoard\"},{\"name\":\"Card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToUser\"}],\"dbName\":null},\"Board\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"UserHasBoard\",\"kind\":\"object\",\"type\":\"UserHasBoard\",\"relationName\":\"BoardToUserHasBoard\"},{\"name\":\"Tag\",\"kind\":\"object\",\"type\":\"Tag\",\"relationName\":\"BoardToTag\"},{\"name\":\"Column\",\"kind\":\"object\",\"type\":\"Column\",\"relationName\":\"BoardToColumn\"},{\"name\":\"LastEdited\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"Color\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"UserHasBoard\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"board\",\"kind\":\"object\",\"type\":\"Board\",\"relationName\":\"BoardToUserHasBoard\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"UserToUserHasBoard\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"boardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"Tag\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"board\",\"kind\":\"object\",\"type\":\"Board\",\"relationName\":\"BoardToTag\"},{\"name\":\"boardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"color\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Card\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"List\",\"kind\":\"object\",\"type\":\"List\",\"relationName\":\"CardToList\"},{\"name\":\"creator\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CardToUser\"},{\"name\":\"column\",\"kind\":\"object\",\"type\":\"Column\",\"relationName\":\"CardToColumn\"},{\"name\":\"columnId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tags\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"List\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToList\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ListItem\",\"kind\":\"object\",\"type\":\"ListItem\",\"relationName\":\"ListToListItem\"}],\"dbName\":null},\"ListItem\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"list\",\"kind\":\"object\",\"type\":\"List\",\"relationName\":\"ListToListItem\"},{\"name\":\"listId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":null},\"Column\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"board\",\"kind\":\"object\",\"type\":\"Board\",\"relationName\":\"BoardToColumn\"},{\"name\":\"boardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"Card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToColumn\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"UserHasBoard\",\"kind\":\"object\",\"type\":\"UserHasBoard\",\"relationName\":\"UserToUserHasBoard\"},{\"name\":\"Card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToUser\"},{\"name\":\"CardAssignment\",\"kind\":\"object\",\"type\":\"CardAssignment\",\"relationName\":\"CardAssignmentToUser\"},{\"name\":\"pictureUrl\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Board\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"UserHasBoard\",\"kind\":\"object\",\"type\":\"UserHasBoard\",\"relationName\":\"BoardToUserHasBoard\"},{\"name\":\"Tag\",\"kind\":\"object\",\"type\":\"Tag\",\"relationName\":\"BoardToTag\"},{\"name\":\"Column\",\"kind\":\"object\",\"type\":\"Column\",\"relationName\":\"BoardToColumn\"},{\"name\":\"LastEdited\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"Color\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"UserHasBoard\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"board\",\"kind\":\"object\",\"type\":\"Board\",\"relationName\":\"BoardToUserHasBoard\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"UserToUserHasBoard\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"boardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"Tag\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"board\",\"kind\":\"object\",\"type\":\"Board\",\"relationName\":\"BoardToTag\"},{\"name\":\"boardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"color\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"CardHasTag\",\"kind\":\"object\",\"type\":\"CardHasTag\",\"relationName\":\"CardHasTagToTag\"}],\"dbName\":null},\"Card\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"List\",\"kind\":\"object\",\"type\":\"List\",\"relationName\":\"CardToList\"},{\"name\":\"creator\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CardToUser\"},{\"name\":\"creatorId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"column\",\"kind\":\"object\",\"type\":\"Column\",\"relationName\":\"CardToColumn\"},{\"name\":\"columnId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"color\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"CardAssignment\",\"kind\":\"object\",\"type\":\"CardAssignment\",\"relationName\":\"CardToCardAssignment\"},{\"name\":\"CardHasTag\",\"kind\":\"object\",\"type\":\"CardHasTag\",\"relationName\":\"CardToCardHasTag\"}],\"dbName\":null},\"List\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToList\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ListItem\",\"kind\":\"object\",\"type\":\"ListItem\",\"relationName\":\"ListToListItem\"}],\"dbName\":null},\"ListItem\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"list\",\"kind\":\"object\",\"type\":\"List\",\"relationName\":\"ListToListItem\"},{\"name\":\"listId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":null},\"Column\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"board\",\"kind\":\"object\",\"type\":\"Board\",\"relationName\":\"BoardToColumn\"},{\"name\":\"boardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"Card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToColumn\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"CardAssignment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToCardAssignment\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CardAssignmentToUser\"},{\"name\":\"cardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"CardHasTag\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"card\",\"kind\":\"object\",\"type\":\"Card\",\"relationName\":\"CardToCardHasTag\"},{\"name\":\"tag\",\"kind\":\"object\",\"type\":\"Tag\",\"relationName\":\"CardHasTagToTag\"},{\"name\":\"cardId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tagId\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
-config.engineWasm = {
-  getRuntime: async () => require('./query_engine_bg.js'),
-  getQueryEngineWasmModule: async () => {
-    const loader = (await import('#wasm-engine-loader')).default
-    const engine = (await loader).default
-    return engine
-  }
-}
+config.engineWasm = undefined
 config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({

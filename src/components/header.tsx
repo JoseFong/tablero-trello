@@ -10,9 +10,12 @@ import {
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import SkeletonFong from "./skeleton";
+import ToolTip from "./tooltip";
 
 function Header() {
   const [fecha, setFecha] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
 
@@ -30,6 +33,7 @@ function Header() {
   }
 
   useEffect(() => {
+    setLoading(true);
     const today = new Date();
     const day = today.getDay();
 
@@ -66,19 +70,31 @@ function Header() {
         " del " +
         today.getFullYear()
     );
+
+    setLoading(false);
   }, []);
 
   return (
     <div className="w-screen absolute top-0 left-0 bg-zinc-800 p-5 shadow-xl flex flex-row gap-2 items-center">
-      {fecha}
-      <HoverCard>
-        <HoverCardTrigger asChild>
-          <button onClick={logout}>
-            <Image className="w-6" src={logouticon} alt="Cerrar Sesión" />
-          </button>
-        </HoverCardTrigger>
-        <HoverCardContent>Cerrar Sesión</HoverCardContent>
-      </HoverCard>
+      {loading ? (
+        <>
+          <div className="w-1/4 h-8">
+            <SkeletonFong />
+          </div>
+          <div className="w-8 h-8">
+            <SkeletonFong />
+          </div>
+        </>
+      ) : (
+        <>
+          {fecha}
+          <ToolTip message="Cerrar Sesión">
+            <button onClick={logout}>
+              <Image className="w-6" src={logouticon} alt="Cerrar Sesión" />
+            </button>
+          </ToolTip>
+        </>
+      )}
     </div>
   );
 }

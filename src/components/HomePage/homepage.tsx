@@ -5,22 +5,28 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Header from "../header";
 import Image from "next/image";
-import plus from "@/assets/mas.png";
+import SkeletonFong from "../skeleton";
+import CreateBoard from "../Boards/createBoard";
 
 function HomePageComp({ userinfo }: { userinfo: any }) {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   const [boards, setBoards] = useState([]);
 
   async function fetchGetBoardsFromUser() {
     try {
+      setLoading(true);
       const response = await axios.get("/api/users/" + userinfo.id + "/boards");
       setBoards(response.data);
+      setLoading(false);
     } catch (e: any) {
       if (e.response && e.response.data && e.response.data.message) {
         toast.error(e.response.data.message);
+        setLoading(false);
       } else {
         toast.error(e.message);
+        setLoading(false);
       }
     }
   }
@@ -35,23 +41,39 @@ function HomePageComp({ userinfo }: { userinfo: any }) {
       <h1 className="font-bold text-3xl">Bienvenido {userinfo.username}</h1>
       <h1 className="text-2xl mt-3 mb-2">Tus tableros</h1>
       <div className="flex flex-row gap-2 overflow-x-auto max-w-screen p-3">
-        <div className=" flex-shrink-0 w-60 h-48 border-white border-dashed border-4 flex flex-col items-center justify-center opacity-60 hover:cursor-pointer hover:opacity-100 transition-opacity transition-transform hover:scale-105">
-          <Image src={plus} alt={"Crear tablero"} className="w-12" />
-          Crear tablero
-        </div>
-        {boards.map((b: any) => (
-          <div
-            style={{ backgroundColor: b.board.Color }}
-            className="relative flex-shrink-0 w-60 h-48 hover:scale-105 hover:opacity-60 transition-all hover:cursor-pointer"
-          >
-            <div className="w-full bg-zinc-600 text-white shadow-lg p-1 overflow-x-hidden">
-              {b.board.name}
+        {loading ? (
+          <>
+            <div className="w-60 h-48 flex-shrink-0">
+              <SkeletonFong />
             </div>
-            <div className="w-full bg-zinc-600 absolute bottom-0 p-1 text-xs">
-              {b.role}
+            <div className="w-60 h-48 flex-shrink-0">
+              <SkeletonFong />
             </div>
-          </div>
-        ))}
+            <div className="w-60 h-48 flex-shrink-0">
+              <SkeletonFong />
+            </div>
+            <div className="w-60 h-48 flex-shrink-0">
+              <SkeletonFong />
+            </div>
+          </>
+        ) : (
+          <>
+            <CreateBoard reload={fetchGetBoardsFromUser} />
+            {boards.map((b: any) => (
+              <div
+                style={{ backgroundColor: b.board.Color }}
+                className="relative flex-shrink-0 w-60 h-48 hover:scale-105 hover:opacity-60 transition-all hover:cursor-pointer"
+              >
+                <div className="w-full bg-zinc-600 text-white shadow-lg p-1 overflow-x-hidden">
+                  {b.board.name}
+                </div>
+                <div className="w-full bg-zinc-600 absolute bottom-0 p-1 text-xs">
+                  {b.role}
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

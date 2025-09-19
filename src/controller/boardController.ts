@@ -1,4 +1,8 @@
+import { Column, Tag, UserHasBoard } from "@/app/generated/prisma";
 import prisma from "@/lib/prisma";
+import { deleteUserHasBoard } from "./userHasBoardController";
+import { deleteColumn } from "./columnController";
+import { deleteTag } from "./tagController";
 
 export async function getBoardsFromUser(id:number){
     const userBoards = await prisma.userHasBoard.findMany({
@@ -13,28 +17,19 @@ export async function getBoardsFromUser(id:number){
     return userBoards
 }
 
-export async function getSingleBoardWithUser(boardId:number,userId:number){
-    const relation = await prisma.userHasBoard.findFirst({
-        where:{
-            AND:[
-                {boardId:boardId},
-                {userId:userId}
-            ]
-        },
-        include:{
-            board: true
+export async function createBoard(data:any){
+    const now = new Date()
+    const isoDate = now.toISOString()
+
+    return await prisma.board.create({
+        data: {
+            name: data.name,
+            LastEdited: isoDate+"",
+            Color: data.color
         }
     })
+}
 
-    if(!relation) return "No encontrada."
-
-    const board = await prisma.board.findFirst({
-        where:{
-            id: boardId
-        }
-    })
-
-    
-
-    return relation
+export async function deleteBoard(id:number){
+   
 }

@@ -15,12 +15,14 @@ datasource db {
 }
 
 model User {
-  id           Int            @id @default(autoincrement())
-  email        String         @unique
-  username     String         @unique
-  password     String
-  UserHasBoard UserHasBoard[]
-  Card         Card[]
+  id             Int              @id @default(autoincrement())
+  email          String           @unique
+  username       String           @unique
+  password       String
+  UserHasBoard   UserHasBoard[]
+  Card           Card[]
+  CardAssignment CardAssignment[]
+  pictureUrl     String
 }
 
 model Board {
@@ -35,39 +37,43 @@ model Board {
 
 model UserHasBoard {
   id      Int    @id @default(autoincrement())
-  board   Board  @relation(fields: [boardId], references: [id])
-  user    User   @relation(fields: [userId], references: [id])
+  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   role    String
   boardId Int
   userId  Int
 }
 
 model Tag {
-  id      Int    @id @default(autoincrement())
-  name    String
-  board   Board  @relation(fields: [boardId], references: [id])
-  boardId Int
-  color   String
+  id         Int          @id @default(autoincrement())
+  name       String
+  board      Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  boardId    Int
+  color      String
+  cardId     Int?
+  CardHasTag CardHasTag[]
 }
 
 model Card {
-  id        Int     @id @default(autoincrement())
-  status    String
-  title     String
-  content   String
-  startDate String?
-  endDate   String?
-  List      List[]
-  creator   Int
-  users     User[]
-  column    Column  @relation(fields: [columnId], references: [id])
-  columnId  Int
-  tags      String
+  id             Int              @id @default(autoincrement())
+  status         String?
+  title          String
+  content        String?
+  startDate      String?
+  endDate        String?
+  List           List[]
+  creator        User?            @relation(fields: [creatorId], references: [id])
+  creatorId      Int?
+  column         Column           @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  columnId       Int
+  color          String
+  CardAssignment CardAssignment[]
+  CardHasTag     CardHasTag[]
 }
 
 model List {
   id       Int        @id @default(autoincrement())
-  card     Card       @relation(fields: [cardId], references: [id])
+  card     Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
   title    String
   cardId   Int
   ListItem ListItem[]
@@ -76,7 +82,7 @@ model List {
 model ListItem {
   id      Int     @id @default(autoincrement())
   content String
-  list    List    @relation(fields: [listId], references: [id])
+  list    List    @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId  Int
   status  Boolean
 }
@@ -84,8 +90,24 @@ model ListItem {
 model Column {
   id      Int    @id @default(autoincrement())
   name    String
-  board   Board  @relation(fields: [boardId], references: [id])
+  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
   boardId Int
   Card    Card[]
   order   Int
+}
+
+model CardAssignment {
+  id     Int  @id @default(autoincrement())
+  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardId Int
+  userId Int
+}
+
+model CardHasTag {
+  id     Int  @id @default(autoincrement())
+  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  cardId Int
+  tagId  Int
 }

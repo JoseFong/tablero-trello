@@ -53,6 +53,16 @@ export type ListItem = $Result.DefaultSelection<Prisma.$ListItemPayload>
  * 
  */
 export type Column = $Result.DefaultSelection<Prisma.$ColumnPayload>
+/**
+ * Model CardAssignment
+ * 
+ */
+export type CardAssignment = $Result.DefaultSelection<Prisma.$CardAssignmentPayload>
+/**
+ * Model CardHasTag
+ * 
+ */
+export type CardHasTag = $Result.DefaultSelection<Prisma.$CardHasTagPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -251,6 +261,26 @@ export class PrismaClient<
     * ```
     */
   get column(): Prisma.ColumnDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cardAssignment`: Exposes CRUD operations for the **CardAssignment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CardAssignments
+    * const cardAssignments = await prisma.cardAssignment.findMany()
+    * ```
+    */
+  get cardAssignment(): Prisma.CardAssignmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cardHasTag`: Exposes CRUD operations for the **CardHasTag** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CardHasTags
+    * const cardHasTags = await prisma.cardHasTag.findMany()
+    * ```
+    */
+  get cardHasTag(): Prisma.CardHasTagDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -698,7 +728,9 @@ export namespace Prisma {
     Card: 'Card',
     List: 'List',
     ListItem: 'ListItem',
-    Column: 'Column'
+    Column: 'Column',
+    CardAssignment: 'CardAssignment',
+    CardHasTag: 'CardHasTag'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -717,7 +749,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "board" | "userHasBoard" | "tag" | "card" | "list" | "listItem" | "column"
+      modelProps: "user" | "board" | "userHasBoard" | "tag" | "card" | "list" | "listItem" | "column" | "cardAssignment" | "cardHasTag"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1313,6 +1345,154 @@ export namespace Prisma {
           }
         }
       }
+      CardAssignment: {
+        payload: Prisma.$CardAssignmentPayload<ExtArgs>
+        fields: Prisma.CardAssignmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CardAssignmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CardAssignmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>
+          }
+          findFirst: {
+            args: Prisma.CardAssignmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CardAssignmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>
+          }
+          findMany: {
+            args: Prisma.CardAssignmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>[]
+          }
+          create: {
+            args: Prisma.CardAssignmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>
+          }
+          createMany: {
+            args: Prisma.CardAssignmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CardAssignmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>[]
+          }
+          delete: {
+            args: Prisma.CardAssignmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>
+          }
+          update: {
+            args: Prisma.CardAssignmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CardAssignmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CardAssignmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CardAssignmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CardAssignmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardAssignmentPayload>
+          }
+          aggregate: {
+            args: Prisma.CardAssignmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCardAssignment>
+          }
+          groupBy: {
+            args: Prisma.CardAssignmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CardAssignmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CardAssignmentCountArgs<ExtArgs>
+            result: $Utils.Optional<CardAssignmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      CardHasTag: {
+        payload: Prisma.$CardHasTagPayload<ExtArgs>
+        fields: Prisma.CardHasTagFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CardHasTagFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CardHasTagFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>
+          }
+          findFirst: {
+            args: Prisma.CardHasTagFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CardHasTagFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>
+          }
+          findMany: {
+            args: Prisma.CardHasTagFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>[]
+          }
+          create: {
+            args: Prisma.CardHasTagCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>
+          }
+          createMany: {
+            args: Prisma.CardHasTagCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CardHasTagCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>[]
+          }
+          delete: {
+            args: Prisma.CardHasTagDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>
+          }
+          update: {
+            args: Prisma.CardHasTagUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>
+          }
+          deleteMany: {
+            args: Prisma.CardHasTagDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CardHasTagUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CardHasTagUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>[]
+          }
+          upsert: {
+            args: Prisma.CardHasTagUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CardHasTagPayload>
+          }
+          aggregate: {
+            args: Prisma.CardHasTagAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCardHasTag>
+          }
+          groupBy: {
+            args: Prisma.CardHasTagGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CardHasTagGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CardHasTagCountArgs<ExtArgs>
+            result: $Utils.Optional<CardHasTagCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1417,6 +1597,8 @@ export namespace Prisma {
     list?: ListOmit
     listItem?: ListItemOmit
     column?: ColumnOmit
+    cardAssignment?: CardAssignmentOmit
+    cardHasTag?: CardHasTagOmit
   }
 
   /* Types for Logging */
@@ -1499,11 +1681,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     UserHasBoard: number
     Card: number
+    CardAssignment: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     UserHasBoard?: boolean | UserCountOutputTypeCountUserHasBoardArgs
     Card?: boolean | UserCountOutputTypeCountCardArgs
+    CardAssignment?: boolean | UserCountOutputTypeCountCardAssignmentArgs
   }
 
   // Custom InputTypes
@@ -1529,6 +1713,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CardWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCardAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardAssignmentWhereInput
   }
 
 
@@ -1582,17 +1773,50 @@ export namespace Prisma {
 
 
   /**
+   * Count Type TagCountOutputType
+   */
+
+  export type TagCountOutputType = {
+    CardHasTag: number
+  }
+
+  export type TagCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    CardHasTag?: boolean | TagCountOutputTypeCountCardHasTagArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TagCountOutputType without action
+   */
+  export type TagCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TagCountOutputType
+     */
+    select?: TagCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TagCountOutputType without action
+   */
+  export type TagCountOutputTypeCountCardHasTagArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardHasTagWhereInput
+  }
+
+
+  /**
    * Count Type CardCountOutputType
    */
 
   export type CardCountOutputType = {
     List: number
-    users: number
+    CardAssignment: number
+    CardHasTag: number
   }
 
   export type CardCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     List?: boolean | CardCountOutputTypeCountListArgs
-    users?: boolean | CardCountOutputTypeCountUsersArgs
+    CardAssignment?: boolean | CardCountOutputTypeCountCardAssignmentArgs
+    CardHasTag?: boolean | CardCountOutputTypeCountCardHasTagArgs
   }
 
   // Custom InputTypes
@@ -1616,8 +1840,15 @@ export namespace Prisma {
   /**
    * CardCountOutputType without action
    */
-  export type CardCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
+  export type CardCountOutputTypeCountCardAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardAssignmentWhereInput
+  }
+
+  /**
+   * CardCountOutputType without action
+   */
+  export type CardCountOutputTypeCountCardHasTagArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardHasTagWhereInput
   }
 
 
@@ -1712,6 +1943,7 @@ export namespace Prisma {
     email: string | null
     username: string | null
     password: string | null
+    pictureUrl: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1719,6 +1951,7 @@ export namespace Prisma {
     email: string | null
     username: string | null
     password: string | null
+    pictureUrl: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1726,6 +1959,7 @@ export namespace Prisma {
     email: number
     username: number
     password: number
+    pictureUrl: number
     _all: number
   }
 
@@ -1743,6 +1977,7 @@ export namespace Prisma {
     email?: true
     username?: true
     password?: true
+    pictureUrl?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1750,6 +1985,7 @@ export namespace Prisma {
     email?: true
     username?: true
     password?: true
+    pictureUrl?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1757,6 +1993,7 @@ export namespace Prisma {
     email?: true
     username?: true
     password?: true
+    pictureUrl?: true
     _all?: true
   }
 
@@ -1851,6 +2088,7 @@ export namespace Prisma {
     email: string
     username: string
     password: string
+    pictureUrl: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1877,8 +2115,10 @@ export namespace Prisma {
     email?: boolean
     username?: boolean
     password?: boolean
+    pictureUrl?: boolean
     UserHasBoard?: boolean | User$UserHasBoardArgs<ExtArgs>
     Card?: boolean | User$CardArgs<ExtArgs>
+    CardAssignment?: boolean | User$CardAssignmentArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1887,6 +2127,7 @@ export namespace Prisma {
     email?: boolean
     username?: boolean
     password?: boolean
+    pictureUrl?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1894,6 +2135,7 @@ export namespace Prisma {
     email?: boolean
     username?: boolean
     password?: boolean
+    pictureUrl?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1901,12 +2143,14 @@ export namespace Prisma {
     email?: boolean
     username?: boolean
     password?: boolean
+    pictureUrl?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "password" | "pictureUrl", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     UserHasBoard?: boolean | User$UserHasBoardArgs<ExtArgs>
     Card?: boolean | User$CardArgs<ExtArgs>
+    CardAssignment?: boolean | User$CardAssignmentArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1917,12 +2161,14 @@ export namespace Prisma {
     objects: {
       UserHasBoard: Prisma.$UserHasBoardPayload<ExtArgs>[]
       Card: Prisma.$CardPayload<ExtArgs>[]
+      CardAssignment: Prisma.$CardAssignmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
       username: string
       password: string
+      pictureUrl: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2319,6 +2565,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     UserHasBoard<T extends User$UserHasBoardArgs<ExtArgs> = {}>(args?: Subset<T, User$UserHasBoardArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserHasBoardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Card<T extends User$CardArgs<ExtArgs> = {}>(args?: Subset<T, User$CardArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    CardAssignment<T extends User$CardAssignmentArgs<ExtArgs> = {}>(args?: Subset<T, User$CardAssignmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2352,6 +2599,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly username: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly pictureUrl: FieldRef<"User", 'String'>
   }
     
 
@@ -2785,6 +3033,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CardScalarFieldEnum | CardScalarFieldEnum[]
+  }
+
+  /**
+   * User.CardAssignment
+   */
+  export type User$CardAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    where?: CardAssignmentWhereInput
+    orderBy?: CardAssignmentOrderByWithRelationInput | CardAssignmentOrderByWithRelationInput[]
+    cursor?: CardAssignmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CardAssignmentScalarFieldEnum | CardAssignmentScalarFieldEnum[]
   }
 
   /**
@@ -5063,11 +5335,13 @@ export namespace Prisma {
   export type TagAvgAggregateOutputType = {
     id: number | null
     boardId: number | null
+    cardId: number | null
   }
 
   export type TagSumAggregateOutputType = {
     id: number | null
     boardId: number | null
+    cardId: number | null
   }
 
   export type TagMinAggregateOutputType = {
@@ -5075,6 +5349,7 @@ export namespace Prisma {
     name: string | null
     boardId: number | null
     color: string | null
+    cardId: number | null
   }
 
   export type TagMaxAggregateOutputType = {
@@ -5082,6 +5357,7 @@ export namespace Prisma {
     name: string | null
     boardId: number | null
     color: string | null
+    cardId: number | null
   }
 
   export type TagCountAggregateOutputType = {
@@ -5089,6 +5365,7 @@ export namespace Prisma {
     name: number
     boardId: number
     color: number
+    cardId: number
     _all: number
   }
 
@@ -5096,11 +5373,13 @@ export namespace Prisma {
   export type TagAvgAggregateInputType = {
     id?: true
     boardId?: true
+    cardId?: true
   }
 
   export type TagSumAggregateInputType = {
     id?: true
     boardId?: true
+    cardId?: true
   }
 
   export type TagMinAggregateInputType = {
@@ -5108,6 +5387,7 @@ export namespace Prisma {
     name?: true
     boardId?: true
     color?: true
+    cardId?: true
   }
 
   export type TagMaxAggregateInputType = {
@@ -5115,6 +5395,7 @@ export namespace Prisma {
     name?: true
     boardId?: true
     color?: true
+    cardId?: true
   }
 
   export type TagCountAggregateInputType = {
@@ -5122,6 +5403,7 @@ export namespace Prisma {
     name?: true
     boardId?: true
     color?: true
+    cardId?: true
     _all?: true
   }
 
@@ -5216,6 +5498,7 @@ export namespace Prisma {
     name: string
     boardId: number
     color: string
+    cardId: number | null
     _count: TagCountAggregateOutputType | null
     _avg: TagAvgAggregateOutputType | null
     _sum: TagSumAggregateOutputType | null
@@ -5242,7 +5525,10 @@ export namespace Prisma {
     name?: boolean
     boardId?: boolean
     color?: boolean
+    cardId?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
+    CardHasTag?: boolean | Tag$CardHasTagArgs<ExtArgs>
+    _count?: boolean | TagCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tag"]>
 
   export type TagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5250,6 +5536,7 @@ export namespace Prisma {
     name?: boolean
     boardId?: boolean
     color?: boolean
+    cardId?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tag"]>
 
@@ -5258,6 +5545,7 @@ export namespace Prisma {
     name?: boolean
     boardId?: boolean
     color?: boolean
+    cardId?: boolean
     board?: boolean | BoardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tag"]>
 
@@ -5266,11 +5554,14 @@ export namespace Prisma {
     name?: boolean
     boardId?: boolean
     color?: boolean
+    cardId?: boolean
   }
 
-  export type TagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "boardId" | "color", ExtArgs["result"]["tag"]>
+  export type TagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "boardId" | "color" | "cardId", ExtArgs["result"]["tag"]>
   export type TagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     board?: boolean | BoardDefaultArgs<ExtArgs>
+    CardHasTag?: boolean | Tag$CardHasTagArgs<ExtArgs>
+    _count?: boolean | TagCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     board?: boolean | BoardDefaultArgs<ExtArgs>
@@ -5283,12 +5574,14 @@ export namespace Prisma {
     name: "Tag"
     objects: {
       board: Prisma.$BoardPayload<ExtArgs>
+      CardHasTag: Prisma.$CardHasTagPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       boardId: number
       color: string
+      cardId: number | null
     }, ExtArgs["result"]["tag"]>
     composites: {}
   }
@@ -5684,6 +5977,7 @@ export namespace Prisma {
   export interface Prisma__TagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     board<T extends BoardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BoardDefaultArgs<ExtArgs>>): Prisma__BoardClient<$Result.GetResult<Prisma.$BoardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    CardHasTag<T extends Tag$CardHasTagArgs<ExtArgs> = {}>(args?: Subset<T, Tag$CardHasTagArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5717,6 +6011,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Tag", 'String'>
     readonly boardId: FieldRef<"Tag", 'Int'>
     readonly color: FieldRef<"Tag", 'String'>
+    readonly cardId: FieldRef<"Tag", 'Int'>
   }
     
 
@@ -6113,6 +6408,30 @@ export namespace Prisma {
   }
 
   /**
+   * Tag.CardHasTag
+   */
+  export type Tag$CardHasTagArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    where?: CardHasTagWhereInput
+    orderBy?: CardHasTagOrderByWithRelationInput | CardHasTagOrderByWithRelationInput[]
+    cursor?: CardHasTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CardHasTagScalarFieldEnum | CardHasTagScalarFieldEnum[]
+  }
+
+  /**
    * Tag without action
    */
   export type TagDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6145,13 +6464,13 @@ export namespace Prisma {
 
   export type CardAvgAggregateOutputType = {
     id: number | null
-    creator: number | null
+    creatorId: number | null
     columnId: number | null
   }
 
   export type CardSumAggregateOutputType = {
     id: number | null
-    creator: number | null
+    creatorId: number | null
     columnId: number | null
   }
 
@@ -6162,9 +6481,9 @@ export namespace Prisma {
     content: string | null
     startDate: string | null
     endDate: string | null
-    creator: number | null
+    creatorId: number | null
     columnId: number | null
-    tags: string | null
+    color: string | null
   }
 
   export type CardMaxAggregateOutputType = {
@@ -6174,9 +6493,9 @@ export namespace Prisma {
     content: string | null
     startDate: string | null
     endDate: string | null
-    creator: number | null
+    creatorId: number | null
     columnId: number | null
-    tags: string | null
+    color: string | null
   }
 
   export type CardCountAggregateOutputType = {
@@ -6186,22 +6505,22 @@ export namespace Prisma {
     content: number
     startDate: number
     endDate: number
-    creator: number
+    creatorId: number
     columnId: number
-    tags: number
+    color: number
     _all: number
   }
 
 
   export type CardAvgAggregateInputType = {
     id?: true
-    creator?: true
+    creatorId?: true
     columnId?: true
   }
 
   export type CardSumAggregateInputType = {
     id?: true
-    creator?: true
+    creatorId?: true
     columnId?: true
   }
 
@@ -6212,9 +6531,9 @@ export namespace Prisma {
     content?: true
     startDate?: true
     endDate?: true
-    creator?: true
+    creatorId?: true
     columnId?: true
-    tags?: true
+    color?: true
   }
 
   export type CardMaxAggregateInputType = {
@@ -6224,9 +6543,9 @@ export namespace Prisma {
     content?: true
     startDate?: true
     endDate?: true
-    creator?: true
+    creatorId?: true
     columnId?: true
-    tags?: true
+    color?: true
   }
 
   export type CardCountAggregateInputType = {
@@ -6236,9 +6555,9 @@ export namespace Prisma {
     content?: true
     startDate?: true
     endDate?: true
-    creator?: true
+    creatorId?: true
     columnId?: true
-    tags?: true
+    color?: true
     _all?: true
   }
 
@@ -6330,14 +6649,14 @@ export namespace Prisma {
 
   export type CardGroupByOutputType = {
     id: number
-    status: string
+    status: string | null
     title: string
-    content: string
+    content: string | null
     startDate: string | null
     endDate: string | null
-    creator: number
+    creatorId: number | null
     columnId: number
-    tags: string
+    color: string
     _count: CardCountAggregateOutputType | null
     _avg: CardAvgAggregateOutputType | null
     _sum: CardSumAggregateOutputType | null
@@ -6366,12 +6685,14 @@ export namespace Prisma {
     content?: boolean
     startDate?: boolean
     endDate?: boolean
-    creator?: boolean
+    creatorId?: boolean
     columnId?: boolean
-    tags?: boolean
+    color?: boolean
     List?: boolean | Card$ListArgs<ExtArgs>
-    users?: boolean | Card$usersArgs<ExtArgs>
+    creator?: boolean | Card$creatorArgs<ExtArgs>
     column?: boolean | ColumnDefaultArgs<ExtArgs>
+    CardAssignment?: boolean | Card$CardAssignmentArgs<ExtArgs>
+    CardHasTag?: boolean | Card$CardHasTagArgs<ExtArgs>
     _count?: boolean | CardCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card"]>
 
@@ -6382,9 +6703,10 @@ export namespace Prisma {
     content?: boolean
     startDate?: boolean
     endDate?: boolean
-    creator?: boolean
+    creatorId?: boolean
     columnId?: boolean
-    tags?: boolean
+    color?: boolean
+    creator?: boolean | Card$creatorArgs<ExtArgs>
     column?: boolean | ColumnDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card"]>
 
@@ -6395,9 +6717,10 @@ export namespace Prisma {
     content?: boolean
     startDate?: boolean
     endDate?: boolean
-    creator?: boolean
+    creatorId?: boolean
     columnId?: boolean
-    tags?: boolean
+    color?: boolean
+    creator?: boolean | Card$creatorArgs<ExtArgs>
     column?: boolean | ColumnDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card"]>
 
@@ -6408,22 +6731,26 @@ export namespace Prisma {
     content?: boolean
     startDate?: boolean
     endDate?: boolean
-    creator?: boolean
+    creatorId?: boolean
     columnId?: boolean
-    tags?: boolean
+    color?: boolean
   }
 
-  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "title" | "content" | "startDate" | "endDate" | "creator" | "columnId" | "tags", ExtArgs["result"]["card"]>
+  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "title" | "content" | "startDate" | "endDate" | "creatorId" | "columnId" | "color", ExtArgs["result"]["card"]>
   export type CardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     List?: boolean | Card$ListArgs<ExtArgs>
-    users?: boolean | Card$usersArgs<ExtArgs>
+    creator?: boolean | Card$creatorArgs<ExtArgs>
     column?: boolean | ColumnDefaultArgs<ExtArgs>
+    CardAssignment?: boolean | Card$CardAssignmentArgs<ExtArgs>
+    CardHasTag?: boolean | Card$CardHasTagArgs<ExtArgs>
     _count?: boolean | CardCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | Card$creatorArgs<ExtArgs>
     column?: boolean | ColumnDefaultArgs<ExtArgs>
   }
   export type CardIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | Card$creatorArgs<ExtArgs>
     column?: boolean | ColumnDefaultArgs<ExtArgs>
   }
 
@@ -6431,19 +6758,21 @@ export namespace Prisma {
     name: "Card"
     objects: {
       List: Prisma.$ListPayload<ExtArgs>[]
-      users: Prisma.$UserPayload<ExtArgs>[]
+      creator: Prisma.$UserPayload<ExtArgs> | null
       column: Prisma.$ColumnPayload<ExtArgs>
+      CardAssignment: Prisma.$CardAssignmentPayload<ExtArgs>[]
+      CardHasTag: Prisma.$CardHasTagPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      status: string
+      status: string | null
       title: string
-      content: string
+      content: string | null
       startDate: string | null
       endDate: string | null
-      creator: number
+      creatorId: number | null
       columnId: number
-      tags: string
+      color: string
     }, ExtArgs["result"]["card"]>
     composites: {}
   }
@@ -6839,8 +7168,10 @@ export namespace Prisma {
   export interface Prisma__CardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     List<T extends Card$ListArgs<ExtArgs> = {}>(args?: Subset<T, Card$ListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    users<T extends Card$usersArgs<ExtArgs> = {}>(args?: Subset<T, Card$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    creator<T extends Card$creatorArgs<ExtArgs> = {}>(args?: Subset<T, Card$creatorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     column<T extends ColumnDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColumnDefaultArgs<ExtArgs>>): Prisma__ColumnClient<$Result.GetResult<Prisma.$ColumnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    CardAssignment<T extends Card$CardAssignmentArgs<ExtArgs> = {}>(args?: Subset<T, Card$CardAssignmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    CardHasTag<T extends Card$CardHasTagArgs<ExtArgs> = {}>(args?: Subset<T, Card$CardHasTagArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6876,9 +7207,9 @@ export namespace Prisma {
     readonly content: FieldRef<"Card", 'String'>
     readonly startDate: FieldRef<"Card", 'String'>
     readonly endDate: FieldRef<"Card", 'String'>
-    readonly creator: FieldRef<"Card", 'Int'>
+    readonly creatorId: FieldRef<"Card", 'Int'>
     readonly columnId: FieldRef<"Card", 'Int'>
-    readonly tags: FieldRef<"Card", 'String'>
+    readonly color: FieldRef<"Card", 'String'>
   }
     
 
@@ -7299,9 +7630,9 @@ export namespace Prisma {
   }
 
   /**
-   * Card.users
+   * Card.creator
    */
-  export type Card$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Card$creatorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the User
      */
@@ -7315,11 +7646,54 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
+  }
+
+  /**
+   * Card.CardAssignment
+   */
+  export type Card$CardAssignmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    where?: CardAssignmentWhereInput
+    orderBy?: CardAssignmentOrderByWithRelationInput | CardAssignmentOrderByWithRelationInput[]
+    cursor?: CardAssignmentWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: CardAssignmentScalarFieldEnum | CardAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * Card.CardHasTag
+   */
+  export type Card$CardHasTagArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    where?: CardHasTagWhereInput
+    orderBy?: CardHasTagOrderByWithRelationInput | CardHasTagOrderByWithRelationInput[]
+    cursor?: CardHasTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CardHasTagScalarFieldEnum | CardHasTagScalarFieldEnum[]
   }
 
   /**
@@ -10642,6 +11016,2170 @@ export namespace Prisma {
 
 
   /**
+   * Model CardAssignment
+   */
+
+  export type AggregateCardAssignment = {
+    _count: CardAssignmentCountAggregateOutputType | null
+    _avg: CardAssignmentAvgAggregateOutputType | null
+    _sum: CardAssignmentSumAggregateOutputType | null
+    _min: CardAssignmentMinAggregateOutputType | null
+    _max: CardAssignmentMaxAggregateOutputType | null
+  }
+
+  export type CardAssignmentAvgAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    userId: number | null
+  }
+
+  export type CardAssignmentSumAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    userId: number | null
+  }
+
+  export type CardAssignmentMinAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    userId: number | null
+  }
+
+  export type CardAssignmentMaxAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    userId: number | null
+  }
+
+  export type CardAssignmentCountAggregateOutputType = {
+    id: number
+    cardId: number
+    userId: number
+    _all: number
+  }
+
+
+  export type CardAssignmentAvgAggregateInputType = {
+    id?: true
+    cardId?: true
+    userId?: true
+  }
+
+  export type CardAssignmentSumAggregateInputType = {
+    id?: true
+    cardId?: true
+    userId?: true
+  }
+
+  export type CardAssignmentMinAggregateInputType = {
+    id?: true
+    cardId?: true
+    userId?: true
+  }
+
+  export type CardAssignmentMaxAggregateInputType = {
+    id?: true
+    cardId?: true
+    userId?: true
+  }
+
+  export type CardAssignmentCountAggregateInputType = {
+    id?: true
+    cardId?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type CardAssignmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CardAssignment to aggregate.
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardAssignments to fetch.
+     */
+    orderBy?: CardAssignmentOrderByWithRelationInput | CardAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CardAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CardAssignments
+    **/
+    _count?: true | CardAssignmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CardAssignmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CardAssignmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CardAssignmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CardAssignmentMaxAggregateInputType
+  }
+
+  export type GetCardAssignmentAggregateType<T extends CardAssignmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateCardAssignment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCardAssignment[P]>
+      : GetScalarType<T[P], AggregateCardAssignment[P]>
+  }
+
+
+
+
+  export type CardAssignmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardAssignmentWhereInput
+    orderBy?: CardAssignmentOrderByWithAggregationInput | CardAssignmentOrderByWithAggregationInput[]
+    by: CardAssignmentScalarFieldEnum[] | CardAssignmentScalarFieldEnum
+    having?: CardAssignmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CardAssignmentCountAggregateInputType | true
+    _avg?: CardAssignmentAvgAggregateInputType
+    _sum?: CardAssignmentSumAggregateInputType
+    _min?: CardAssignmentMinAggregateInputType
+    _max?: CardAssignmentMaxAggregateInputType
+  }
+
+  export type CardAssignmentGroupByOutputType = {
+    id: number
+    cardId: number
+    userId: number
+    _count: CardAssignmentCountAggregateOutputType | null
+    _avg: CardAssignmentAvgAggregateOutputType | null
+    _sum: CardAssignmentSumAggregateOutputType | null
+    _min: CardAssignmentMinAggregateOutputType | null
+    _max: CardAssignmentMaxAggregateOutputType | null
+  }
+
+  type GetCardAssignmentGroupByPayload<T extends CardAssignmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CardAssignmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CardAssignmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CardAssignmentGroupByOutputType[P]>
+            : GetScalarType<T[P], CardAssignmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CardAssignmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardId?: boolean
+    userId?: boolean
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cardAssignment"]>
+
+  export type CardAssignmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardId?: boolean
+    userId?: boolean
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cardAssignment"]>
+
+  export type CardAssignmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardId?: boolean
+    userId?: boolean
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cardAssignment"]>
+
+  export type CardAssignmentSelectScalar = {
+    id?: boolean
+    cardId?: boolean
+    userId?: boolean
+  }
+
+  export type CardAssignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cardId" | "userId", ExtArgs["result"]["cardAssignment"]>
+  export type CardAssignmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CardAssignmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CardAssignmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CardAssignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CardAssignment"
+    objects: {
+      card: Prisma.$CardPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      cardId: number
+      userId: number
+    }, ExtArgs["result"]["cardAssignment"]>
+    composites: {}
+  }
+
+  type CardAssignmentGetPayload<S extends boolean | null | undefined | CardAssignmentDefaultArgs> = $Result.GetResult<Prisma.$CardAssignmentPayload, S>
+
+  type CardAssignmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CardAssignmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CardAssignmentCountAggregateInputType | true
+    }
+
+  export interface CardAssignmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CardAssignment'], meta: { name: 'CardAssignment' } }
+    /**
+     * Find zero or one CardAssignment that matches the filter.
+     * @param {CardAssignmentFindUniqueArgs} args - Arguments to find a CardAssignment
+     * @example
+     * // Get one CardAssignment
+     * const cardAssignment = await prisma.cardAssignment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CardAssignmentFindUniqueArgs>(args: SelectSubset<T, CardAssignmentFindUniqueArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CardAssignment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CardAssignmentFindUniqueOrThrowArgs} args - Arguments to find a CardAssignment
+     * @example
+     * // Get one CardAssignment
+     * const cardAssignment = await prisma.cardAssignment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CardAssignmentFindUniqueOrThrowArgs>(args: SelectSubset<T, CardAssignmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CardAssignment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentFindFirstArgs} args - Arguments to find a CardAssignment
+     * @example
+     * // Get one CardAssignment
+     * const cardAssignment = await prisma.cardAssignment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CardAssignmentFindFirstArgs>(args?: SelectSubset<T, CardAssignmentFindFirstArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CardAssignment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentFindFirstOrThrowArgs} args - Arguments to find a CardAssignment
+     * @example
+     * // Get one CardAssignment
+     * const cardAssignment = await prisma.cardAssignment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CardAssignmentFindFirstOrThrowArgs>(args?: SelectSubset<T, CardAssignmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CardAssignments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CardAssignments
+     * const cardAssignments = await prisma.cardAssignment.findMany()
+     * 
+     * // Get first 10 CardAssignments
+     * const cardAssignments = await prisma.cardAssignment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cardAssignmentWithIdOnly = await prisma.cardAssignment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CardAssignmentFindManyArgs>(args?: SelectSubset<T, CardAssignmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CardAssignment.
+     * @param {CardAssignmentCreateArgs} args - Arguments to create a CardAssignment.
+     * @example
+     * // Create one CardAssignment
+     * const CardAssignment = await prisma.cardAssignment.create({
+     *   data: {
+     *     // ... data to create a CardAssignment
+     *   }
+     * })
+     * 
+     */
+    create<T extends CardAssignmentCreateArgs>(args: SelectSubset<T, CardAssignmentCreateArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CardAssignments.
+     * @param {CardAssignmentCreateManyArgs} args - Arguments to create many CardAssignments.
+     * @example
+     * // Create many CardAssignments
+     * const cardAssignment = await prisma.cardAssignment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CardAssignmentCreateManyArgs>(args?: SelectSubset<T, CardAssignmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CardAssignments and returns the data saved in the database.
+     * @param {CardAssignmentCreateManyAndReturnArgs} args - Arguments to create many CardAssignments.
+     * @example
+     * // Create many CardAssignments
+     * const cardAssignment = await prisma.cardAssignment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CardAssignments and only return the `id`
+     * const cardAssignmentWithIdOnly = await prisma.cardAssignment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CardAssignmentCreateManyAndReturnArgs>(args?: SelectSubset<T, CardAssignmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CardAssignment.
+     * @param {CardAssignmentDeleteArgs} args - Arguments to delete one CardAssignment.
+     * @example
+     * // Delete one CardAssignment
+     * const CardAssignment = await prisma.cardAssignment.delete({
+     *   where: {
+     *     // ... filter to delete one CardAssignment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CardAssignmentDeleteArgs>(args: SelectSubset<T, CardAssignmentDeleteArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CardAssignment.
+     * @param {CardAssignmentUpdateArgs} args - Arguments to update one CardAssignment.
+     * @example
+     * // Update one CardAssignment
+     * const cardAssignment = await prisma.cardAssignment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CardAssignmentUpdateArgs>(args: SelectSubset<T, CardAssignmentUpdateArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CardAssignments.
+     * @param {CardAssignmentDeleteManyArgs} args - Arguments to filter CardAssignments to delete.
+     * @example
+     * // Delete a few CardAssignments
+     * const { count } = await prisma.cardAssignment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CardAssignmentDeleteManyArgs>(args?: SelectSubset<T, CardAssignmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CardAssignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CardAssignments
+     * const cardAssignment = await prisma.cardAssignment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CardAssignmentUpdateManyArgs>(args: SelectSubset<T, CardAssignmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CardAssignments and returns the data updated in the database.
+     * @param {CardAssignmentUpdateManyAndReturnArgs} args - Arguments to update many CardAssignments.
+     * @example
+     * // Update many CardAssignments
+     * const cardAssignment = await prisma.cardAssignment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CardAssignments and only return the `id`
+     * const cardAssignmentWithIdOnly = await prisma.cardAssignment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CardAssignmentUpdateManyAndReturnArgs>(args: SelectSubset<T, CardAssignmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CardAssignment.
+     * @param {CardAssignmentUpsertArgs} args - Arguments to update or create a CardAssignment.
+     * @example
+     * // Update or create a CardAssignment
+     * const cardAssignment = await prisma.cardAssignment.upsert({
+     *   create: {
+     *     // ... data to create a CardAssignment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CardAssignment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CardAssignmentUpsertArgs>(args: SelectSubset<T, CardAssignmentUpsertArgs<ExtArgs>>): Prisma__CardAssignmentClient<$Result.GetResult<Prisma.$CardAssignmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CardAssignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentCountArgs} args - Arguments to filter CardAssignments to count.
+     * @example
+     * // Count the number of CardAssignments
+     * const count = await prisma.cardAssignment.count({
+     *   where: {
+     *     // ... the filter for the CardAssignments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CardAssignmentCountArgs>(
+      args?: Subset<T, CardAssignmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CardAssignmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CardAssignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CardAssignmentAggregateArgs>(args: Subset<T, CardAssignmentAggregateArgs>): Prisma.PrismaPromise<GetCardAssignmentAggregateType<T>>
+
+    /**
+     * Group by CardAssignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAssignmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CardAssignmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CardAssignmentGroupByArgs['orderBy'] }
+        : { orderBy?: CardAssignmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CardAssignmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCardAssignmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CardAssignment model
+   */
+  readonly fields: CardAssignmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CardAssignment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CardAssignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    card<T extends CardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CardDefaultArgs<ExtArgs>>): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CardAssignment model
+   */
+  interface CardAssignmentFieldRefs {
+    readonly id: FieldRef<"CardAssignment", 'Int'>
+    readonly cardId: FieldRef<"CardAssignment", 'Int'>
+    readonly userId: FieldRef<"CardAssignment", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CardAssignment findUnique
+   */
+  export type CardAssignmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CardAssignment to fetch.
+     */
+    where: CardAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CardAssignment findUniqueOrThrow
+   */
+  export type CardAssignmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CardAssignment to fetch.
+     */
+    where: CardAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CardAssignment findFirst
+   */
+  export type CardAssignmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CardAssignment to fetch.
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardAssignments to fetch.
+     */
+    orderBy?: CardAssignmentOrderByWithRelationInput | CardAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CardAssignments.
+     */
+    cursor?: CardAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CardAssignments.
+     */
+    distinct?: CardAssignmentScalarFieldEnum | CardAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * CardAssignment findFirstOrThrow
+   */
+  export type CardAssignmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CardAssignment to fetch.
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardAssignments to fetch.
+     */
+    orderBy?: CardAssignmentOrderByWithRelationInput | CardAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CardAssignments.
+     */
+    cursor?: CardAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardAssignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CardAssignments.
+     */
+    distinct?: CardAssignmentScalarFieldEnum | CardAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * CardAssignment findMany
+   */
+  export type CardAssignmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter, which CardAssignments to fetch.
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardAssignments to fetch.
+     */
+    orderBy?: CardAssignmentOrderByWithRelationInput | CardAssignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CardAssignments.
+     */
+    cursor?: CardAssignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardAssignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardAssignments.
+     */
+    skip?: number
+    distinct?: CardAssignmentScalarFieldEnum | CardAssignmentScalarFieldEnum[]
+  }
+
+  /**
+   * CardAssignment create
+   */
+  export type CardAssignmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CardAssignment.
+     */
+    data: XOR<CardAssignmentCreateInput, CardAssignmentUncheckedCreateInput>
+  }
+
+  /**
+   * CardAssignment createMany
+   */
+  export type CardAssignmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CardAssignments.
+     */
+    data: CardAssignmentCreateManyInput | CardAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CardAssignment createManyAndReturn
+   */
+  export type CardAssignmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many CardAssignments.
+     */
+    data: CardAssignmentCreateManyInput | CardAssignmentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CardAssignment update
+   */
+  export type CardAssignmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CardAssignment.
+     */
+    data: XOR<CardAssignmentUpdateInput, CardAssignmentUncheckedUpdateInput>
+    /**
+     * Choose, which CardAssignment to update.
+     */
+    where: CardAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CardAssignment updateMany
+   */
+  export type CardAssignmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CardAssignments.
+     */
+    data: XOR<CardAssignmentUpdateManyMutationInput, CardAssignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which CardAssignments to update
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * Limit how many CardAssignments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CardAssignment updateManyAndReturn
+   */
+  export type CardAssignmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * The data used to update CardAssignments.
+     */
+    data: XOR<CardAssignmentUpdateManyMutationInput, CardAssignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which CardAssignments to update
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * Limit how many CardAssignments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CardAssignment upsert
+   */
+  export type CardAssignmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CardAssignment to update in case it exists.
+     */
+    where: CardAssignmentWhereUniqueInput
+    /**
+     * In case the CardAssignment found by the `where` argument doesn't exist, create a new CardAssignment with this data.
+     */
+    create: XOR<CardAssignmentCreateInput, CardAssignmentUncheckedCreateInput>
+    /**
+     * In case the CardAssignment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CardAssignmentUpdateInput, CardAssignmentUncheckedUpdateInput>
+  }
+
+  /**
+   * CardAssignment delete
+   */
+  export type CardAssignmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+    /**
+     * Filter which CardAssignment to delete.
+     */
+    where: CardAssignmentWhereUniqueInput
+  }
+
+  /**
+   * CardAssignment deleteMany
+   */
+  export type CardAssignmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CardAssignments to delete
+     */
+    where?: CardAssignmentWhereInput
+    /**
+     * Limit how many CardAssignments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CardAssignment without action
+   */
+  export type CardAssignmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardAssignment
+     */
+    select?: CardAssignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardAssignment
+     */
+    omit?: CardAssignmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardAssignmentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CardHasTag
+   */
+
+  export type AggregateCardHasTag = {
+    _count: CardHasTagCountAggregateOutputType | null
+    _avg: CardHasTagAvgAggregateOutputType | null
+    _sum: CardHasTagSumAggregateOutputType | null
+    _min: CardHasTagMinAggregateOutputType | null
+    _max: CardHasTagMaxAggregateOutputType | null
+  }
+
+  export type CardHasTagAvgAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    tagId: number | null
+  }
+
+  export type CardHasTagSumAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    tagId: number | null
+  }
+
+  export type CardHasTagMinAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    tagId: number | null
+  }
+
+  export type CardHasTagMaxAggregateOutputType = {
+    id: number | null
+    cardId: number | null
+    tagId: number | null
+  }
+
+  export type CardHasTagCountAggregateOutputType = {
+    id: number
+    cardId: number
+    tagId: number
+    _all: number
+  }
+
+
+  export type CardHasTagAvgAggregateInputType = {
+    id?: true
+    cardId?: true
+    tagId?: true
+  }
+
+  export type CardHasTagSumAggregateInputType = {
+    id?: true
+    cardId?: true
+    tagId?: true
+  }
+
+  export type CardHasTagMinAggregateInputType = {
+    id?: true
+    cardId?: true
+    tagId?: true
+  }
+
+  export type CardHasTagMaxAggregateInputType = {
+    id?: true
+    cardId?: true
+    tagId?: true
+  }
+
+  export type CardHasTagCountAggregateInputType = {
+    id?: true
+    cardId?: true
+    tagId?: true
+    _all?: true
+  }
+
+  export type CardHasTagAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CardHasTag to aggregate.
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardHasTags to fetch.
+     */
+    orderBy?: CardHasTagOrderByWithRelationInput | CardHasTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CardHasTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardHasTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardHasTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CardHasTags
+    **/
+    _count?: true | CardHasTagCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CardHasTagAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CardHasTagSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CardHasTagMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CardHasTagMaxAggregateInputType
+  }
+
+  export type GetCardHasTagAggregateType<T extends CardHasTagAggregateArgs> = {
+        [P in keyof T & keyof AggregateCardHasTag]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCardHasTag[P]>
+      : GetScalarType<T[P], AggregateCardHasTag[P]>
+  }
+
+
+
+
+  export type CardHasTagGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardHasTagWhereInput
+    orderBy?: CardHasTagOrderByWithAggregationInput | CardHasTagOrderByWithAggregationInput[]
+    by: CardHasTagScalarFieldEnum[] | CardHasTagScalarFieldEnum
+    having?: CardHasTagScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CardHasTagCountAggregateInputType | true
+    _avg?: CardHasTagAvgAggregateInputType
+    _sum?: CardHasTagSumAggregateInputType
+    _min?: CardHasTagMinAggregateInputType
+    _max?: CardHasTagMaxAggregateInputType
+  }
+
+  export type CardHasTagGroupByOutputType = {
+    id: number
+    cardId: number
+    tagId: number
+    _count: CardHasTagCountAggregateOutputType | null
+    _avg: CardHasTagAvgAggregateOutputType | null
+    _sum: CardHasTagSumAggregateOutputType | null
+    _min: CardHasTagMinAggregateOutputType | null
+    _max: CardHasTagMaxAggregateOutputType | null
+  }
+
+  type GetCardHasTagGroupByPayload<T extends CardHasTagGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CardHasTagGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CardHasTagGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CardHasTagGroupByOutputType[P]>
+            : GetScalarType<T[P], CardHasTagGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CardHasTagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardId?: boolean
+    tagId?: boolean
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cardHasTag"]>
+
+  export type CardHasTagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardId?: boolean
+    tagId?: boolean
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cardHasTag"]>
+
+  export type CardHasTagSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    cardId?: boolean
+    tagId?: boolean
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cardHasTag"]>
+
+  export type CardHasTagSelectScalar = {
+    id?: boolean
+    cardId?: boolean
+    tagId?: boolean
+  }
+
+  export type CardHasTagOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cardId" | "tagId", ExtArgs["result"]["cardHasTag"]>
+  export type CardHasTagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }
+  export type CardHasTagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }
+  export type CardHasTagIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card?: boolean | CardDefaultArgs<ExtArgs>
+    tag?: boolean | TagDefaultArgs<ExtArgs>
+  }
+
+  export type $CardHasTagPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CardHasTag"
+    objects: {
+      card: Prisma.$CardPayload<ExtArgs>
+      tag: Prisma.$TagPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      cardId: number
+      tagId: number
+    }, ExtArgs["result"]["cardHasTag"]>
+    composites: {}
+  }
+
+  type CardHasTagGetPayload<S extends boolean | null | undefined | CardHasTagDefaultArgs> = $Result.GetResult<Prisma.$CardHasTagPayload, S>
+
+  type CardHasTagCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CardHasTagFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CardHasTagCountAggregateInputType | true
+    }
+
+  export interface CardHasTagDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CardHasTag'], meta: { name: 'CardHasTag' } }
+    /**
+     * Find zero or one CardHasTag that matches the filter.
+     * @param {CardHasTagFindUniqueArgs} args - Arguments to find a CardHasTag
+     * @example
+     * // Get one CardHasTag
+     * const cardHasTag = await prisma.cardHasTag.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CardHasTagFindUniqueArgs>(args: SelectSubset<T, CardHasTagFindUniqueArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CardHasTag that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CardHasTagFindUniqueOrThrowArgs} args - Arguments to find a CardHasTag
+     * @example
+     * // Get one CardHasTag
+     * const cardHasTag = await prisma.cardHasTag.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CardHasTagFindUniqueOrThrowArgs>(args: SelectSubset<T, CardHasTagFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CardHasTag that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagFindFirstArgs} args - Arguments to find a CardHasTag
+     * @example
+     * // Get one CardHasTag
+     * const cardHasTag = await prisma.cardHasTag.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CardHasTagFindFirstArgs>(args?: SelectSubset<T, CardHasTagFindFirstArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CardHasTag that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagFindFirstOrThrowArgs} args - Arguments to find a CardHasTag
+     * @example
+     * // Get one CardHasTag
+     * const cardHasTag = await prisma.cardHasTag.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CardHasTagFindFirstOrThrowArgs>(args?: SelectSubset<T, CardHasTagFindFirstOrThrowArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CardHasTags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CardHasTags
+     * const cardHasTags = await prisma.cardHasTag.findMany()
+     * 
+     * // Get first 10 CardHasTags
+     * const cardHasTags = await prisma.cardHasTag.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cardHasTagWithIdOnly = await prisma.cardHasTag.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CardHasTagFindManyArgs>(args?: SelectSubset<T, CardHasTagFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CardHasTag.
+     * @param {CardHasTagCreateArgs} args - Arguments to create a CardHasTag.
+     * @example
+     * // Create one CardHasTag
+     * const CardHasTag = await prisma.cardHasTag.create({
+     *   data: {
+     *     // ... data to create a CardHasTag
+     *   }
+     * })
+     * 
+     */
+    create<T extends CardHasTagCreateArgs>(args: SelectSubset<T, CardHasTagCreateArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CardHasTags.
+     * @param {CardHasTagCreateManyArgs} args - Arguments to create many CardHasTags.
+     * @example
+     * // Create many CardHasTags
+     * const cardHasTag = await prisma.cardHasTag.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CardHasTagCreateManyArgs>(args?: SelectSubset<T, CardHasTagCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CardHasTags and returns the data saved in the database.
+     * @param {CardHasTagCreateManyAndReturnArgs} args - Arguments to create many CardHasTags.
+     * @example
+     * // Create many CardHasTags
+     * const cardHasTag = await prisma.cardHasTag.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CardHasTags and only return the `id`
+     * const cardHasTagWithIdOnly = await prisma.cardHasTag.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CardHasTagCreateManyAndReturnArgs>(args?: SelectSubset<T, CardHasTagCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CardHasTag.
+     * @param {CardHasTagDeleteArgs} args - Arguments to delete one CardHasTag.
+     * @example
+     * // Delete one CardHasTag
+     * const CardHasTag = await prisma.cardHasTag.delete({
+     *   where: {
+     *     // ... filter to delete one CardHasTag
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CardHasTagDeleteArgs>(args: SelectSubset<T, CardHasTagDeleteArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CardHasTag.
+     * @param {CardHasTagUpdateArgs} args - Arguments to update one CardHasTag.
+     * @example
+     * // Update one CardHasTag
+     * const cardHasTag = await prisma.cardHasTag.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CardHasTagUpdateArgs>(args: SelectSubset<T, CardHasTagUpdateArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CardHasTags.
+     * @param {CardHasTagDeleteManyArgs} args - Arguments to filter CardHasTags to delete.
+     * @example
+     * // Delete a few CardHasTags
+     * const { count } = await prisma.cardHasTag.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CardHasTagDeleteManyArgs>(args?: SelectSubset<T, CardHasTagDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CardHasTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CardHasTags
+     * const cardHasTag = await prisma.cardHasTag.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CardHasTagUpdateManyArgs>(args: SelectSubset<T, CardHasTagUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CardHasTags and returns the data updated in the database.
+     * @param {CardHasTagUpdateManyAndReturnArgs} args - Arguments to update many CardHasTags.
+     * @example
+     * // Update many CardHasTags
+     * const cardHasTag = await prisma.cardHasTag.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CardHasTags and only return the `id`
+     * const cardHasTagWithIdOnly = await prisma.cardHasTag.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CardHasTagUpdateManyAndReturnArgs>(args: SelectSubset<T, CardHasTagUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CardHasTag.
+     * @param {CardHasTagUpsertArgs} args - Arguments to update or create a CardHasTag.
+     * @example
+     * // Update or create a CardHasTag
+     * const cardHasTag = await prisma.cardHasTag.upsert({
+     *   create: {
+     *     // ... data to create a CardHasTag
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CardHasTag we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CardHasTagUpsertArgs>(args: SelectSubset<T, CardHasTagUpsertArgs<ExtArgs>>): Prisma__CardHasTagClient<$Result.GetResult<Prisma.$CardHasTagPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CardHasTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagCountArgs} args - Arguments to filter CardHasTags to count.
+     * @example
+     * // Count the number of CardHasTags
+     * const count = await prisma.cardHasTag.count({
+     *   where: {
+     *     // ... the filter for the CardHasTags we want to count
+     *   }
+     * })
+    **/
+    count<T extends CardHasTagCountArgs>(
+      args?: Subset<T, CardHasTagCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CardHasTagCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CardHasTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CardHasTagAggregateArgs>(args: Subset<T, CardHasTagAggregateArgs>): Prisma.PrismaPromise<GetCardHasTagAggregateType<T>>
+
+    /**
+     * Group by CardHasTag.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardHasTagGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CardHasTagGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CardHasTagGroupByArgs['orderBy'] }
+        : { orderBy?: CardHasTagGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CardHasTagGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCardHasTagGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CardHasTag model
+   */
+  readonly fields: CardHasTagFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CardHasTag.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CardHasTagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    card<T extends CardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CardDefaultArgs<ExtArgs>>): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tag<T extends TagDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TagDefaultArgs<ExtArgs>>): Prisma__TagClient<$Result.GetResult<Prisma.$TagPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CardHasTag model
+   */
+  interface CardHasTagFieldRefs {
+    readonly id: FieldRef<"CardHasTag", 'Int'>
+    readonly cardId: FieldRef<"CardHasTag", 'Int'>
+    readonly tagId: FieldRef<"CardHasTag", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CardHasTag findUnique
+   */
+  export type CardHasTagFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CardHasTag to fetch.
+     */
+    where: CardHasTagWhereUniqueInput
+  }
+
+  /**
+   * CardHasTag findUniqueOrThrow
+   */
+  export type CardHasTagFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CardHasTag to fetch.
+     */
+    where: CardHasTagWhereUniqueInput
+  }
+
+  /**
+   * CardHasTag findFirst
+   */
+  export type CardHasTagFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CardHasTag to fetch.
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardHasTags to fetch.
+     */
+    orderBy?: CardHasTagOrderByWithRelationInput | CardHasTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CardHasTags.
+     */
+    cursor?: CardHasTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardHasTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardHasTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CardHasTags.
+     */
+    distinct?: CardHasTagScalarFieldEnum | CardHasTagScalarFieldEnum[]
+  }
+
+  /**
+   * CardHasTag findFirstOrThrow
+   */
+  export type CardHasTagFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CardHasTag to fetch.
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardHasTags to fetch.
+     */
+    orderBy?: CardHasTagOrderByWithRelationInput | CardHasTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CardHasTags.
+     */
+    cursor?: CardHasTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardHasTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardHasTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CardHasTags.
+     */
+    distinct?: CardHasTagScalarFieldEnum | CardHasTagScalarFieldEnum[]
+  }
+
+  /**
+   * CardHasTag findMany
+   */
+  export type CardHasTagFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * Filter, which CardHasTags to fetch.
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CardHasTags to fetch.
+     */
+    orderBy?: CardHasTagOrderByWithRelationInput | CardHasTagOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CardHasTags.
+     */
+    cursor?: CardHasTagWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CardHasTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CardHasTags.
+     */
+    skip?: number
+    distinct?: CardHasTagScalarFieldEnum | CardHasTagScalarFieldEnum[]
+  }
+
+  /**
+   * CardHasTag create
+   */
+  export type CardHasTagCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CardHasTag.
+     */
+    data: XOR<CardHasTagCreateInput, CardHasTagUncheckedCreateInput>
+  }
+
+  /**
+   * CardHasTag createMany
+   */
+  export type CardHasTagCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CardHasTags.
+     */
+    data: CardHasTagCreateManyInput | CardHasTagCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CardHasTag createManyAndReturn
+   */
+  export type CardHasTagCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * The data used to create many CardHasTags.
+     */
+    data: CardHasTagCreateManyInput | CardHasTagCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CardHasTag update
+   */
+  export type CardHasTagUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CardHasTag.
+     */
+    data: XOR<CardHasTagUpdateInput, CardHasTagUncheckedUpdateInput>
+    /**
+     * Choose, which CardHasTag to update.
+     */
+    where: CardHasTagWhereUniqueInput
+  }
+
+  /**
+   * CardHasTag updateMany
+   */
+  export type CardHasTagUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CardHasTags.
+     */
+    data: XOR<CardHasTagUpdateManyMutationInput, CardHasTagUncheckedUpdateManyInput>
+    /**
+     * Filter which CardHasTags to update
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * Limit how many CardHasTags to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CardHasTag updateManyAndReturn
+   */
+  export type CardHasTagUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * The data used to update CardHasTags.
+     */
+    data: XOR<CardHasTagUpdateManyMutationInput, CardHasTagUncheckedUpdateManyInput>
+    /**
+     * Filter which CardHasTags to update
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * Limit how many CardHasTags to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CardHasTag upsert
+   */
+  export type CardHasTagUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CardHasTag to update in case it exists.
+     */
+    where: CardHasTagWhereUniqueInput
+    /**
+     * In case the CardHasTag found by the `where` argument doesn't exist, create a new CardHasTag with this data.
+     */
+    create: XOR<CardHasTagCreateInput, CardHasTagUncheckedCreateInput>
+    /**
+     * In case the CardHasTag was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CardHasTagUpdateInput, CardHasTagUncheckedUpdateInput>
+  }
+
+  /**
+   * CardHasTag delete
+   */
+  export type CardHasTagDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+    /**
+     * Filter which CardHasTag to delete.
+     */
+    where: CardHasTagWhereUniqueInput
+  }
+
+  /**
+   * CardHasTag deleteMany
+   */
+  export type CardHasTagDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CardHasTags to delete
+     */
+    where?: CardHasTagWhereInput
+    /**
+     * Limit how many CardHasTags to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CardHasTag without action
+   */
+  export type CardHasTagDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CardHasTag
+     */
+    select?: CardHasTagSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CardHasTag
+     */
+    omit?: CardHasTagOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CardHasTagInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10659,7 +13197,8 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     username: 'username',
-    password: 'password'
+    password: 'password',
+    pictureUrl: 'pictureUrl'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -10689,7 +13228,8 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     boardId: 'boardId',
-    color: 'color'
+    color: 'color',
+    cardId: 'cardId'
   };
 
   export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
@@ -10702,9 +13242,9 @@ export namespace Prisma {
     content: 'content',
     startDate: 'startDate',
     endDate: 'endDate',
-    creator: 'creator',
+    creatorId: 'creatorId',
     columnId: 'columnId',
-    tags: 'tags'
+    color: 'color'
   };
 
   export type CardScalarFieldEnum = (typeof CardScalarFieldEnum)[keyof typeof CardScalarFieldEnum]
@@ -10737,6 +13277,24 @@ export namespace Prisma {
   };
 
   export type ColumnScalarFieldEnum = (typeof ColumnScalarFieldEnum)[keyof typeof ColumnScalarFieldEnum]
+
+
+  export const CardAssignmentScalarFieldEnum: {
+    id: 'id',
+    cardId: 'cardId',
+    userId: 'userId'
+  };
+
+  export type CardAssignmentScalarFieldEnum = (typeof CardAssignmentScalarFieldEnum)[keyof typeof CardAssignmentScalarFieldEnum]
+
+
+  export const CardHasTagScalarFieldEnum: {
+    id: 'id',
+    cardId: 'cardId',
+    tagId: 'tagId'
+  };
+
+  export type CardHasTagScalarFieldEnum = (typeof CardHasTagScalarFieldEnum)[keyof typeof CardHasTagScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10828,8 +13386,10 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    pictureUrl?: StringFilter<"User"> | string
     UserHasBoard?: UserHasBoardListRelationFilter
     Card?: CardListRelationFilter
+    CardAssignment?: CardAssignmentListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -10837,8 +13397,10 @@ export namespace Prisma {
     email?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    pictureUrl?: SortOrder
     UserHasBoard?: UserHasBoardOrderByRelationAggregateInput
     Card?: CardOrderByRelationAggregateInput
+    CardAssignment?: CardAssignmentOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10849,8 +13411,10 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
+    pictureUrl?: StringFilter<"User"> | string
     UserHasBoard?: UserHasBoardListRelationFilter
     Card?: CardListRelationFilter
+    CardAssignment?: CardAssignmentListRelationFilter
   }, "id" | "email" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -10858,6 +13422,7 @@ export namespace Prisma {
     email?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    pictureUrl?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -10873,6 +13438,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     username?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    pictureUrl?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type BoardWhereInput = {
@@ -10996,7 +13562,9 @@ export namespace Prisma {
     name?: StringFilter<"Tag"> | string
     boardId?: IntFilter<"Tag"> | number
     color?: StringFilter<"Tag"> | string
+    cardId?: IntNullableFilter<"Tag"> | number | null
     board?: XOR<BoardScalarRelationFilter, BoardWhereInput>
+    CardHasTag?: CardHasTagListRelationFilter
   }
 
   export type TagOrderByWithRelationInput = {
@@ -11004,7 +13572,9 @@ export namespace Prisma {
     name?: SortOrder
     boardId?: SortOrder
     color?: SortOrder
+    cardId?: SortOrderInput | SortOrder
     board?: BoardOrderByWithRelationInput
+    CardHasTag?: CardHasTagOrderByRelationAggregateInput
   }
 
   export type TagWhereUniqueInput = Prisma.AtLeast<{
@@ -11015,7 +13585,9 @@ export namespace Prisma {
     name?: StringFilter<"Tag"> | string
     boardId?: IntFilter<"Tag"> | number
     color?: StringFilter<"Tag"> | string
+    cardId?: IntNullableFilter<"Tag"> | number | null
     board?: XOR<BoardScalarRelationFilter, BoardWhereInput>
+    CardHasTag?: CardHasTagListRelationFilter
   }, "id">
 
   export type TagOrderByWithAggregationInput = {
@@ -11023,6 +13595,7 @@ export namespace Prisma {
     name?: SortOrder
     boardId?: SortOrder
     color?: SortOrder
+    cardId?: SortOrderInput | SortOrder
     _count?: TagCountOrderByAggregateInput
     _avg?: TagAvgOrderByAggregateInput
     _max?: TagMaxOrderByAggregateInput
@@ -11038,6 +13611,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Tag"> | string
     boardId?: IntWithAggregatesFilter<"Tag"> | number
     color?: StringWithAggregatesFilter<"Tag"> | string
+    cardId?: IntNullableWithAggregatesFilter<"Tag"> | number | null
   }
 
   export type CardWhereInput = {
@@ -11045,32 +13619,36 @@ export namespace Prisma {
     OR?: CardWhereInput[]
     NOT?: CardWhereInput | CardWhereInput[]
     id?: IntFilter<"Card"> | number
-    status?: StringFilter<"Card"> | string
+    status?: StringNullableFilter<"Card"> | string | null
     title?: StringFilter<"Card"> | string
-    content?: StringFilter<"Card"> | string
+    content?: StringNullableFilter<"Card"> | string | null
     startDate?: StringNullableFilter<"Card"> | string | null
     endDate?: StringNullableFilter<"Card"> | string | null
-    creator?: IntFilter<"Card"> | number
+    creatorId?: IntNullableFilter<"Card"> | number | null
     columnId?: IntFilter<"Card"> | number
-    tags?: StringFilter<"Card"> | string
+    color?: StringFilter<"Card"> | string
     List?: ListListRelationFilter
-    users?: UserListRelationFilter
+    creator?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     column?: XOR<ColumnScalarRelationFilter, ColumnWhereInput>
+    CardAssignment?: CardAssignmentListRelationFilter
+    CardHasTag?: CardHasTagListRelationFilter
   }
 
   export type CardOrderByWithRelationInput = {
     id?: SortOrder
-    status?: SortOrder
+    status?: SortOrderInput | SortOrder
     title?: SortOrder
-    content?: SortOrder
+    content?: SortOrderInput | SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrderInput | SortOrder
     columnId?: SortOrder
-    tags?: SortOrder
+    color?: SortOrder
     List?: ListOrderByRelationAggregateInput
-    users?: UserOrderByRelationAggregateInput
+    creator?: UserOrderByWithRelationInput
     column?: ColumnOrderByWithRelationInput
+    CardAssignment?: CardAssignmentOrderByRelationAggregateInput
+    CardHasTag?: CardHasTagOrderByRelationAggregateInput
   }
 
   export type CardWhereUniqueInput = Prisma.AtLeast<{
@@ -11078,29 +13656,31 @@ export namespace Prisma {
     AND?: CardWhereInput | CardWhereInput[]
     OR?: CardWhereInput[]
     NOT?: CardWhereInput | CardWhereInput[]
-    status?: StringFilter<"Card"> | string
+    status?: StringNullableFilter<"Card"> | string | null
     title?: StringFilter<"Card"> | string
-    content?: StringFilter<"Card"> | string
+    content?: StringNullableFilter<"Card"> | string | null
     startDate?: StringNullableFilter<"Card"> | string | null
     endDate?: StringNullableFilter<"Card"> | string | null
-    creator?: IntFilter<"Card"> | number
+    creatorId?: IntNullableFilter<"Card"> | number | null
     columnId?: IntFilter<"Card"> | number
-    tags?: StringFilter<"Card"> | string
+    color?: StringFilter<"Card"> | string
     List?: ListListRelationFilter
-    users?: UserListRelationFilter
+    creator?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     column?: XOR<ColumnScalarRelationFilter, ColumnWhereInput>
+    CardAssignment?: CardAssignmentListRelationFilter
+    CardHasTag?: CardHasTagListRelationFilter
   }, "id">
 
   export type CardOrderByWithAggregationInput = {
     id?: SortOrder
-    status?: SortOrder
+    status?: SortOrderInput | SortOrder
     title?: SortOrder
-    content?: SortOrder
+    content?: SortOrderInput | SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrderInput | SortOrder
     columnId?: SortOrder
-    tags?: SortOrder
+    color?: SortOrder
     _count?: CardCountOrderByAggregateInput
     _avg?: CardAvgOrderByAggregateInput
     _max?: CardMaxOrderByAggregateInput
@@ -11113,14 +13693,14 @@ export namespace Prisma {
     OR?: CardScalarWhereWithAggregatesInput[]
     NOT?: CardScalarWhereWithAggregatesInput | CardScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Card"> | number
-    status?: StringWithAggregatesFilter<"Card"> | string
+    status?: StringNullableWithAggregatesFilter<"Card"> | string | null
     title?: StringWithAggregatesFilter<"Card"> | string
-    content?: StringWithAggregatesFilter<"Card"> | string
+    content?: StringNullableWithAggregatesFilter<"Card"> | string | null
     startDate?: StringNullableWithAggregatesFilter<"Card"> | string | null
     endDate?: StringNullableWithAggregatesFilter<"Card"> | string | null
-    creator?: IntWithAggregatesFilter<"Card"> | number
+    creatorId?: IntNullableWithAggregatesFilter<"Card"> | number | null
     columnId?: IntWithAggregatesFilter<"Card"> | number
-    tags?: StringWithAggregatesFilter<"Card"> | string
+    color?: StringWithAggregatesFilter<"Card"> | string
   }
 
   export type ListWhereInput = {
@@ -11280,12 +13860,114 @@ export namespace Prisma {
     order?: IntWithAggregatesFilter<"Column"> | number
   }
 
+  export type CardAssignmentWhereInput = {
+    AND?: CardAssignmentWhereInput | CardAssignmentWhereInput[]
+    OR?: CardAssignmentWhereInput[]
+    NOT?: CardAssignmentWhereInput | CardAssignmentWhereInput[]
+    id?: IntFilter<"CardAssignment"> | number
+    cardId?: IntFilter<"CardAssignment"> | number
+    userId?: IntFilter<"CardAssignment"> | number
+    card?: XOR<CardScalarRelationFilter, CardWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CardAssignmentOrderByWithRelationInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+    card?: CardOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type CardAssignmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CardAssignmentWhereInput | CardAssignmentWhereInput[]
+    OR?: CardAssignmentWhereInput[]
+    NOT?: CardAssignmentWhereInput | CardAssignmentWhereInput[]
+    cardId?: IntFilter<"CardAssignment"> | number
+    userId?: IntFilter<"CardAssignment"> | number
+    card?: XOR<CardScalarRelationFilter, CardWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type CardAssignmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+    _count?: CardAssignmentCountOrderByAggregateInput
+    _avg?: CardAssignmentAvgOrderByAggregateInput
+    _max?: CardAssignmentMaxOrderByAggregateInput
+    _min?: CardAssignmentMinOrderByAggregateInput
+    _sum?: CardAssignmentSumOrderByAggregateInput
+  }
+
+  export type CardAssignmentScalarWhereWithAggregatesInput = {
+    AND?: CardAssignmentScalarWhereWithAggregatesInput | CardAssignmentScalarWhereWithAggregatesInput[]
+    OR?: CardAssignmentScalarWhereWithAggregatesInput[]
+    NOT?: CardAssignmentScalarWhereWithAggregatesInput | CardAssignmentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CardAssignment"> | number
+    cardId?: IntWithAggregatesFilter<"CardAssignment"> | number
+    userId?: IntWithAggregatesFilter<"CardAssignment"> | number
+  }
+
+  export type CardHasTagWhereInput = {
+    AND?: CardHasTagWhereInput | CardHasTagWhereInput[]
+    OR?: CardHasTagWhereInput[]
+    NOT?: CardHasTagWhereInput | CardHasTagWhereInput[]
+    id?: IntFilter<"CardHasTag"> | number
+    cardId?: IntFilter<"CardHasTag"> | number
+    tagId?: IntFilter<"CardHasTag"> | number
+    card?: XOR<CardScalarRelationFilter, CardWhereInput>
+    tag?: XOR<TagScalarRelationFilter, TagWhereInput>
+  }
+
+  export type CardHasTagOrderByWithRelationInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+    card?: CardOrderByWithRelationInput
+    tag?: TagOrderByWithRelationInput
+  }
+
+  export type CardHasTagWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CardHasTagWhereInput | CardHasTagWhereInput[]
+    OR?: CardHasTagWhereInput[]
+    NOT?: CardHasTagWhereInput | CardHasTagWhereInput[]
+    cardId?: IntFilter<"CardHasTag"> | number
+    tagId?: IntFilter<"CardHasTag"> | number
+    card?: XOR<CardScalarRelationFilter, CardWhereInput>
+    tag?: XOR<TagScalarRelationFilter, TagWhereInput>
+  }, "id">
+
+  export type CardHasTagOrderByWithAggregationInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+    _count?: CardHasTagCountOrderByAggregateInput
+    _avg?: CardHasTagAvgOrderByAggregateInput
+    _max?: CardHasTagMaxOrderByAggregateInput
+    _min?: CardHasTagMinOrderByAggregateInput
+    _sum?: CardHasTagSumOrderByAggregateInput
+  }
+
+  export type CardHasTagScalarWhereWithAggregatesInput = {
+    AND?: CardHasTagScalarWhereWithAggregatesInput | CardHasTagScalarWhereWithAggregatesInput[]
+    OR?: CardHasTagScalarWhereWithAggregatesInput[]
+    NOT?: CardHasTagScalarWhereWithAggregatesInput | CardHasTagScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CardHasTag"> | number
+    cardId?: IntWithAggregatesFilter<"CardHasTag"> | number
+    tagId?: IntWithAggregatesFilter<"CardHasTag"> | number
+  }
+
   export type UserCreateInput = {
     email: string
     username: string
     password: string
+    pictureUrl: string
     UserHasBoard?: UserHasBoardCreateNestedManyWithoutUserInput
-    Card?: CardCreateNestedManyWithoutUsersInput
+    Card?: CardCreateNestedManyWithoutCreatorInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -11293,16 +13975,20 @@ export namespace Prisma {
     email: string
     username: string
     password: string
+    pictureUrl: string
     UserHasBoard?: UserHasBoardUncheckedCreateNestedManyWithoutUserInput
-    Card?: CardUncheckedCreateNestedManyWithoutUsersInput
+    Card?: CardUncheckedCreateNestedManyWithoutCreatorInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUpdateManyWithoutUserNestedInput
-    Card?: CardUpdateManyWithoutUsersNestedInput
+    Card?: CardUpdateManyWithoutCreatorNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -11310,8 +13996,10 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
     UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutUserNestedInput
-    Card?: CardUncheckedUpdateManyWithoutUsersNestedInput
+    Card?: CardUncheckedUpdateManyWithoutCreatorNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -11319,12 +14007,14 @@ export namespace Prisma {
     email: string
     username: string
     password: string
+    pictureUrl: string
   }
 
   export type UserUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -11332,6 +14022,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type BoardCreateInput = {
@@ -11439,7 +14130,9 @@ export namespace Prisma {
   export type TagCreateInput = {
     name: string
     color: string
+    cardId?: number | null
     board: BoardCreateNestedOneWithoutTagInput
+    CardHasTag?: CardHasTagCreateNestedManyWithoutTagInput
   }
 
   export type TagUncheckedCreateInput = {
@@ -11447,12 +14140,16 @@ export namespace Prisma {
     name: string
     boardId: number
     color: string
+    cardId?: number | null
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutTagInput
   }
 
   export type TagUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
     board?: BoardUpdateOneRequiredWithoutTagNestedInput
+    CardHasTag?: CardHasTagUpdateManyWithoutTagNestedInput
   }
 
   export type TagUncheckedUpdateInput = {
@@ -11460,6 +14157,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     boardId?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutTagNestedInput
   }
 
   export type TagCreateManyInput = {
@@ -11467,11 +14166,13 @@ export namespace Prisma {
     name: string
     boardId: number
     color: string
+    cardId?: number | null
   }
 
   export type TagUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TagUncheckedUpdateManyInput = {
@@ -11479,94 +14180,98 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     boardId?: IntFieldUpdateOperationsInput | number
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CardCreateInput = {
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
-    tags: string
+    color: string
     List?: ListCreateNestedManyWithoutCardInput
-    users?: UserCreateNestedManyWithoutCardInput
+    creator?: UserCreateNestedOneWithoutCardInput
     column: ColumnCreateNestedOneWithoutCardInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagCreateNestedManyWithoutCardInput
   }
 
   export type CardUncheckedCreateInput = {
     id?: number
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
+    creatorId?: number | null
     columnId: number
-    tags: string
+    color: string
     List?: ListUncheckedCreateNestedManyWithoutCardInput
-    users?: UserUncheckedCreateNestedManyWithoutCardInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutCardInput
   }
 
   export type CardUpdateInput = {
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     List?: ListUpdateManyWithoutCardNestedInput
-    users?: UserUpdateManyWithoutCardNestedInput
+    creator?: UserUpdateOneWithoutCardNestedInput
     column?: ColumnUpdateOneRequiredWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUpdateManyWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     columnId?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     List?: ListUncheckedUpdateManyWithoutCardNestedInput
-    users?: UserUncheckedUpdateManyWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutCardNestedInput
   }
 
   export type CardCreateManyInput = {
     id?: number
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
+    creatorId?: number | null
     columnId: number
-    tags: string
+    color: string
   }
 
   export type CardUpdateManyMutationInput = {
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type CardUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     columnId?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
   }
 
   export type ListCreateInput = {
@@ -11705,6 +14410,82 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
   }
 
+  export type CardAssignmentCreateInput = {
+    card: CardCreateNestedOneWithoutCardAssignmentInput
+    user: UserCreateNestedOneWithoutCardAssignmentInput
+  }
+
+  export type CardAssignmentUncheckedCreateInput = {
+    id?: number
+    cardId: number
+    userId: number
+  }
+
+  export type CardAssignmentUpdateInput = {
+    card?: CardUpdateOneRequiredWithoutCardAssignmentNestedInput
+    user?: UserUpdateOneRequiredWithoutCardAssignmentNestedInput
+  }
+
+  export type CardAssignmentUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardAssignmentCreateManyInput = {
+    id?: number
+    cardId: number
+    userId: number
+  }
+
+  export type CardAssignmentUpdateManyMutationInput = {
+
+  }
+
+  export type CardAssignmentUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardHasTagCreateInput = {
+    card: CardCreateNestedOneWithoutCardHasTagInput
+    tag: TagCreateNestedOneWithoutCardHasTagInput
+  }
+
+  export type CardHasTagUncheckedCreateInput = {
+    id?: number
+    cardId: number
+    tagId: number
+  }
+
+  export type CardHasTagUpdateInput = {
+    card?: CardUpdateOneRequiredWithoutCardHasTagNestedInput
+    tag?: TagUpdateOneRequiredWithoutCardHasTagNestedInput
+  }
+
+  export type CardHasTagUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+    tagId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardHasTagCreateManyInput = {
+    id?: number
+    cardId: number
+    tagId: number
+  }
+
+  export type CardHasTagUpdateManyMutationInput = {
+
+  }
+
+  export type CardHasTagUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+    tagId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -11743,6 +14524,12 @@ export namespace Prisma {
     none?: CardWhereInput
   }
 
+  export type CardAssignmentListRelationFilter = {
+    every?: CardAssignmentWhereInput
+    some?: CardAssignmentWhereInput
+    none?: CardAssignmentWhereInput
+  }
+
   export type UserHasBoardOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -11751,11 +14538,16 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type CardAssignmentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    pictureUrl?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -11767,6 +14559,7 @@ export namespace Prisma {
     email?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    pictureUrl?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -11774,6 +14567,7 @@ export namespace Prisma {
     email?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    pictureUrl?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -11906,16 +14700,44 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type CardHasTagListRelationFilter = {
+    every?: CardHasTagWhereInput
+    some?: CardHasTagWhereInput
+    none?: CardHasTagWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type CardHasTagOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TagCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     boardId?: SortOrder
     color?: SortOrder
+    cardId?: SortOrder
   }
 
   export type TagAvgOrderByAggregateInput = {
     id?: SortOrder
     boardId?: SortOrder
+    cardId?: SortOrder
   }
 
   export type TagMaxOrderByAggregateInput = {
@@ -11923,6 +14745,7 @@ export namespace Prisma {
     name?: SortOrder
     boardId?: SortOrder
     color?: SortOrder
+    cardId?: SortOrder
   }
 
   export type TagMinOrderByAggregateInput = {
@@ -11930,11 +14753,29 @@ export namespace Prisma {
     name?: SortOrder
     boardId?: SortOrder
     color?: SortOrder
+    cardId?: SortOrder
   }
 
   export type TagSumOrderByAggregateInput = {
     id?: SortOrder
     boardId?: SortOrder
+    cardId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -11958,10 +14799,9 @@ export namespace Prisma {
     none?: ListWhereInput
   }
 
-  export type UserListRelationFilter = {
-    every?: UserWhereInput
-    some?: UserWhereInput
-    none?: UserWhereInput
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type ColumnScalarRelationFilter = {
@@ -11969,16 +14809,7 @@ export namespace Prisma {
     isNot?: ColumnWhereInput
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type ListOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -11989,14 +14820,14 @@ export namespace Prisma {
     content?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrder
     columnId?: SortOrder
-    tags?: SortOrder
+    color?: SortOrder
   }
 
   export type CardAvgOrderByAggregateInput = {
     id?: SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrder
     columnId?: SortOrder
   }
 
@@ -12007,9 +14838,9 @@ export namespace Prisma {
     content?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrder
     columnId?: SortOrder
-    tags?: SortOrder
+    color?: SortOrder
   }
 
   export type CardMinOrderByAggregateInput = {
@@ -12019,14 +14850,14 @@ export namespace Prisma {
     content?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrder
     columnId?: SortOrder
-    tags?: SortOrder
+    color?: SortOrder
   }
 
   export type CardSumOrderByAggregateInput = {
     id?: SortOrder
-    creator?: SortOrder
+    creatorId?: SortOrder
     columnId?: SortOrder
   }
 
@@ -12173,6 +15004,71 @@ export namespace Prisma {
     order?: SortOrder
   }
 
+  export type CardAssignmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CardAssignmentAvgOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CardAssignmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CardAssignmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type CardAssignmentSumOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type TagScalarRelationFilter = {
+    is?: TagWhereInput
+    isNot?: TagWhereInput
+  }
+
+  export type CardHasTagCountOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type CardHasTagAvgOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type CardHasTagMaxOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type CardHasTagMinOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+  }
+
+  export type CardHasTagSumOrderByAggregateInput = {
+    id?: SortOrder
+    cardId?: SortOrder
+    tagId?: SortOrder
+  }
+
   export type UserHasBoardCreateNestedManyWithoutUserInput = {
     create?: XOR<UserHasBoardCreateWithoutUserInput, UserHasBoardUncheckedCreateWithoutUserInput> | UserHasBoardCreateWithoutUserInput[] | UserHasBoardUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserHasBoardCreateOrConnectWithoutUserInput | UserHasBoardCreateOrConnectWithoutUserInput[]
@@ -12180,10 +15076,18 @@ export namespace Prisma {
     connect?: UserHasBoardWhereUniqueInput | UserHasBoardWhereUniqueInput[]
   }
 
-  export type CardCreateNestedManyWithoutUsersInput = {
-    create?: XOR<CardCreateWithoutUsersInput, CardUncheckedCreateWithoutUsersInput> | CardCreateWithoutUsersInput[] | CardUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: CardCreateOrConnectWithoutUsersInput | CardCreateOrConnectWithoutUsersInput[]
+  export type CardCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<CardCreateWithoutCreatorInput, CardUncheckedCreateWithoutCreatorInput> | CardCreateWithoutCreatorInput[] | CardUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutCreatorInput | CardCreateOrConnectWithoutCreatorInput[]
+    createMany?: CardCreateManyCreatorInputEnvelope
     connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+  }
+
+  export type CardAssignmentCreateNestedManyWithoutUserInput = {
+    create?: XOR<CardAssignmentCreateWithoutUserInput, CardAssignmentUncheckedCreateWithoutUserInput> | CardAssignmentCreateWithoutUserInput[] | CardAssignmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutUserInput | CardAssignmentCreateOrConnectWithoutUserInput[]
+    createMany?: CardAssignmentCreateManyUserInputEnvelope
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
   }
 
   export type UserHasBoardUncheckedCreateNestedManyWithoutUserInput = {
@@ -12193,10 +15097,18 @@ export namespace Prisma {
     connect?: UserHasBoardWhereUniqueInput | UserHasBoardWhereUniqueInput[]
   }
 
-  export type CardUncheckedCreateNestedManyWithoutUsersInput = {
-    create?: XOR<CardCreateWithoutUsersInput, CardUncheckedCreateWithoutUsersInput> | CardCreateWithoutUsersInput[] | CardUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: CardCreateOrConnectWithoutUsersInput | CardCreateOrConnectWithoutUsersInput[]
+  export type CardUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<CardCreateWithoutCreatorInput, CardUncheckedCreateWithoutCreatorInput> | CardCreateWithoutCreatorInput[] | CardUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutCreatorInput | CardCreateOrConnectWithoutCreatorInput[]
+    createMany?: CardCreateManyCreatorInputEnvelope
     connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
+  }
+
+  export type CardAssignmentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CardAssignmentCreateWithoutUserInput, CardAssignmentUncheckedCreateWithoutUserInput> | CardAssignmentCreateWithoutUserInput[] | CardAssignmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutUserInput | CardAssignmentCreateOrConnectWithoutUserInput[]
+    createMany?: CardAssignmentCreateManyUserInputEnvelope
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12217,17 +15129,32 @@ export namespace Prisma {
     deleteMany?: UserHasBoardScalarWhereInput | UserHasBoardScalarWhereInput[]
   }
 
-  export type CardUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<CardCreateWithoutUsersInput, CardUncheckedCreateWithoutUsersInput> | CardCreateWithoutUsersInput[] | CardUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: CardCreateOrConnectWithoutUsersInput | CardCreateOrConnectWithoutUsersInput[]
-    upsert?: CardUpsertWithWhereUniqueWithoutUsersInput | CardUpsertWithWhereUniqueWithoutUsersInput[]
+  export type CardUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<CardCreateWithoutCreatorInput, CardUncheckedCreateWithoutCreatorInput> | CardCreateWithoutCreatorInput[] | CardUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutCreatorInput | CardCreateOrConnectWithoutCreatorInput[]
+    upsert?: CardUpsertWithWhereUniqueWithoutCreatorInput | CardUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: CardCreateManyCreatorInputEnvelope
     set?: CardWhereUniqueInput | CardWhereUniqueInput[]
     disconnect?: CardWhereUniqueInput | CardWhereUniqueInput[]
     delete?: CardWhereUniqueInput | CardWhereUniqueInput[]
     connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
-    update?: CardUpdateWithWhereUniqueWithoutUsersInput | CardUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: CardUpdateManyWithWhereWithoutUsersInput | CardUpdateManyWithWhereWithoutUsersInput[]
+    update?: CardUpdateWithWhereUniqueWithoutCreatorInput | CardUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: CardUpdateManyWithWhereWithoutCreatorInput | CardUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: CardScalarWhereInput | CardScalarWhereInput[]
+  }
+
+  export type CardAssignmentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CardAssignmentCreateWithoutUserInput, CardAssignmentUncheckedCreateWithoutUserInput> | CardAssignmentCreateWithoutUserInput[] | CardAssignmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutUserInput | CardAssignmentCreateOrConnectWithoutUserInput[]
+    upsert?: CardAssignmentUpsertWithWhereUniqueWithoutUserInput | CardAssignmentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CardAssignmentCreateManyUserInputEnvelope
+    set?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    disconnect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    delete?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    update?: CardAssignmentUpdateWithWhereUniqueWithoutUserInput | CardAssignmentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CardAssignmentUpdateManyWithWhereWithoutUserInput | CardAssignmentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CardAssignmentScalarWhereInput | CardAssignmentScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -12252,17 +15179,32 @@ export namespace Prisma {
     deleteMany?: UserHasBoardScalarWhereInput | UserHasBoardScalarWhereInput[]
   }
 
-  export type CardUncheckedUpdateManyWithoutUsersNestedInput = {
-    create?: XOR<CardCreateWithoutUsersInput, CardUncheckedCreateWithoutUsersInput> | CardCreateWithoutUsersInput[] | CardUncheckedCreateWithoutUsersInput[]
-    connectOrCreate?: CardCreateOrConnectWithoutUsersInput | CardCreateOrConnectWithoutUsersInput[]
-    upsert?: CardUpsertWithWhereUniqueWithoutUsersInput | CardUpsertWithWhereUniqueWithoutUsersInput[]
+  export type CardUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<CardCreateWithoutCreatorInput, CardUncheckedCreateWithoutCreatorInput> | CardCreateWithoutCreatorInput[] | CardUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CardCreateOrConnectWithoutCreatorInput | CardCreateOrConnectWithoutCreatorInput[]
+    upsert?: CardUpsertWithWhereUniqueWithoutCreatorInput | CardUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: CardCreateManyCreatorInputEnvelope
     set?: CardWhereUniqueInput | CardWhereUniqueInput[]
     disconnect?: CardWhereUniqueInput | CardWhereUniqueInput[]
     delete?: CardWhereUniqueInput | CardWhereUniqueInput[]
     connect?: CardWhereUniqueInput | CardWhereUniqueInput[]
-    update?: CardUpdateWithWhereUniqueWithoutUsersInput | CardUpdateWithWhereUniqueWithoutUsersInput[]
-    updateMany?: CardUpdateManyWithWhereWithoutUsersInput | CardUpdateManyWithWhereWithoutUsersInput[]
+    update?: CardUpdateWithWhereUniqueWithoutCreatorInput | CardUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: CardUpdateManyWithWhereWithoutCreatorInput | CardUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: CardScalarWhereInput | CardScalarWhereInput[]
+  }
+
+  export type CardAssignmentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CardAssignmentCreateWithoutUserInput, CardAssignmentUncheckedCreateWithoutUserInput> | CardAssignmentCreateWithoutUserInput[] | CardAssignmentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutUserInput | CardAssignmentCreateOrConnectWithoutUserInput[]
+    upsert?: CardAssignmentUpsertWithWhereUniqueWithoutUserInput | CardAssignmentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CardAssignmentCreateManyUserInputEnvelope
+    set?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    disconnect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    delete?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    update?: CardAssignmentUpdateWithWhereUniqueWithoutUserInput | CardAssignmentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CardAssignmentUpdateManyWithWhereWithoutUserInput | CardAssignmentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CardAssignmentScalarWhereInput | CardAssignmentScalarWhereInput[]
   }
 
   export type UserHasBoardCreateNestedManyWithoutBoardInput = {
@@ -12425,12 +15367,62 @@ export namespace Prisma {
     connect?: BoardWhereUniqueInput
   }
 
+  export type CardHasTagCreateNestedManyWithoutTagInput = {
+    create?: XOR<CardHasTagCreateWithoutTagInput, CardHasTagUncheckedCreateWithoutTagInput> | CardHasTagCreateWithoutTagInput[] | CardHasTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutTagInput | CardHasTagCreateOrConnectWithoutTagInput[]
+    createMany?: CardHasTagCreateManyTagInputEnvelope
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+  }
+
+  export type CardHasTagUncheckedCreateNestedManyWithoutTagInput = {
+    create?: XOR<CardHasTagCreateWithoutTagInput, CardHasTagUncheckedCreateWithoutTagInput> | CardHasTagCreateWithoutTagInput[] | CardHasTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutTagInput | CardHasTagCreateOrConnectWithoutTagInput[]
+    createMany?: CardHasTagCreateManyTagInputEnvelope
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type BoardUpdateOneRequiredWithoutTagNestedInput = {
     create?: XOR<BoardCreateWithoutTagInput, BoardUncheckedCreateWithoutTagInput>
     connectOrCreate?: BoardCreateOrConnectWithoutTagInput
     upsert?: BoardUpsertWithoutTagInput
     connect?: BoardWhereUniqueInput
     update?: XOR<XOR<BoardUpdateToOneWithWhereWithoutTagInput, BoardUpdateWithoutTagInput>, BoardUncheckedUpdateWithoutTagInput>
+  }
+
+  export type CardHasTagUpdateManyWithoutTagNestedInput = {
+    create?: XOR<CardHasTagCreateWithoutTagInput, CardHasTagUncheckedCreateWithoutTagInput> | CardHasTagCreateWithoutTagInput[] | CardHasTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutTagInput | CardHasTagCreateOrConnectWithoutTagInput[]
+    upsert?: CardHasTagUpsertWithWhereUniqueWithoutTagInput | CardHasTagUpsertWithWhereUniqueWithoutTagInput[]
+    createMany?: CardHasTagCreateManyTagInputEnvelope
+    set?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    disconnect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    delete?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    update?: CardHasTagUpdateWithWhereUniqueWithoutTagInput | CardHasTagUpdateWithWhereUniqueWithoutTagInput[]
+    updateMany?: CardHasTagUpdateManyWithWhereWithoutTagInput | CardHasTagUpdateManyWithWhereWithoutTagInput[]
+    deleteMany?: CardHasTagScalarWhereInput | CardHasTagScalarWhereInput[]
+  }
+
+  export type CardHasTagUncheckedUpdateManyWithoutTagNestedInput = {
+    create?: XOR<CardHasTagCreateWithoutTagInput, CardHasTagUncheckedCreateWithoutTagInput> | CardHasTagCreateWithoutTagInput[] | CardHasTagUncheckedCreateWithoutTagInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutTagInput | CardHasTagCreateOrConnectWithoutTagInput[]
+    upsert?: CardHasTagUpsertWithWhereUniqueWithoutTagInput | CardHasTagUpsertWithWhereUniqueWithoutTagInput[]
+    createMany?: CardHasTagCreateManyTagInputEnvelope
+    set?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    disconnect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    delete?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    update?: CardHasTagUpdateWithWhereUniqueWithoutTagInput | CardHasTagUpdateWithWhereUniqueWithoutTagInput[]
+    updateMany?: CardHasTagUpdateManyWithWhereWithoutTagInput | CardHasTagUpdateManyWithWhereWithoutTagInput[]
+    deleteMany?: CardHasTagScalarWhereInput | CardHasTagScalarWhereInput[]
   }
 
   export type ListCreateNestedManyWithoutCardInput = {
@@ -12440,16 +15432,30 @@ export namespace Prisma {
     connect?: ListWhereUniqueInput | ListWhereUniqueInput[]
   }
 
-  export type UserCreateNestedManyWithoutCardInput = {
-    create?: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput> | UserCreateWithoutCardInput[] | UserUncheckedCreateWithoutCardInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCardInput | UserCreateOrConnectWithoutCardInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  export type UserCreateNestedOneWithoutCardInput = {
+    create?: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCardInput
+    connect?: UserWhereUniqueInput
   }
 
   export type ColumnCreateNestedOneWithoutCardInput = {
     create?: XOR<ColumnCreateWithoutCardInput, ColumnUncheckedCreateWithoutCardInput>
     connectOrCreate?: ColumnCreateOrConnectWithoutCardInput
     connect?: ColumnWhereUniqueInput
+  }
+
+  export type CardAssignmentCreateNestedManyWithoutCardInput = {
+    create?: XOR<CardAssignmentCreateWithoutCardInput, CardAssignmentUncheckedCreateWithoutCardInput> | CardAssignmentCreateWithoutCardInput[] | CardAssignmentUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutCardInput | CardAssignmentCreateOrConnectWithoutCardInput[]
+    createMany?: CardAssignmentCreateManyCardInputEnvelope
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+  }
+
+  export type CardHasTagCreateNestedManyWithoutCardInput = {
+    create?: XOR<CardHasTagCreateWithoutCardInput, CardHasTagUncheckedCreateWithoutCardInput> | CardHasTagCreateWithoutCardInput[] | CardHasTagUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutCardInput | CardHasTagCreateOrConnectWithoutCardInput[]
+    createMany?: CardHasTagCreateManyCardInputEnvelope
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
   }
 
   export type ListUncheckedCreateNestedManyWithoutCardInput = {
@@ -12459,10 +15465,18 @@ export namespace Prisma {
     connect?: ListWhereUniqueInput | ListWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutCardInput = {
-    create?: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput> | UserCreateWithoutCardInput[] | UserUncheckedCreateWithoutCardInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCardInput | UserCreateOrConnectWithoutCardInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  export type CardAssignmentUncheckedCreateNestedManyWithoutCardInput = {
+    create?: XOR<CardAssignmentCreateWithoutCardInput, CardAssignmentUncheckedCreateWithoutCardInput> | CardAssignmentCreateWithoutCardInput[] | CardAssignmentUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutCardInput | CardAssignmentCreateOrConnectWithoutCardInput[]
+    createMany?: CardAssignmentCreateManyCardInputEnvelope
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+  }
+
+  export type CardHasTagUncheckedCreateNestedManyWithoutCardInput = {
+    create?: XOR<CardHasTagCreateWithoutCardInput, CardHasTagUncheckedCreateWithoutCardInput> | CardHasTagCreateWithoutCardInput[] | CardHasTagUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutCardInput | CardHasTagCreateOrConnectWithoutCardInput[]
+    createMany?: CardHasTagCreateManyCardInputEnvelope
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -12483,17 +15497,14 @@ export namespace Prisma {
     deleteMany?: ListScalarWhereInput | ListScalarWhereInput[]
   }
 
-  export type UserUpdateManyWithoutCardNestedInput = {
-    create?: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput> | UserCreateWithoutCardInput[] | UserUncheckedCreateWithoutCardInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCardInput | UserCreateOrConnectWithoutCardInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutCardInput | UserUpsertWithWhereUniqueWithoutCardInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutCardInput | UserUpdateWithWhereUniqueWithoutCardInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutCardInput | UserUpdateManyWithWhereWithoutCardInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type UserUpdateOneWithoutCardNestedInput = {
+    create?: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCardInput
+    upsert?: UserUpsertWithoutCardInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCardInput, UserUpdateWithoutCardInput>, UserUncheckedUpdateWithoutCardInput>
   }
 
   export type ColumnUpdateOneRequiredWithoutCardNestedInput = {
@@ -12502,6 +15513,34 @@ export namespace Prisma {
     upsert?: ColumnUpsertWithoutCardInput
     connect?: ColumnWhereUniqueInput
     update?: XOR<XOR<ColumnUpdateToOneWithWhereWithoutCardInput, ColumnUpdateWithoutCardInput>, ColumnUncheckedUpdateWithoutCardInput>
+  }
+
+  export type CardAssignmentUpdateManyWithoutCardNestedInput = {
+    create?: XOR<CardAssignmentCreateWithoutCardInput, CardAssignmentUncheckedCreateWithoutCardInput> | CardAssignmentCreateWithoutCardInput[] | CardAssignmentUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutCardInput | CardAssignmentCreateOrConnectWithoutCardInput[]
+    upsert?: CardAssignmentUpsertWithWhereUniqueWithoutCardInput | CardAssignmentUpsertWithWhereUniqueWithoutCardInput[]
+    createMany?: CardAssignmentCreateManyCardInputEnvelope
+    set?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    disconnect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    delete?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    update?: CardAssignmentUpdateWithWhereUniqueWithoutCardInput | CardAssignmentUpdateWithWhereUniqueWithoutCardInput[]
+    updateMany?: CardAssignmentUpdateManyWithWhereWithoutCardInput | CardAssignmentUpdateManyWithWhereWithoutCardInput[]
+    deleteMany?: CardAssignmentScalarWhereInput | CardAssignmentScalarWhereInput[]
+  }
+
+  export type CardHasTagUpdateManyWithoutCardNestedInput = {
+    create?: XOR<CardHasTagCreateWithoutCardInput, CardHasTagUncheckedCreateWithoutCardInput> | CardHasTagCreateWithoutCardInput[] | CardHasTagUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutCardInput | CardHasTagCreateOrConnectWithoutCardInput[]
+    upsert?: CardHasTagUpsertWithWhereUniqueWithoutCardInput | CardHasTagUpsertWithWhereUniqueWithoutCardInput[]
+    createMany?: CardHasTagCreateManyCardInputEnvelope
+    set?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    disconnect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    delete?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    update?: CardHasTagUpdateWithWhereUniqueWithoutCardInput | CardHasTagUpdateWithWhereUniqueWithoutCardInput[]
+    updateMany?: CardHasTagUpdateManyWithWhereWithoutCardInput | CardHasTagUpdateManyWithWhereWithoutCardInput[]
+    deleteMany?: CardHasTagScalarWhereInput | CardHasTagScalarWhereInput[]
   }
 
   export type ListUncheckedUpdateManyWithoutCardNestedInput = {
@@ -12518,17 +15557,32 @@ export namespace Prisma {
     deleteMany?: ListScalarWhereInput | ListScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutCardNestedInput = {
-    create?: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput> | UserCreateWithoutCardInput[] | UserUncheckedCreateWithoutCardInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCardInput | UserCreateOrConnectWithoutCardInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutCardInput | UserUpsertWithWhereUniqueWithoutCardInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutCardInput | UserUpdateWithWhereUniqueWithoutCardInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutCardInput | UserUpdateManyWithWhereWithoutCardInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type CardAssignmentUncheckedUpdateManyWithoutCardNestedInput = {
+    create?: XOR<CardAssignmentCreateWithoutCardInput, CardAssignmentUncheckedCreateWithoutCardInput> | CardAssignmentCreateWithoutCardInput[] | CardAssignmentUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardAssignmentCreateOrConnectWithoutCardInput | CardAssignmentCreateOrConnectWithoutCardInput[]
+    upsert?: CardAssignmentUpsertWithWhereUniqueWithoutCardInput | CardAssignmentUpsertWithWhereUniqueWithoutCardInput[]
+    createMany?: CardAssignmentCreateManyCardInputEnvelope
+    set?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    disconnect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    delete?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    connect?: CardAssignmentWhereUniqueInput | CardAssignmentWhereUniqueInput[]
+    update?: CardAssignmentUpdateWithWhereUniqueWithoutCardInput | CardAssignmentUpdateWithWhereUniqueWithoutCardInput[]
+    updateMany?: CardAssignmentUpdateManyWithWhereWithoutCardInput | CardAssignmentUpdateManyWithWhereWithoutCardInput[]
+    deleteMany?: CardAssignmentScalarWhereInput | CardAssignmentScalarWhereInput[]
+  }
+
+  export type CardHasTagUncheckedUpdateManyWithoutCardNestedInput = {
+    create?: XOR<CardHasTagCreateWithoutCardInput, CardHasTagUncheckedCreateWithoutCardInput> | CardHasTagCreateWithoutCardInput[] | CardHasTagUncheckedCreateWithoutCardInput[]
+    connectOrCreate?: CardHasTagCreateOrConnectWithoutCardInput | CardHasTagCreateOrConnectWithoutCardInput[]
+    upsert?: CardHasTagUpsertWithWhereUniqueWithoutCardInput | CardHasTagUpsertWithWhereUniqueWithoutCardInput[]
+    createMany?: CardHasTagCreateManyCardInputEnvelope
+    set?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    disconnect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    delete?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    connect?: CardHasTagWhereUniqueInput | CardHasTagWhereUniqueInput[]
+    update?: CardHasTagUpdateWithWhereUniqueWithoutCardInput | CardHasTagUpdateWithWhereUniqueWithoutCardInput[]
+    updateMany?: CardHasTagUpdateManyWithWhereWithoutCardInput | CardHasTagUpdateManyWithWhereWithoutCardInput[]
+    deleteMany?: CardHasTagScalarWhereInput | CardHasTagScalarWhereInput[]
   }
 
   export type CardCreateNestedOneWithoutListInput = {
@@ -12661,6 +15715,62 @@ export namespace Prisma {
     deleteMany?: CardScalarWhereInput | CardScalarWhereInput[]
   }
 
+  export type CardCreateNestedOneWithoutCardAssignmentInput = {
+    create?: XOR<CardCreateWithoutCardAssignmentInput, CardUncheckedCreateWithoutCardAssignmentInput>
+    connectOrCreate?: CardCreateOrConnectWithoutCardAssignmentInput
+    connect?: CardWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCardAssignmentInput = {
+    create?: XOR<UserCreateWithoutCardAssignmentInput, UserUncheckedCreateWithoutCardAssignmentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCardAssignmentInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CardUpdateOneRequiredWithoutCardAssignmentNestedInput = {
+    create?: XOR<CardCreateWithoutCardAssignmentInput, CardUncheckedCreateWithoutCardAssignmentInput>
+    connectOrCreate?: CardCreateOrConnectWithoutCardAssignmentInput
+    upsert?: CardUpsertWithoutCardAssignmentInput
+    connect?: CardWhereUniqueInput
+    update?: XOR<XOR<CardUpdateToOneWithWhereWithoutCardAssignmentInput, CardUpdateWithoutCardAssignmentInput>, CardUncheckedUpdateWithoutCardAssignmentInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCardAssignmentNestedInput = {
+    create?: XOR<UserCreateWithoutCardAssignmentInput, UserUncheckedCreateWithoutCardAssignmentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCardAssignmentInput
+    upsert?: UserUpsertWithoutCardAssignmentInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCardAssignmentInput, UserUpdateWithoutCardAssignmentInput>, UserUncheckedUpdateWithoutCardAssignmentInput>
+  }
+
+  export type CardCreateNestedOneWithoutCardHasTagInput = {
+    create?: XOR<CardCreateWithoutCardHasTagInput, CardUncheckedCreateWithoutCardHasTagInput>
+    connectOrCreate?: CardCreateOrConnectWithoutCardHasTagInput
+    connect?: CardWhereUniqueInput
+  }
+
+  export type TagCreateNestedOneWithoutCardHasTagInput = {
+    create?: XOR<TagCreateWithoutCardHasTagInput, TagUncheckedCreateWithoutCardHasTagInput>
+    connectOrCreate?: TagCreateOrConnectWithoutCardHasTagInput
+    connect?: TagWhereUniqueInput
+  }
+
+  export type CardUpdateOneRequiredWithoutCardHasTagNestedInput = {
+    create?: XOR<CardCreateWithoutCardHasTagInput, CardUncheckedCreateWithoutCardHasTagInput>
+    connectOrCreate?: CardCreateOrConnectWithoutCardHasTagInput
+    upsert?: CardUpsertWithoutCardHasTagInput
+    connect?: CardWhereUniqueInput
+    update?: XOR<XOR<CardUpdateToOneWithWhereWithoutCardHasTagInput, CardUpdateWithoutCardHasTagInput>, CardUncheckedUpdateWithoutCardHasTagInput>
+  }
+
+  export type TagUpdateOneRequiredWithoutCardHasTagNestedInput = {
+    create?: XOR<TagCreateWithoutCardHasTagInput, TagUncheckedCreateWithoutCardHasTagInput>
+    connectOrCreate?: TagCreateOrConnectWithoutCardHasTagInput
+    upsert?: TagUpsertWithoutCardHasTagInput
+    connect?: TagWhereUniqueInput
+    update?: XOR<XOR<TagUpdateToOneWithWhereWithoutCardHasTagInput, TagUpdateWithoutCardHasTagInput>, TagUncheckedUpdateWithoutCardHasTagInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -12730,6 +15840,44 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -12759,17 +15907,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -12806,34 +15943,60 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CardCreateWithoutUsersInput = {
-    status: string
+  export type CardCreateWithoutCreatorInput = {
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
-    tags: string
+    color: string
     List?: ListCreateNestedManyWithoutCardInput
     column: ColumnCreateNestedOneWithoutCardInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagCreateNestedManyWithoutCardInput
   }
 
-  export type CardUncheckedCreateWithoutUsersInput = {
+  export type CardUncheckedCreateWithoutCreatorInput = {
     id?: number
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
     columnId: number
-    tags: string
+    color: string
     List?: ListUncheckedCreateNestedManyWithoutCardInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutCardInput
   }
 
-  export type CardCreateOrConnectWithoutUsersInput = {
+  export type CardCreateOrConnectWithoutCreatorInput = {
     where: CardWhereUniqueInput
-    create: XOR<CardCreateWithoutUsersInput, CardUncheckedCreateWithoutUsersInput>
+    create: XOR<CardCreateWithoutCreatorInput, CardUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type CardCreateManyCreatorInputEnvelope = {
+    data: CardCreateManyCreatorInput | CardCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CardAssignmentCreateWithoutUserInput = {
+    card: CardCreateNestedOneWithoutCardAssignmentInput
+  }
+
+  export type CardAssignmentUncheckedCreateWithoutUserInput = {
+    id?: number
+    cardId: number
+  }
+
+  export type CardAssignmentCreateOrConnectWithoutUserInput = {
+    where: CardAssignmentWhereUniqueInput
+    create: XOR<CardAssignmentCreateWithoutUserInput, CardAssignmentUncheckedCreateWithoutUserInput>
+  }
+
+  export type CardAssignmentCreateManyUserInputEnvelope = {
+    data: CardAssignmentCreateManyUserInput | CardAssignmentCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserHasBoardUpsertWithWhereUniqueWithoutUserInput = {
@@ -12862,20 +16025,20 @@ export namespace Prisma {
     userId?: IntFilter<"UserHasBoard"> | number
   }
 
-  export type CardUpsertWithWhereUniqueWithoutUsersInput = {
+  export type CardUpsertWithWhereUniqueWithoutCreatorInput = {
     where: CardWhereUniqueInput
-    update: XOR<CardUpdateWithoutUsersInput, CardUncheckedUpdateWithoutUsersInput>
-    create: XOR<CardCreateWithoutUsersInput, CardUncheckedCreateWithoutUsersInput>
+    update: XOR<CardUpdateWithoutCreatorInput, CardUncheckedUpdateWithoutCreatorInput>
+    create: XOR<CardCreateWithoutCreatorInput, CardUncheckedCreateWithoutCreatorInput>
   }
 
-  export type CardUpdateWithWhereUniqueWithoutUsersInput = {
+  export type CardUpdateWithWhereUniqueWithoutCreatorInput = {
     where: CardWhereUniqueInput
-    data: XOR<CardUpdateWithoutUsersInput, CardUncheckedUpdateWithoutUsersInput>
+    data: XOR<CardUpdateWithoutCreatorInput, CardUncheckedUpdateWithoutCreatorInput>
   }
 
-  export type CardUpdateManyWithWhereWithoutUsersInput = {
+  export type CardUpdateManyWithWhereWithoutCreatorInput = {
     where: CardScalarWhereInput
-    data: XOR<CardUpdateManyMutationInput, CardUncheckedUpdateManyWithoutUsersInput>
+    data: XOR<CardUpdateManyMutationInput, CardUncheckedUpdateManyWithoutCreatorInput>
   }
 
   export type CardScalarWhereInput = {
@@ -12883,14 +16046,39 @@ export namespace Prisma {
     OR?: CardScalarWhereInput[]
     NOT?: CardScalarWhereInput | CardScalarWhereInput[]
     id?: IntFilter<"Card"> | number
-    status?: StringFilter<"Card"> | string
+    status?: StringNullableFilter<"Card"> | string | null
     title?: StringFilter<"Card"> | string
-    content?: StringFilter<"Card"> | string
+    content?: StringNullableFilter<"Card"> | string | null
     startDate?: StringNullableFilter<"Card"> | string | null
     endDate?: StringNullableFilter<"Card"> | string | null
-    creator?: IntFilter<"Card"> | number
+    creatorId?: IntNullableFilter<"Card"> | number | null
     columnId?: IntFilter<"Card"> | number
-    tags?: StringFilter<"Card"> | string
+    color?: StringFilter<"Card"> | string
+  }
+
+  export type CardAssignmentUpsertWithWhereUniqueWithoutUserInput = {
+    where: CardAssignmentWhereUniqueInput
+    update: XOR<CardAssignmentUpdateWithoutUserInput, CardAssignmentUncheckedUpdateWithoutUserInput>
+    create: XOR<CardAssignmentCreateWithoutUserInput, CardAssignmentUncheckedCreateWithoutUserInput>
+  }
+
+  export type CardAssignmentUpdateWithWhereUniqueWithoutUserInput = {
+    where: CardAssignmentWhereUniqueInput
+    data: XOR<CardAssignmentUpdateWithoutUserInput, CardAssignmentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CardAssignmentUpdateManyWithWhereWithoutUserInput = {
+    where: CardAssignmentScalarWhereInput
+    data: XOR<CardAssignmentUpdateManyMutationInput, CardAssignmentUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CardAssignmentScalarWhereInput = {
+    AND?: CardAssignmentScalarWhereInput | CardAssignmentScalarWhereInput[]
+    OR?: CardAssignmentScalarWhereInput[]
+    NOT?: CardAssignmentScalarWhereInput | CardAssignmentScalarWhereInput[]
+    id?: IntFilter<"CardAssignment"> | number
+    cardId?: IntFilter<"CardAssignment"> | number
+    userId?: IntFilter<"CardAssignment"> | number
   }
 
   export type UserHasBoardCreateWithoutBoardInput = {
@@ -12917,12 +16105,16 @@ export namespace Prisma {
   export type TagCreateWithoutBoardInput = {
     name: string
     color: string
+    cardId?: number | null
+    CardHasTag?: CardHasTagCreateNestedManyWithoutTagInput
   }
 
   export type TagUncheckedCreateWithoutBoardInput = {
     id?: number
     name: string
     color: string
+    cardId?: number | null
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutTagInput
   }
 
   export type TagCreateOrConnectWithoutBoardInput = {
@@ -12998,6 +16190,7 @@ export namespace Prisma {
     name?: StringFilter<"Tag"> | string
     boardId?: IntFilter<"Tag"> | number
     color?: StringFilter<"Tag"> | string
+    cardId?: IntNullableFilter<"Tag"> | number | null
   }
 
   export type ColumnUpsertWithWhereUniqueWithoutBoardInput = {
@@ -13052,7 +16245,9 @@ export namespace Prisma {
     email: string
     username: string
     password: string
-    Card?: CardCreateNestedManyWithoutUsersInput
+    pictureUrl: string
+    Card?: CardCreateNestedManyWithoutCreatorInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserHasBoardInput = {
@@ -13060,7 +16255,9 @@ export namespace Prisma {
     email: string
     username: string
     password: string
-    Card?: CardUncheckedCreateNestedManyWithoutUsersInput
+    pictureUrl: string
+    Card?: CardUncheckedCreateNestedManyWithoutCreatorInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserHasBoardInput = {
@@ -13111,7 +16308,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Card?: CardUpdateManyWithoutUsersNestedInput
+    pictureUrl?: StringFieldUpdateOperationsInput | string
+    Card?: CardUpdateManyWithoutCreatorNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserHasBoardInput = {
@@ -13119,7 +16318,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Card?: CardUncheckedUpdateManyWithoutUsersNestedInput
+    pictureUrl?: StringFieldUpdateOperationsInput | string
+    Card?: CardUncheckedUpdateManyWithoutCreatorNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BoardCreateWithoutTagInput = {
@@ -13142,6 +16343,25 @@ export namespace Prisma {
   export type BoardCreateOrConnectWithoutTagInput = {
     where: BoardWhereUniqueInput
     create: XOR<BoardCreateWithoutTagInput, BoardUncheckedCreateWithoutTagInput>
+  }
+
+  export type CardHasTagCreateWithoutTagInput = {
+    card: CardCreateNestedOneWithoutCardHasTagInput
+  }
+
+  export type CardHasTagUncheckedCreateWithoutTagInput = {
+    id?: number
+    cardId: number
+  }
+
+  export type CardHasTagCreateOrConnectWithoutTagInput = {
+    where: CardHasTagWhereUniqueInput
+    create: XOR<CardHasTagCreateWithoutTagInput, CardHasTagUncheckedCreateWithoutTagInput>
+  }
+
+  export type CardHasTagCreateManyTagInputEnvelope = {
+    data: CardHasTagCreateManyTagInput | CardHasTagCreateManyTagInput[]
+    skipDuplicates?: boolean
   }
 
   export type BoardUpsertWithoutTagInput = {
@@ -13172,6 +16392,31 @@ export namespace Prisma {
     Column?: ColumnUncheckedUpdateManyWithoutBoardNestedInput
   }
 
+  export type CardHasTagUpsertWithWhereUniqueWithoutTagInput = {
+    where: CardHasTagWhereUniqueInput
+    update: XOR<CardHasTagUpdateWithoutTagInput, CardHasTagUncheckedUpdateWithoutTagInput>
+    create: XOR<CardHasTagCreateWithoutTagInput, CardHasTagUncheckedCreateWithoutTagInput>
+  }
+
+  export type CardHasTagUpdateWithWhereUniqueWithoutTagInput = {
+    where: CardHasTagWhereUniqueInput
+    data: XOR<CardHasTagUpdateWithoutTagInput, CardHasTagUncheckedUpdateWithoutTagInput>
+  }
+
+  export type CardHasTagUpdateManyWithWhereWithoutTagInput = {
+    where: CardHasTagScalarWhereInput
+    data: XOR<CardHasTagUpdateManyMutationInput, CardHasTagUncheckedUpdateManyWithoutTagInput>
+  }
+
+  export type CardHasTagScalarWhereInput = {
+    AND?: CardHasTagScalarWhereInput | CardHasTagScalarWhereInput[]
+    OR?: CardHasTagScalarWhereInput[]
+    NOT?: CardHasTagScalarWhereInput | CardHasTagScalarWhereInput[]
+    id?: IntFilter<"CardHasTag"> | number
+    cardId?: IntFilter<"CardHasTag"> | number
+    tagId?: IntFilter<"CardHasTag"> | number
+  }
+
   export type ListCreateWithoutCardInput = {
     title: string
     ListItem?: ListItemCreateNestedManyWithoutListInput
@@ -13197,7 +16442,9 @@ export namespace Prisma {
     email: string
     username: string
     password: string
+    pictureUrl: string
     UserHasBoard?: UserHasBoardCreateNestedManyWithoutUserInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCardInput = {
@@ -13205,7 +16452,9 @@ export namespace Prisma {
     email: string
     username: string
     password: string
+    pictureUrl: string
     UserHasBoard?: UserHasBoardUncheckedCreateNestedManyWithoutUserInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCardInput = {
@@ -13229,6 +16478,44 @@ export namespace Prisma {
   export type ColumnCreateOrConnectWithoutCardInput = {
     where: ColumnWhereUniqueInput
     create: XOR<ColumnCreateWithoutCardInput, ColumnUncheckedCreateWithoutCardInput>
+  }
+
+  export type CardAssignmentCreateWithoutCardInput = {
+    user: UserCreateNestedOneWithoutCardAssignmentInput
+  }
+
+  export type CardAssignmentUncheckedCreateWithoutCardInput = {
+    id?: number
+    userId: number
+  }
+
+  export type CardAssignmentCreateOrConnectWithoutCardInput = {
+    where: CardAssignmentWhereUniqueInput
+    create: XOR<CardAssignmentCreateWithoutCardInput, CardAssignmentUncheckedCreateWithoutCardInput>
+  }
+
+  export type CardAssignmentCreateManyCardInputEnvelope = {
+    data: CardAssignmentCreateManyCardInput | CardAssignmentCreateManyCardInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CardHasTagCreateWithoutCardInput = {
+    tag: TagCreateNestedOneWithoutCardHasTagInput
+  }
+
+  export type CardHasTagUncheckedCreateWithoutCardInput = {
+    id?: number
+    tagId: number
+  }
+
+  export type CardHasTagCreateOrConnectWithoutCardInput = {
+    where: CardHasTagWhereUniqueInput
+    create: XOR<CardHasTagCreateWithoutCardInput, CardHasTagUncheckedCreateWithoutCardInput>
+  }
+
+  export type CardHasTagCreateManyCardInputEnvelope = {
+    data: CardHasTagCreateManyCardInput | CardHasTagCreateManyCardInput[]
+    skipDuplicates?: boolean
   }
 
   export type ListUpsertWithWhereUniqueWithoutCardInput = {
@@ -13256,30 +16543,34 @@ export namespace Prisma {
     cardId?: IntFilter<"List"> | number
   }
 
-  export type UserUpsertWithWhereUniqueWithoutCardInput = {
-    where: UserWhereUniqueInput
+  export type UserUpsertWithoutCardInput = {
     update: XOR<UserUpdateWithoutCardInput, UserUncheckedUpdateWithoutCardInput>
     create: XOR<UserCreateWithoutCardInput, UserUncheckedCreateWithoutCardInput>
+    where?: UserWhereInput
   }
 
-  export type UserUpdateWithWhereUniqueWithoutCardInput = {
-    where: UserWhereUniqueInput
+  export type UserUpdateToOneWithWhereWithoutCardInput = {
+    where?: UserWhereInput
     data: XOR<UserUpdateWithoutCardInput, UserUncheckedUpdateWithoutCardInput>
   }
 
-  export type UserUpdateManyWithWhereWithoutCardInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCardInput>
+  export type UserUpdateWithoutCardInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
+    UserHasBoard?: UserHasBoardUpdateManyWithoutUserNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutUserNestedInput
   }
 
-  export type UserScalarWhereInput = {
-    AND?: UserScalarWhereInput | UserScalarWhereInput[]
-    OR?: UserScalarWhereInput[]
-    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    username?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+  export type UserUncheckedUpdateWithoutCardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
+    UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutUserNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ColumnUpsertWithoutCardInput = {
@@ -13306,29 +16597,63 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
   }
 
+  export type CardAssignmentUpsertWithWhereUniqueWithoutCardInput = {
+    where: CardAssignmentWhereUniqueInput
+    update: XOR<CardAssignmentUpdateWithoutCardInput, CardAssignmentUncheckedUpdateWithoutCardInput>
+    create: XOR<CardAssignmentCreateWithoutCardInput, CardAssignmentUncheckedCreateWithoutCardInput>
+  }
+
+  export type CardAssignmentUpdateWithWhereUniqueWithoutCardInput = {
+    where: CardAssignmentWhereUniqueInput
+    data: XOR<CardAssignmentUpdateWithoutCardInput, CardAssignmentUncheckedUpdateWithoutCardInput>
+  }
+
+  export type CardAssignmentUpdateManyWithWhereWithoutCardInput = {
+    where: CardAssignmentScalarWhereInput
+    data: XOR<CardAssignmentUpdateManyMutationInput, CardAssignmentUncheckedUpdateManyWithoutCardInput>
+  }
+
+  export type CardHasTagUpsertWithWhereUniqueWithoutCardInput = {
+    where: CardHasTagWhereUniqueInput
+    update: XOR<CardHasTagUpdateWithoutCardInput, CardHasTagUncheckedUpdateWithoutCardInput>
+    create: XOR<CardHasTagCreateWithoutCardInput, CardHasTagUncheckedCreateWithoutCardInput>
+  }
+
+  export type CardHasTagUpdateWithWhereUniqueWithoutCardInput = {
+    where: CardHasTagWhereUniqueInput
+    data: XOR<CardHasTagUpdateWithoutCardInput, CardHasTagUncheckedUpdateWithoutCardInput>
+  }
+
+  export type CardHasTagUpdateManyWithWhereWithoutCardInput = {
+    where: CardHasTagScalarWhereInput
+    data: XOR<CardHasTagUpdateManyMutationInput, CardHasTagUncheckedUpdateManyWithoutCardInput>
+  }
+
   export type CardCreateWithoutListInput = {
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
-    tags: string
-    users?: UserCreateNestedManyWithoutCardInput
+    color: string
+    creator?: UserCreateNestedOneWithoutCardInput
     column: ColumnCreateNestedOneWithoutCardInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagCreateNestedManyWithoutCardInput
   }
 
   export type CardUncheckedCreateWithoutListInput = {
     id?: number
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
+    creatorId?: number | null
     columnId: number
-    tags: string
-    users?: UserUncheckedCreateNestedManyWithoutCardInput
+    color: string
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutCardInput
   }
 
   export type CardCreateOrConnectWithoutListInput = {
@@ -13369,28 +16694,30 @@ export namespace Prisma {
   }
 
   export type CardUpdateWithoutListInput = {
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
-    users?: UserUpdateManyWithoutCardNestedInput
+    color?: StringFieldUpdateOperationsInput | string
+    creator?: UserUpdateOneWithoutCardNestedInput
     column?: ColumnUpdateOneRequiredWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUpdateManyWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateWithoutListInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     columnId?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
-    users?: UserUncheckedUpdateManyWithoutCardNestedInput
+    color?: StringFieldUpdateOperationsInput | string
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutCardNestedInput
   }
 
   export type ListItemUpsertWithWhereUniqueWithoutListInput = {
@@ -13480,28 +16807,30 @@ export namespace Prisma {
   }
 
   export type CardCreateWithoutColumnInput = {
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
-    tags: string
+    color: string
     List?: ListCreateNestedManyWithoutCardInput
-    users?: UserCreateNestedManyWithoutCardInput
+    creator?: UserCreateNestedOneWithoutCardInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagCreateNestedManyWithoutCardInput
   }
 
   export type CardUncheckedCreateWithoutColumnInput = {
     id?: number
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
-    tags: string
+    creatorId?: number | null
+    color: string
     List?: ListUncheckedCreateNestedManyWithoutCardInput
-    users?: UserUncheckedCreateNestedManyWithoutCardInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutCardInput
   }
 
   export type CardCreateOrConnectWithoutColumnInput = {
@@ -13558,10 +16887,266 @@ export namespace Prisma {
     data: XOR<CardUpdateManyMutationInput, CardUncheckedUpdateManyWithoutColumnInput>
   }
 
+  export type CardCreateWithoutCardAssignmentInput = {
+    status?: string | null
+    title: string
+    content?: string | null
+    startDate?: string | null
+    endDate?: string | null
+    color: string
+    List?: ListCreateNestedManyWithoutCardInput
+    creator?: UserCreateNestedOneWithoutCardInput
+    column: ColumnCreateNestedOneWithoutCardInput
+    CardHasTag?: CardHasTagCreateNestedManyWithoutCardInput
+  }
+
+  export type CardUncheckedCreateWithoutCardAssignmentInput = {
+    id?: number
+    status?: string | null
+    title: string
+    content?: string | null
+    startDate?: string | null
+    endDate?: string | null
+    creatorId?: number | null
+    columnId: number
+    color: string
+    List?: ListUncheckedCreateNestedManyWithoutCardInput
+    CardHasTag?: CardHasTagUncheckedCreateNestedManyWithoutCardInput
+  }
+
+  export type CardCreateOrConnectWithoutCardAssignmentInput = {
+    where: CardWhereUniqueInput
+    create: XOR<CardCreateWithoutCardAssignmentInput, CardUncheckedCreateWithoutCardAssignmentInput>
+  }
+
+  export type UserCreateWithoutCardAssignmentInput = {
+    email: string
+    username: string
+    password: string
+    pictureUrl: string
+    UserHasBoard?: UserHasBoardCreateNestedManyWithoutUserInput
+    Card?: CardCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutCardAssignmentInput = {
+    id?: number
+    email: string
+    username: string
+    password: string
+    pictureUrl: string
+    UserHasBoard?: UserHasBoardUncheckedCreateNestedManyWithoutUserInput
+    Card?: CardUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutCardAssignmentInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCardAssignmentInput, UserUncheckedCreateWithoutCardAssignmentInput>
+  }
+
+  export type CardUpsertWithoutCardAssignmentInput = {
+    update: XOR<CardUpdateWithoutCardAssignmentInput, CardUncheckedUpdateWithoutCardAssignmentInput>
+    create: XOR<CardCreateWithoutCardAssignmentInput, CardUncheckedCreateWithoutCardAssignmentInput>
+    where?: CardWhereInput
+  }
+
+  export type CardUpdateToOneWithWhereWithoutCardAssignmentInput = {
+    where?: CardWhereInput
+    data: XOR<CardUpdateWithoutCardAssignmentInput, CardUncheckedUpdateWithoutCardAssignmentInput>
+  }
+
+  export type CardUpdateWithoutCardAssignmentInput = {
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: StringFieldUpdateOperationsInput | string
+    List?: ListUpdateManyWithoutCardNestedInput
+    creator?: UserUpdateOneWithoutCardNestedInput
+    column?: ColumnUpdateOneRequiredWithoutCardNestedInput
+    CardHasTag?: CardHasTagUpdateManyWithoutCardNestedInput
+  }
+
+  export type CardUncheckedUpdateWithoutCardAssignmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
+    columnId?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    List?: ListUncheckedUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutCardNestedInput
+  }
+
+  export type UserUpsertWithoutCardAssignmentInput = {
+    update: XOR<UserUpdateWithoutCardAssignmentInput, UserUncheckedUpdateWithoutCardAssignmentInput>
+    create: XOR<UserCreateWithoutCardAssignmentInput, UserUncheckedCreateWithoutCardAssignmentInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCardAssignmentInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCardAssignmentInput, UserUncheckedUpdateWithoutCardAssignmentInput>
+  }
+
+  export type UserUpdateWithoutCardAssignmentInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
+    UserHasBoard?: UserHasBoardUpdateManyWithoutUserNestedInput
+    Card?: CardUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCardAssignmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    pictureUrl?: StringFieldUpdateOperationsInput | string
+    UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutUserNestedInput
+    Card?: CardUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type CardCreateWithoutCardHasTagInput = {
+    status?: string | null
+    title: string
+    content?: string | null
+    startDate?: string | null
+    endDate?: string | null
+    color: string
+    List?: ListCreateNestedManyWithoutCardInput
+    creator?: UserCreateNestedOneWithoutCardInput
+    column: ColumnCreateNestedOneWithoutCardInput
+    CardAssignment?: CardAssignmentCreateNestedManyWithoutCardInput
+  }
+
+  export type CardUncheckedCreateWithoutCardHasTagInput = {
+    id?: number
+    status?: string | null
+    title: string
+    content?: string | null
+    startDate?: string | null
+    endDate?: string | null
+    creatorId?: number | null
+    columnId: number
+    color: string
+    List?: ListUncheckedCreateNestedManyWithoutCardInput
+    CardAssignment?: CardAssignmentUncheckedCreateNestedManyWithoutCardInput
+  }
+
+  export type CardCreateOrConnectWithoutCardHasTagInput = {
+    where: CardWhereUniqueInput
+    create: XOR<CardCreateWithoutCardHasTagInput, CardUncheckedCreateWithoutCardHasTagInput>
+  }
+
+  export type TagCreateWithoutCardHasTagInput = {
+    name: string
+    color: string
+    cardId?: number | null
+    board: BoardCreateNestedOneWithoutTagInput
+  }
+
+  export type TagUncheckedCreateWithoutCardHasTagInput = {
+    id?: number
+    name: string
+    boardId: number
+    color: string
+    cardId?: number | null
+  }
+
+  export type TagCreateOrConnectWithoutCardHasTagInput = {
+    where: TagWhereUniqueInput
+    create: XOR<TagCreateWithoutCardHasTagInput, TagUncheckedCreateWithoutCardHasTagInput>
+  }
+
+  export type CardUpsertWithoutCardHasTagInput = {
+    update: XOR<CardUpdateWithoutCardHasTagInput, CardUncheckedUpdateWithoutCardHasTagInput>
+    create: XOR<CardCreateWithoutCardHasTagInput, CardUncheckedCreateWithoutCardHasTagInput>
+    where?: CardWhereInput
+  }
+
+  export type CardUpdateToOneWithWhereWithoutCardHasTagInput = {
+    where?: CardWhereInput
+    data: XOR<CardUpdateWithoutCardHasTagInput, CardUncheckedUpdateWithoutCardHasTagInput>
+  }
+
+  export type CardUpdateWithoutCardHasTagInput = {
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    color?: StringFieldUpdateOperationsInput | string
+    List?: ListUpdateManyWithoutCardNestedInput
+    creator?: UserUpdateOneWithoutCardNestedInput
+    column?: ColumnUpdateOneRequiredWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutCardNestedInput
+  }
+
+  export type CardUncheckedUpdateWithoutCardHasTagInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: NullableStringFieldUpdateOperationsInput | string | null
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
+    columnId?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    List?: ListUncheckedUpdateManyWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutCardNestedInput
+  }
+
+  export type TagUpsertWithoutCardHasTagInput = {
+    update: XOR<TagUpdateWithoutCardHasTagInput, TagUncheckedUpdateWithoutCardHasTagInput>
+    create: XOR<TagCreateWithoutCardHasTagInput, TagUncheckedCreateWithoutCardHasTagInput>
+    where?: TagWhereInput
+  }
+
+  export type TagUpdateToOneWithWhereWithoutCardHasTagInput = {
+    where?: TagWhereInput
+    data: XOR<TagUpdateWithoutCardHasTagInput, TagUncheckedUpdateWithoutCardHasTagInput>
+  }
+
+  export type TagUpdateWithoutCardHasTagInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    board?: BoardUpdateOneRequiredWithoutTagNestedInput
+  }
+
+  export type TagUncheckedUpdateWithoutCardHasTagInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    boardId?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type UserHasBoardCreateManyUserInput = {
     id?: number
     role: string
     boardId: number
+  }
+
+  export type CardCreateManyCreatorInput = {
+    id?: number
+    status?: string | null
+    title: string
+    content?: string | null
+    startDate?: string | null
+    endDate?: string | null
+    columnId: number
+    color: string
+  }
+
+  export type CardAssignmentCreateManyUserInput = {
+    id?: number
+    cardId: number
   }
 
   export type UserHasBoardUpdateWithoutUserInput = {
@@ -13581,41 +17166,56 @@ export namespace Prisma {
     boardId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type CardUpdateWithoutUsersInput = {
-    status?: StringFieldUpdateOperationsInput | string
+  export type CardUpdateWithoutCreatorInput = {
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     List?: ListUpdateManyWithoutCardNestedInput
     column?: ColumnUpdateOneRequiredWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUpdateManyWithoutCardNestedInput
   }
 
-  export type CardUncheckedUpdateWithoutUsersInput = {
+  export type CardUncheckedUpdateWithoutCreatorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
     columnId?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     List?: ListUncheckedUpdateManyWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutCardNestedInput
   }
 
-  export type CardUncheckedUpdateManyWithoutUsersInput = {
+  export type CardUncheckedUpdateManyWithoutCreatorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
     columnId?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CardAssignmentUpdateWithoutUserInput = {
+    card?: CardUpdateOneRequiredWithoutCardAssignmentNestedInput
+  }
+
+  export type CardAssignmentUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardAssignmentUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserHasBoardCreateManyBoardInput = {
@@ -13628,6 +17228,7 @@ export namespace Prisma {
     id?: number
     name: string
     color: string
+    cardId?: number | null
   }
 
   export type ColumnCreateManyBoardInput = {
@@ -13656,18 +17257,23 @@ export namespace Prisma {
   export type TagUpdateWithoutBoardInput = {
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    CardHasTag?: CardHasTagUpdateManyWithoutTagNestedInput
   }
 
   export type TagUncheckedUpdateWithoutBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutTagNestedInput
   }
 
   export type TagUncheckedUpdateManyWithoutBoardInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ColumnUpdateWithoutBoardInput = {
@@ -13689,9 +17295,38 @@ export namespace Prisma {
     order?: IntFieldUpdateOperationsInput | number
   }
 
+  export type CardHasTagCreateManyTagInput = {
+    id?: number
+    cardId: number
+  }
+
+  export type CardHasTagUpdateWithoutTagInput = {
+    card?: CardUpdateOneRequiredWithoutCardHasTagNestedInput
+  }
+
+  export type CardHasTagUncheckedUpdateWithoutTagInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardHasTagUncheckedUpdateManyWithoutTagInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    cardId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type ListCreateManyCardInput = {
     id?: number
     title: string
+  }
+
+  export type CardAssignmentCreateManyCardInput = {
+    id?: number
+    userId: number
+  }
+
+  export type CardHasTagCreateManyCardInput = {
+    id?: number
+    tagId: number
   }
 
   export type ListUpdateWithoutCardInput = {
@@ -13710,26 +17345,32 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserUpdateWithoutCardInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    UserHasBoard?: UserHasBoardUpdateManyWithoutUserNestedInput
+  export type CardAssignmentUpdateWithoutCardInput = {
+    user?: UserUpdateOneRequiredWithoutCardAssignmentNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutCardInput = {
+  export type CardAssignmentUncheckedUpdateWithoutCardInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    UserHasBoard?: UserHasBoardUncheckedUpdateManyWithoutUserNestedInput
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserUncheckedUpdateManyWithoutCardInput = {
+  export type CardAssignmentUncheckedUpdateManyWithoutCardInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardHasTagUpdateWithoutCardInput = {
+    tag?: TagUpdateOneRequiredWithoutCardHasTagNestedInput
+  }
+
+  export type CardHasTagUncheckedUpdateWithoutCardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tagId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CardHasTagUncheckedUpdateManyWithoutCardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    tagId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ListItemCreateManyListInput = {
@@ -13757,49 +17398,51 @@ export namespace Prisma {
 
   export type CardCreateManyColumnInput = {
     id?: number
-    status: string
+    status?: string | null
     title: string
-    content: string
+    content?: string | null
     startDate?: string | null
     endDate?: string | null
-    creator: number
-    tags: string
+    creatorId?: number | null
+    color: string
   }
 
   export type CardUpdateWithoutColumnInput = {
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
     List?: ListUpdateManyWithoutCardNestedInput
-    users?: UserUpdateManyWithoutCardNestedInput
+    creator?: UserUpdateOneWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUpdateManyWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateWithoutColumnInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: StringFieldUpdateOperationsInput | string
     List?: ListUncheckedUpdateManyWithoutCardNestedInput
-    users?: UserUncheckedUpdateManyWithoutCardNestedInput
+    CardAssignment?: CardAssignmentUncheckedUpdateManyWithoutCardNestedInput
+    CardHasTag?: CardHasTagUncheckedUpdateManyWithoutCardNestedInput
   }
 
   export type CardUncheckedUpdateManyWithoutColumnInput = {
     id?: IntFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableStringFieldUpdateOperationsInput | string | null
     endDate?: NullableStringFieldUpdateOperationsInput | string | null
-    creator?: IntFieldUpdateOperationsInput | number
-    tags?: StringFieldUpdateOperationsInput | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
+    color?: StringFieldUpdateOperationsInput | string
   }
 
 
