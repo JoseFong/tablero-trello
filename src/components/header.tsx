@@ -2,18 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logouticon from "@/assets/icons8-salida-100.png";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@radix-ui/react-hover-card";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import SkeletonFong from "./skeleton";
 import ToolTip from "./tooltip";
 
-function Header() {
+function Header({ userInfo }: { userInfo: any }) {
   const [fecha, setFecha] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -75,7 +70,7 @@ function Header() {
   }, []);
 
   return (
-    <div className="w-screen absolute top-0 left-0 bg-zinc-800 p-5 shadow-xl flex flex-row gap-2 items-center">
+    <div className="w-screen absolute top-0 left-0 bg-zinc-800 px-5 py-3 shadow-xl flex flex-row gap-2 items-center">
       {loading ? (
         <>
           <div className="w-1/4 h-8">
@@ -87,6 +82,14 @@ function Header() {
         </>
       ) : (
         <>
+          <div
+            className="bg-red-500 h-12 w-12 rounded-full"
+            style={{
+              backgroundImage: `url(${userInfo.pictureUrl})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          ></div>
           {fecha}
           <ToolTip message="Cerrar Sesión">
             <button onClick={logout}>

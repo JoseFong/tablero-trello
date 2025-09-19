@@ -27,6 +27,7 @@ export async function createUser(data:any){
 
     return await prisma.user.create({
         data:{
+            pictureUrl: data.pictureUrl,
             username:data.username,
             email: data.email,
             password: hashed

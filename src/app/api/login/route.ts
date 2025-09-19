@@ -36,7 +36,7 @@ export async function POST(req:NextRequest){
             if(!valid){
                 return NextResponse.json({message:"Credenciales incorrectas"},{status:400})
             }else{
-                const token = jwt.sign({id:user.id,username:user.username,email:user.email},process.env.JWT_SECRET!)
+                const token = jwt.sign({id:user.id,username:user.username,email:user.email,pictureUrl:user.pictureUrl},process.env.JWT_SECRET!)
                         const cookieStore = cookies()
                         cookieStore.set("trellofonguserinfo",token)
             }

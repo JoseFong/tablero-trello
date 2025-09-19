@@ -36,8 +36,8 @@ function HomePageComp({ userinfo }: { userinfo: any }) {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-zinc-900 text-white p-5 pt-20">
-      <Header />
+    <div className="w-screen h-screen bg-zinc-900 text-white p-5 pt-24">
+      <Header userInfo={userinfo} />
       <h1 className="font-bold text-3xl">Bienvenido {userinfo.username}</h1>
       <h1 className="text-2xl mt-3 mb-2">Tus tableros</h1>
       <div className="flex flex-row gap-2 overflow-x-auto max-w-screen p-3">
