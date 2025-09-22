@@ -8,9 +8,11 @@ import plus from "@/assets/mas.png";
 function ColumnComponent({
   relations,
   c,
+  role,
 }: {
   relations: Relation[];
   c: Column;
+  role: string;
 }) {
   const [showAddColumn, setShowAddColumn] = useState(false);
 
@@ -38,7 +40,7 @@ function ColumnComponent({
         {c.name}
       </div>
       <div className="overflow-y-auto flex flex-col gap-2 overflow-x-hidden w-full">
-        {showAddColumn && (
+        {showAddColumn && role !== "Lector" && (
           <button className="border-2 border-dashed border-white opacity-60 hover:opacity-100 rounded-xl flex items-center justify-center">
             <Image src={plus} alt="Crear columna" className="w-8" />
           </button>

@@ -37,3 +37,15 @@ export async function deleteBoard(id:number){
     }
    })
 }
+
+export async function updateBoard(id:number,data:any){
+    await prisma.board.update({
+        where: {
+            id: id
+        },
+        data: {
+            name: data.name,
+            Color: data.color
+        }
+    })
+}
