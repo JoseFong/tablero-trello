@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Header from "../header";
-import Image from "next/image";
 import SkeletonFong from "../skeleton";
 import CreateBoard from "../Boards/createBoard";
 
@@ -61,6 +60,9 @@ function HomePageComp({ userinfo }: { userinfo: any }) {
             <CreateBoard reload={fetchGetBoardsFromUser} />
             {boards.map((b: any) => (
               <div
+                onClick={() => {
+                  router.push("/boards/" + b.board.id);
+                }}
                 style={{ backgroundColor: b.board.Color }}
                 className="relative flex-shrink-0 w-60 h-48 hover:scale-105 hover:opacity-60 transition-all hover:cursor-pointer"
               >

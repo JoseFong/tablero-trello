@@ -4,21 +4,21 @@ import React from "react";
 import jwt from "jsonwebtoken";
 import Board from "@/components/Boards/board";
 
-async function BoardPage() {
+function BoardPage() {
   let userInfo: any;
   try {
     const cookieStore = cookies();
     const cookie = cookieStore.get("trellofonguserinfo");
-    if (!cookie) redirect("/login");
+    if (!cookie) redirect("/");
     userInfo = jwt.verify(cookie.value, process.env.JWT_SECRET!);
-    if (!userInfo) redirect("/login");
+    if (!userInfo.id) redirect("/");
   } catch (e: any) {
-    redirect("/login");
+    redirect("/");
   }
 
   return (
     <div>
-      <Board />
+      <Board userInfo={userInfo} />
     </div>
   );
 }
