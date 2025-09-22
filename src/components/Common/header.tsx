@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import SkeletonFong from "./skeleton";
 import ToolTip from "./tooltip";
+import settings from "@/assets/settings.png";
+import AskForPassword from "../User/AskForPassword";
 
 function Header({ userInfo }: { userInfo: any }) {
   const [fecha, setFecha] = useState("");
@@ -92,10 +94,11 @@ function Header({ userInfo }: { userInfo: any }) {
           ></div>
           {fecha}
           <ToolTip message="Cerrar Sesión">
-            <button onClick={logout}>
+            <button onClick={logout} className="hover:opacity-60">
               <Image className="w-6" src={logouticon} alt="Cerrar Sesión" />
             </button>
           </ToolTip>
+          <AskForPassword />
         </>
       )}
     </div>
