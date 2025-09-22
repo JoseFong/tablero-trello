@@ -3,8 +3,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import Header from "../header";
-import SkeletonFong from "../skeleton";
+import Header from "../Common/header";
+import SkeletonFong from "../Common/skeleton";
 import CreateBoard from "../Boards/createBoard";
 
 function HomePageComp({ userinfo }: { userinfo: any }) {

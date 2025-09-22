@@ -1,5 +1,5 @@
 "use client";
-import ContextMenu from "@/components/ContextMenu";
+import ContextMenu from "@/components/Common/ContextMenu";
 import React, { useState } from "react";
 
 function Test() {

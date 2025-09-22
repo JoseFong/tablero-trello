@@ -1,5 +1,5 @@
 import React from "react";
-import ToolTip from "../tooltip";
+import ToolTip from "../Common/tooltip";
 import { Card, CardHasTag } from "@/lib/types";
 import Image from "next/image";
 import elipsis from "@/assets/icons8-elipsis-100.png";

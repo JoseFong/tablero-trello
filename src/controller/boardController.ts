@@ -31,5 +31,9 @@ export async function createBoard(data:any){
 }
 
 export async function deleteBoard(id:number){
-   
+   await prisma.board.delete({
+    where:{
+        id: id
+    }
+   })
 }

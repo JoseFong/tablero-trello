@@ -6,7 +6,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import tick from "@/assets/icons8-marca-de-verificación-24.png";
-import Modal from "@/components/modal";
+import Modal from "@/components/Common/modal";
 import edit from "@/assets/icons8-crear-nuevo-100.png";
 
 function Register() {

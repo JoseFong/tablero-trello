@@ -5,11 +5,12 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import Header from "../header";
+import Header from "../Common/header";
 import { Column, Relation } from "@/lib/types";
 import Image from "next/image";
 import plus from "@/assets/mas.png";
 import ColumnComponent from "./ColumnComponent";
+import DeleteBoard from "./DeleteBoard";
 
 function BoardComponent({ userInfo }: { userInfo: any }) {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -46,7 +47,10 @@ function BoardComponent({ userInfo }: { userInfo: any }) {
   return (
     <div className="w-screen h-screen bg-zinc-900 text-white p-5 pt-24 flex flex-col gap-5">
       <Header userInfo={userInfo} />
-      <h1 className="font-bold text-2xl">{board?.name}</h1>
+      <div className="flex flex-row gap-1 items-center">
+        <h1 className="font-bold text-2xl">{board?.name}</h1>
+        {board && <DeleteBoard board={board} />}
+      </div>
       <div className="flex flex-row h-[90%] gap-5">
         <div className="flex-grow overflow-x-auto flex flex-row gap-5">
           <div className="flex items-center justify-center border-4 border-white border-dashed h-14 w-14 shrink-0 rounded-xl hover:opacity-100 opacity-60 hover:cursor-pointer">

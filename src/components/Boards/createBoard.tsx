@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import plus from "@/assets/mas.png";
-import Modal from "../modal";
+import Modal from "../Common/modal";
 import { HexColorPicker } from "react-colorful";
 import toast from "react-hot-toast";
 import axios from "axios";
