@@ -172,7 +172,8 @@ exports.Prisma.ListItemScalarFieldEnum = {
   id: 'id',
   content: 'content',
   listId: 'listId',
-  status: 'status'
+  status: 'status',
+  order: 'order'
 };
 
 exports.Prisma.ColumnScalarFieldEnum = {

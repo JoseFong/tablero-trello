@@ -85,6 +85,7 @@ model ListItem {
   list    List    @relation(fields: [listId], references: [id], onDelete: Cascade)
   listId  Int
   status  Boolean
+  order   Int     @default(autoincrement())
 }
 
 model Column {
@@ -93,7 +94,7 @@ model Column {
   board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
   boardId Int
   Card    Card[]
-  order   Int
+  order   Int    @default(autoincrement())
 }
 
 model CardAssignment {

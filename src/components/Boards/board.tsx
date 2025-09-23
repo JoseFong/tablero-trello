@@ -9,10 +9,11 @@ import Header from "../Common/header";
 import { Column, Relation } from "@/lib/types";
 import Image from "next/image";
 import plus from "@/assets/mas.png";
-import ColumnComponent from "./ColumnComponent";
+import ColumnComponent from "../Columns/ColumnComponent";
 import DeleteBoard from "./DeleteBoard";
 import goBack from "@/assets/icons8-izquierda-2-100.png";
 import EditBoard from "./EditBoard";
+import CreateColumn from "../Columns/CreateColumn";
 
 function BoardComponent({ userInfo }: { userInfo: any }) {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -20,7 +21,7 @@ function BoardComponent({ userInfo }: { userInfo: any }) {
   const [relations, setRelations] = useState<Relation[]>([]);
   const [board, setBoard] = useState<Board>();
   const params = useParams();
-  const boardId = params.id;
+  const boardId = parseInt(params.id + "");
 
   const [role, setRole] = useState("Lector");
 
@@ -83,12 +84,15 @@ function BoardComponent({ userInfo }: { userInfo: any }) {
       <div className="flex flex-row h-[90%] gap-5">
         <div className="flex-grow overflow-x-auto flex flex-row gap-5">
           {role !== "Lector" && (
-            <div className="flex items-center justify-center border-4 border-white border-dashed h-14 w-14 shrink-0 rounded-xl hover:opacity-100 opacity-60 hover:cursor-pointer">
-              <Image src={plus} alt="Crear columna" className="w-5" />
-            </div>
+            <CreateColumn boardId={boardId} reload={fetchGetAllInfo} />
           )}
           {columns.map((c: Column) => (
-            <ColumnComponent relations={relations} c={c} role={role} />
+            <ColumnComponent
+              relations={relations}
+              c={c}
+              role={role}
+              reload={fetchGetAllInfo}
+            />
           ))}
         </div>
         <div className="bg-zinc-800 rounded-xl p-3 flex flex-col gap-1.5">

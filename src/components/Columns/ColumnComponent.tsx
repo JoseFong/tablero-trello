@@ -1,18 +1,21 @@
 "use client";
 import React, { useState } from "react";
-import CardComponent from "./CardComponent";
+import CardComponent from "../Boards/CardComponent";
 import { Card, Column, Relation } from "@/lib/types";
 import Image from "next/image";
 import plus from "@/assets/mas.png";
+import EditColumn from "./EditColumn";
 
 function ColumnComponent({
   relations,
   c,
   role,
+  reload,
 }: {
   relations: Relation[];
   c: Column;
   role: string;
+  reload: () => void;
 }) {
   const [showAddColumn, setShowAddColumn] = useState(false);
 
@@ -36,9 +39,7 @@ function ColumnComponent({
       onMouseEnter={() => setShowAddColumn(true)}
       onMouseLeave={() => setShowAddColumn(false)}
     >
-      <div className="bg-zinc-600 w-60 h-14 rounded-xl flex items-center justify-center shrink-0">
-        {c.name}
-      </div>
+      <EditColumn c={c} reload={reload} />
       <div className="overflow-y-auto flex flex-col gap-2 overflow-x-hidden w-full">
         {showAddColumn && role !== "Lector" && (
           <button className="border-2 border-dashed border-white opacity-60 hover:opacity-100 rounded-xl flex items-center justify-center">

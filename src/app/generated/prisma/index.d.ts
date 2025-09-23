@@ -8830,11 +8830,13 @@ export namespace Prisma {
   export type ListItemAvgAggregateOutputType = {
     id: number | null
     listId: number | null
+    order: number | null
   }
 
   export type ListItemSumAggregateOutputType = {
     id: number | null
     listId: number | null
+    order: number | null
   }
 
   export type ListItemMinAggregateOutputType = {
@@ -8842,6 +8844,7 @@ export namespace Prisma {
     content: string | null
     listId: number | null
     status: boolean | null
+    order: number | null
   }
 
   export type ListItemMaxAggregateOutputType = {
@@ -8849,6 +8852,7 @@ export namespace Prisma {
     content: string | null
     listId: number | null
     status: boolean | null
+    order: number | null
   }
 
   export type ListItemCountAggregateOutputType = {
@@ -8856,6 +8860,7 @@ export namespace Prisma {
     content: number
     listId: number
     status: number
+    order: number
     _all: number
   }
 
@@ -8863,11 +8868,13 @@ export namespace Prisma {
   export type ListItemAvgAggregateInputType = {
     id?: true
     listId?: true
+    order?: true
   }
 
   export type ListItemSumAggregateInputType = {
     id?: true
     listId?: true
+    order?: true
   }
 
   export type ListItemMinAggregateInputType = {
@@ -8875,6 +8882,7 @@ export namespace Prisma {
     content?: true
     listId?: true
     status?: true
+    order?: true
   }
 
   export type ListItemMaxAggregateInputType = {
@@ -8882,6 +8890,7 @@ export namespace Prisma {
     content?: true
     listId?: true
     status?: true
+    order?: true
   }
 
   export type ListItemCountAggregateInputType = {
@@ -8889,6 +8898,7 @@ export namespace Prisma {
     content?: true
     listId?: true
     status?: true
+    order?: true
     _all?: true
   }
 
@@ -8983,6 +8993,7 @@ export namespace Prisma {
     content: string
     listId: number
     status: boolean
+    order: number
     _count: ListItemCountAggregateOutputType | null
     _avg: ListItemAvgAggregateOutputType | null
     _sum: ListItemSumAggregateOutputType | null
@@ -9009,6 +9020,7 @@ export namespace Prisma {
     content?: boolean
     listId?: boolean
     status?: boolean
+    order?: boolean
     list?: boolean | ListDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listItem"]>
 
@@ -9017,6 +9029,7 @@ export namespace Prisma {
     content?: boolean
     listId?: boolean
     status?: boolean
+    order?: boolean
     list?: boolean | ListDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listItem"]>
 
@@ -9025,6 +9038,7 @@ export namespace Prisma {
     content?: boolean
     listId?: boolean
     status?: boolean
+    order?: boolean
     list?: boolean | ListDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["listItem"]>
 
@@ -9033,9 +9047,10 @@ export namespace Prisma {
     content?: boolean
     listId?: boolean
     status?: boolean
+    order?: boolean
   }
 
-  export type ListItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "listId" | "status", ExtArgs["result"]["listItem"]>
+  export type ListItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "listId" | "status" | "order", ExtArgs["result"]["listItem"]>
   export type ListItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     list?: boolean | ListDefaultArgs<ExtArgs>
   }
@@ -9056,6 +9071,7 @@ export namespace Prisma {
       content: string
       listId: number
       status: boolean
+      order: number
     }, ExtArgs["result"]["listItem"]>
     composites: {}
   }
@@ -9484,6 +9500,7 @@ export namespace Prisma {
     readonly content: FieldRef<"ListItem", 'String'>
     readonly listId: FieldRef<"ListItem", 'Int'>
     readonly status: FieldRef<"ListItem", 'Boolean'>
+    readonly order: FieldRef<"ListItem", 'Int'>
   }
     
 
@@ -13263,7 +13280,8 @@ export namespace Prisma {
     id: 'id',
     content: 'content',
     listId: 'listId',
-    status: 'status'
+    status: 'status',
+    order: 'order'
   };
 
   export type ListItemScalarFieldEnum = (typeof ListItemScalarFieldEnum)[keyof typeof ListItemScalarFieldEnum]
@@ -13761,6 +13779,7 @@ export namespace Prisma {
     content?: StringFilter<"ListItem"> | string
     listId?: IntFilter<"ListItem"> | number
     status?: BoolFilter<"ListItem"> | boolean
+    order?: IntFilter<"ListItem"> | number
     list?: XOR<ListScalarRelationFilter, ListWhereInput>
   }
 
@@ -13769,6 +13788,7 @@ export namespace Prisma {
     content?: SortOrder
     listId?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     list?: ListOrderByWithRelationInput
   }
 
@@ -13780,6 +13800,7 @@ export namespace Prisma {
     content?: StringFilter<"ListItem"> | string
     listId?: IntFilter<"ListItem"> | number
     status?: BoolFilter<"ListItem"> | boolean
+    order?: IntFilter<"ListItem"> | number
     list?: XOR<ListScalarRelationFilter, ListWhereInput>
   }, "id">
 
@@ -13788,6 +13809,7 @@ export namespace Prisma {
     content?: SortOrder
     listId?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     _count?: ListItemCountOrderByAggregateInput
     _avg?: ListItemAvgOrderByAggregateInput
     _max?: ListItemMaxOrderByAggregateInput
@@ -13803,6 +13825,7 @@ export namespace Prisma {
     content?: StringWithAggregatesFilter<"ListItem"> | string
     listId?: IntWithAggregatesFilter<"ListItem"> | number
     status?: BoolWithAggregatesFilter<"ListItem"> | boolean
+    order?: IntWithAggregatesFilter<"ListItem"> | number
   }
 
   export type ColumnWhereInput = {
@@ -14319,6 +14342,7 @@ export namespace Prisma {
   export type ListItemCreateInput = {
     content: string
     status: boolean
+    order?: number
     list: ListCreateNestedOneWithoutListItemInput
   }
 
@@ -14327,11 +14351,13 @@ export namespace Prisma {
     content: string
     listId: number
     status: boolean
+    order?: number
   }
 
   export type ListItemUpdateInput = {
     content?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
     list?: ListUpdateOneRequiredWithoutListItemNestedInput
   }
 
@@ -14340,6 +14366,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     listId?: IntFieldUpdateOperationsInput | number
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ListItemCreateManyInput = {
@@ -14347,11 +14374,13 @@ export namespace Prisma {
     content: string
     listId: number
     status: boolean
+    order?: number
   }
 
   export type ListItemUpdateManyMutationInput = {
     content?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ListItemUncheckedUpdateManyInput = {
@@ -14359,11 +14388,12 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     listId?: IntFieldUpdateOperationsInput | number
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ColumnCreateInput = {
     name: string
-    order: number
+    order?: number
     board: BoardCreateNestedOneWithoutColumnInput
     Card?: CardCreateNestedManyWithoutColumnInput
   }
@@ -14372,7 +14402,7 @@ export namespace Prisma {
     id?: number
     name: string
     boardId: number
-    order: number
+    order?: number
     Card?: CardUncheckedCreateNestedManyWithoutColumnInput
   }
 
@@ -14395,7 +14425,7 @@ export namespace Prisma {
     id?: number
     name: string
     boardId: number
-    order: number
+    order?: number
   }
 
   export type ColumnUpdateManyMutationInput = {
@@ -14937,11 +14967,13 @@ export namespace Prisma {
     content?: SortOrder
     listId?: SortOrder
     status?: SortOrder
+    order?: SortOrder
   }
 
   export type ListItemAvgOrderByAggregateInput = {
     id?: SortOrder
     listId?: SortOrder
+    order?: SortOrder
   }
 
   export type ListItemMaxOrderByAggregateInput = {
@@ -14949,6 +14981,7 @@ export namespace Prisma {
     content?: SortOrder
     listId?: SortOrder
     status?: SortOrder
+    order?: SortOrder
   }
 
   export type ListItemMinOrderByAggregateInput = {
@@ -14956,11 +14989,13 @@ export namespace Prisma {
     content?: SortOrder
     listId?: SortOrder
     status?: SortOrder
+    order?: SortOrder
   }
 
   export type ListItemSumOrderByAggregateInput = {
     id?: SortOrder
     listId?: SortOrder
+    order?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -16129,14 +16164,14 @@ export namespace Prisma {
 
   export type ColumnCreateWithoutBoardInput = {
     name: string
-    order: number
+    order?: number
     Card?: CardCreateNestedManyWithoutColumnInput
   }
 
   export type ColumnUncheckedCreateWithoutBoardInput = {
     id?: number
     name: string
-    order: number
+    order?: number
     Card?: CardUncheckedCreateNestedManyWithoutColumnInput
   }
 
@@ -16464,7 +16499,7 @@ export namespace Prisma {
 
   export type ColumnCreateWithoutCardInput = {
     name: string
-    order: number
+    order?: number
     board: BoardCreateNestedOneWithoutColumnInput
   }
 
@@ -16472,7 +16507,7 @@ export namespace Prisma {
     id?: number
     name: string
     boardId: number
-    order: number
+    order?: number
   }
 
   export type ColumnCreateOrConnectWithoutCardInput = {
@@ -16664,12 +16699,14 @@ export namespace Prisma {
   export type ListItemCreateWithoutListInput = {
     content: string
     status: boolean
+    order?: number
   }
 
   export type ListItemUncheckedCreateWithoutListInput = {
     id?: number
     content: string
     status: boolean
+    order?: number
   }
 
   export type ListItemCreateOrConnectWithoutListInput = {
@@ -16744,6 +16781,7 @@ export namespace Prisma {
     content?: StringFilter<"ListItem"> | string
     listId?: IntFilter<"ListItem"> | number
     status?: BoolFilter<"ListItem"> | boolean
+    order?: IntFilter<"ListItem"> | number
   }
 
   export type ListCreateWithoutListItemInput = {
@@ -17234,7 +17272,7 @@ export namespace Prisma {
   export type ColumnCreateManyBoardInput = {
     id?: number
     name: string
-    order: number
+    order?: number
   }
 
   export type UserHasBoardUpdateWithoutBoardInput = {
@@ -17377,23 +17415,27 @@ export namespace Prisma {
     id?: number
     content: string
     status: boolean
+    order?: number
   }
 
   export type ListItemUpdateWithoutListInput = {
     content?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ListItemUncheckedUpdateWithoutListInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type ListItemUncheckedUpdateManyWithoutListInput = {
     id?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type CardCreateManyColumnInput = {
