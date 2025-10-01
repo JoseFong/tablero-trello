@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import plus from "@/assets/mas.png";
 import Modal from "../Common/modal";
@@ -7,23 +7,31 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { isEmpty } from "@/lib/validations";
 import { HexColorPicker } from "react-colorful";
+import { Tag } from "@/app/generated/prisma";
+import DeleteTag from "./DeleteTag";
 
-function CreateTag({
+function EditTag({
   boardId,
   reload,
+  tag,
 }: {
   boardId: number;
   reload: () => void;
+  tag: Tag;
 }) {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(tag.name);
   const [loading, setLoading] = useState(false);
-  const [color, setColor] = useState("#ffffff");
+  const [color, setColor] = useState(tag.color);
 
   function reset() {
-    setName("");
-    setColor("#ffffff");
+    setName(tag.name);
+    setColor(tag.color);
   }
+
+  useEffect(() => {
+    reset();
+  }, [open]);
 
   async function fetchCreateTag() {
     try {
@@ -36,10 +44,9 @@ function CreateTag({
         name: name.trim(),
       };
 
-      const response: any = await axios.post("/api/tags/", data);
+      const response: any = await axios.patch("/api/tags/" + tag.id, data);
 
       setLoading(false);
-      reset();
       setOpen(false);
       reload();
     } catch (e: any) {
@@ -53,18 +60,23 @@ function CreateTag({
     }
   }
 
+  function close() {
+    setOpen(false);
+  }
+
   return (
     <>
-      <button
+      <div
         onClick={() => setOpen(true)}
-        className="border-dashed border-4 flex items-center justify-center w-full rounded-xl opacity-60 hover:opacity-100"
+        className="py-1 px-2 rounded-xl hover:opacity-60 hover:cursor-pointer"
+        style={{ backgroundColor: tag.color }}
       >
-        <Image src={plus} alt="Crear etiqueta" className="w-6 py-1" />
-      </button>
+        {tag.name}
+      </div>
       {open && (
         <Modal setOpen={setOpen}>
           <div className="flex flex-col gap-1">
-            <h1>Nueva etiqueta</h1>
+            <h1>Editar etiqueta</h1>
             <input
               placeholder="Nombre"
               className="p-2 rounded-xl bg-zinc-200"
@@ -93,8 +105,9 @@ function CreateTag({
                     : "hover:bg-green-700 active:bg-green-800"
                 }`}
               >
-                {loading ? "Creando..." : "Crear"}
+                {loading ? "Editando..." : "Editar"}
               </button>
+              <DeleteTag tag={tag} reload={reload} closeParent={close} />
               <button
                 onClick={() => setOpen(false)}
                 disabled={loading}
@@ -114,4 +127,4 @@ function CreateTag({
   );
 }
 
-export default CreateTag;
+export default EditTag;

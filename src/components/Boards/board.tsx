@@ -14,6 +14,8 @@ import DeleteBoard from "./DeleteBoard";
 import goBack from "@/assets/icons8-izquierda-2-100.png";
 import EditBoard from "./EditBoard";
 import CreateColumn from "../Columns/CreateColumn";
+import CreateTag from "../Tags/CreateTag";
+import TagDashBoard from "../Tags/TagDashBoard";
 
 function BoardComponent({ userInfo }: { userInfo: any }) {
   const [tags, setTags] = useState<Tag[]>([]);
@@ -95,22 +97,12 @@ function BoardComponent({ userInfo }: { userInfo: any }) {
             />
           ))}
         </div>
-        <div className="bg-zinc-800 rounded-xl p-3 flex flex-col gap-1.5">
-          <h1 className="text-center text-lg font-bold mb-1">Etiquetas</h1>
-          {tags.map((t: Tag) => (
-            <div
-              className="py-1 px-2 rounded-xl"
-              style={{ backgroundColor: t.color }}
-            >
-              {t.name}
-            </div>
-          ))}
-          {role !== "Lector" && (
-            <button className="border-dashed border-4 flex items-center justify-center w-full rounded-xl opacity-60 hover:opacity-100">
-              <Image src={plus} alt="Crear etiqueta" className="w-6 py-1" />
-            </button>
-          )}
-        </div>
+        <TagDashBoard
+          tags={tags}
+          boardId={boardId}
+          reset={fetchGetAllInfo}
+          role={role}
+        />
       </div>
     </div>
   );
