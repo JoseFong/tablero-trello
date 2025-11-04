@@ -215,7 +215,7 @@ function Register() {
               {uploading ? "Subiendo..." : "Subir"}
             </button>
             <p className="text-center text-sm">
-              ¡Recuerde presionar "Subir" para cargar su foto!
+              ¡Recuerde presionar &quot;Subir&quot; para cargar su foto!
             </p>
             <div className="w-full flex justify-end">
               <button

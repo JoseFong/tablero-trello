@@ -5,6 +5,7 @@ import { Card, Column, Relation } from "@/lib/types";
 import Image from "next/image";
 import plus from "@/assets/mas.png";
 import EditColumn from "./EditColumn";
+import CreateCard from "../Cards/CreateCard";
 
 function ColumnComponent({
   relations,
@@ -41,11 +42,7 @@ function ColumnComponent({
     >
       <EditColumn c={c} reload={reload} />
       <div className="overflow-y-auto flex flex-col gap-2 overflow-x-hidden w-full">
-        {showAddColumn && role !== "Lector" && (
-          <button className="border-2 border-dashed border-white opacity-60 hover:opacity-100 rounded-xl flex items-center justify-center">
-            <Image src={plus} alt="Crear columna" className="w-8" />
-          </button>
-        )}
+        {showAddColumn && role !== "Lector" && <CreateCard />}
 
         {c.Card.map((c: Card) => (
           <CardComponent
