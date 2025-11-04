@@ -218,6 +218,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -235,6 +239,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -243,8 +248,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id             Int              @id @default(autoincrement())\n  email          String           @unique\n  username       String           @unique\n  password       String\n  UserHasBoard   UserHasBoard[]\n  Card           Card[]\n  CardAssignment CardAssignment[]\n  pictureUrl     String\n}\n\nmodel Board {\n  id           Int            @id @default(autoincrement())\n  name         String\n  UserHasBoard UserHasBoard[]\n  Tag          Tag[]\n  Column       Column[]\n  LastEdited   String\n  Color        String\n}\n\nmodel UserHasBoard {\n  id      Int    @id @default(autoincrement())\n  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n  role    String\n  boardId Int\n  userId  Int\n}\n\nmodel Tag {\n  id         Int          @id @default(autoincrement())\n  name       String\n  board      Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  boardId    Int\n  color      String\n  cardId     Int?\n  CardHasTag CardHasTag[]\n}\n\nmodel Card {\n  id             Int              @id @default(autoincrement())\n  status         String?\n  title          String\n  content        String?\n  startDate      String?\n  endDate        String?\n  List           List[]\n  creator        User?            @relation(fields: [creatorId], references: [id])\n  creatorId      Int?\n  column         Column           @relation(fields: [columnId], references: [id], onDelete: Cascade)\n  columnId       Int\n  color          String\n  CardAssignment CardAssignment[]\n  CardHasTag     CardHasTag[]\n}\n\nmodel List {\n  id       Int        @id @default(autoincrement())\n  card     Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  title    String\n  cardId   Int\n  ListItem ListItem[]\n}\n\nmodel ListItem {\n  id      Int     @id @default(autoincrement())\n  content String\n  list    List    @relation(fields: [listId], references: [id], onDelete: Cascade)\n  listId  Int\n  status  Boolean\n  order   Int     @default(autoincrement())\n}\n\nmodel Column {\n  id      Int    @id @default(autoincrement())\n  name    String\n  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  boardId Int\n  Card    Card[]\n  order   Int    @default(autoincrement())\n}\n\nmodel CardAssignment {\n  id     Int  @id @default(autoincrement())\n  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)\n  cardId Int\n  userId Int\n}\n\nmodel CardHasTag {\n  id     Int  @id @default(autoincrement())\n  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)\n  cardId Int\n  tagId  Int\n}\n",
-  "inlineSchemaHash": "69ece80fc7427e7abd9657a476b2533b30f1d4fff6b429cfe532f60acae0a7bc",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../src/app/generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id             Int              @id @default(autoincrement())\n  email          String           @unique\n  username       String           @unique\n  password       String\n  UserHasBoard   UserHasBoard[]\n  Card           Card[]\n  CardAssignment CardAssignment[]\n  pictureUrl     String\n}\n\nmodel Board {\n  id           Int            @id @default(autoincrement())\n  name         String\n  UserHasBoard UserHasBoard[]\n  Tag          Tag[]\n  Column       Column[]\n  LastEdited   String\n  Color        String\n}\n\nmodel UserHasBoard {\n  id      Int    @id @default(autoincrement())\n  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n  role    String\n  boardId Int\n  userId  Int\n}\n\nmodel Tag {\n  id         Int          @id @default(autoincrement())\n  name       String\n  board      Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  boardId    Int\n  color      String\n  cardId     Int?\n  CardHasTag CardHasTag[]\n}\n\nmodel Card {\n  id             Int              @id @default(autoincrement())\n  status         String?\n  title          String\n  content        String?\n  startDate      String?\n  endDate        String?\n  List           List[]\n  creator        User?            @relation(fields: [creatorId], references: [id])\n  creatorId      Int?\n  column         Column           @relation(fields: [columnId], references: [id], onDelete: Cascade)\n  columnId       Int\n  color          String\n  CardAssignment CardAssignment[]\n  CardHasTag     CardHasTag[]\n}\n\nmodel List {\n  id       Int        @id @default(autoincrement())\n  card     Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  title    String\n  cardId   Int\n  ListItem ListItem[]\n}\n\nmodel ListItem {\n  id      Int     @id @default(autoincrement())\n  content String\n  list    List    @relation(fields: [listId], references: [id], onDelete: Cascade)\n  listId  Int\n  status  Boolean\n  order   Int     @default(autoincrement())\n}\n\nmodel Column {\n  id      Int    @id @default(autoincrement())\n  name    String\n  board   Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)\n  boardId Int\n  Card    Card[]\n  order   Int    @default(autoincrement())\n}\n\nmodel CardAssignment {\n  id     Int  @id @default(autoincrement())\n  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)\n  cardId Int\n  userId Int\n}\n\nmodel CardHasTag {\n  id     Int  @id @default(autoincrement())\n  card   Card @relation(fields: [cardId], references: [id], onDelete: Cascade)\n  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)\n  cardId Int\n  tagId  Int\n}\n",
+  "inlineSchemaHash": "8e77c70a733902843959659fa91fc3a43f1c9a8770288a6c46623c254243fdd5",
   "copyEngine": true
 }
 
@@ -285,6 +290,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "src/app/generated/prisma/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
+path.join(process.cwd(), "src/app/generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "src/app/generated/prisma/schema.prisma")
